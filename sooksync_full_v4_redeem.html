@@ -1,0 +1,5493 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --navy: #0D2040;
+    --teal: #1D9E75;
+    --teal2: #4DC9A6;
+    --teal3: #9FE1CB;
+    --tp: #E1F5EE;
+    --gold: #F5A623;
+    --gold2: #FFD166;
+    --gold3: #FFF0C2;
+    --gd: #B8760A;
+    --sub: #5A7A9A;
+    --bg: #F2F8F5;
+  }
+
+  .wrap {
+    font-family: 'Sarabun', sans-serif;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    margin-bottom: 14px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 4px;
+    border: 1px solid rgba(29, 158, 117, 0.12);
+  }
+
+  .tb {
+    flex: 1;
+    padding: 7px 2px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #5A7A9A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    transition: all 0.2s;
+  }
+
+  .tb.active {
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
+    color: #fff;
+  }
+
+  .tb-i {
+    font-size: 13px;
+  }
+
+  .screen {
+    display: none;
+  }
+
+  .screen.active {
+    display: block;
+  }
+
+  .phone {
+    background: var(--navy);
+    border-radius: 34px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .sbar {
+    background: var(--navy);
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 18px 4px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+  }
+
+  .bnav {
+    background: var(--navy);
+    padding: 8px 6px 12px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .bn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    opacity: 0.36;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .bn.active {
+    opacity: 1;
+  }
+
+  .bn-iw {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border-radius: 9px;
+  }
+
+  .bn.active .bn-iw {
+    background: rgba(93, 202, 165, 0.14);
+  }
+
+  .bn-lb {
+    font-size: 9px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  /* LOGIN */
+  .lbg {
+    background: linear-gradient(160deg, #0D2040 0%, #0F3A5C 38%, #0D6B52 72%, #1D9E75 100%);
+    min-height: 650px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lmesh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .lcon {
+    position: relative;
+    z-index: 2;
+    padding: 30px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lring {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(93, 202, 165, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11px;
+    position: relative;
+  }
+
+  .lring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(93, 202, 165, 0.15);
+  }
+
+  .linner {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(93, 202, 165, 0.35));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ltitle {
+    font-family: 'Kanit', sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .ltitle span {
+    color: #5DCAA5;
+  }
+
+  .lsub {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.44);
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 20px;
+  }
+
+  .wbox {
+    width: 58px;
+    height: 66px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .wbox::before,
+  .wbox::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+  }
+
+  .wbox::before {
+    top: -12px;
+  }
+
+  .wbox::after {
+    bottom: -12px;
+  }
+
+  .lform {
+    width: 100%;
+  }
+
+  .llbl {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.48);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .linput {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 11px 14px;
+    color: #fff;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 11px;
+  }
+
+  .linput::placeholder {
+    color: rgba(255, 255, 255, 0.24);
+  }
+
+  .lfgt {
+    text-align: right;
+    margin-bottom: 12px;
+    font-size: 11px;
+    color: rgba(93, 202, 165, 0.8);
+    cursor: pointer;
+  }
+
+  .lbtn {
+    width: 100%;
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
+    border: none;
+    border-radius: 12px;
+    padding: 13px;
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .ldiv {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .ldl {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.09);
+  }
+
+  .ldt {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.27);
+  }
+
+  .brow {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    margin-bottom: 13px;
+  }
+
+  .bbtn {
+    width: 46px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1.5px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .signup {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.34);
+  }
+
+  .slink {
+    color: #5DCAA5;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* REWARD HEADER */
+  .rh {
+    background: linear-gradient(160deg, #0D2040 0%, #0B2E4A 60%, #0A3D32 100%);
+    padding: 13px 13px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rhc1 {
+    position: absolute;
+    top: -36px;
+    right: -36px;
+    width: 136px;
+    height: 136px;
+    background: rgba(29, 158, 117, 0.1);
+    border-radius: 50%;
+  }
+
+  .rhc2 {
+    position: absolute;
+    top: 16px;
+    right: 26px;
+    width: 68px;
+    height: 68px;
+    background: rgba(245, 166, 35, 0.06);
+    border-radius: 50%;
+  }
+
+  .rhtop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+  }
+
+  .rhgreet {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .rhname {
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 2px;
+  }
+
+  .spill {
+    background: rgba(255, 209, 102, 0.1);
+    border: 1px solid rgba(255, 209, 102, 0.28);
+    border-radius: 20px;
+    padding: 4px 9px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: #FFD166;
+    font-weight: 600;
+  }
+
+  .cwallet {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(245, 166, 35, 0.2);
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .cwsh {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 60px;
+    height: 60px;
+    background: rgba(245, 166, 35, 0.05);
+    border-radius: 50%;
+  }
+
+  .cwtop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cwl {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cbig {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(145deg, #FFD166, #F5A623);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: cfloat 2.5s ease-in-out infinite;
+  }
+
+  .cwlbl {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.38);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .cwamt {
+    font-family: 'Kanit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #FFD166;
+    line-height: 1;
+    margin-top: 1px;
+  }
+
+  .cwamt span {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 209, 102, 0.48);
+    margin-left: 2px;
+  }
+
+  .rdmbtn {
+    background: linear-gradient(135deg, #F5A623, #FFD166);
+    border: none;
+    border-radius: 10px;
+    padding: 6px 11px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6B3800;
+    cursor: pointer;
+  }
+
+  .cwdiv {
+    height: 1px;
+    background: rgba(255, 209, 102, 0.09);
+    margin: 7px 0;
+  }
+
+  .cwerow {
+    display: flex;
+    gap: 6px;
+  }
+
+  .echip {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 6px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .enum {
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .enum.gold {
+    color: #FFD166;
+  }
+
+  .elbl {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 1px;
+  }
+
+  .xpw {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 7px 11px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2px;
+  }
+
+  .xrow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .xlv {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.38);
+  }
+
+  .xval {
+    font-family: 'Kanit', sans-serif;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .xval span {
+    color: #5DCAA5;
+  }
+
+  .xtrk {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .xfill {
+    height: 100%;
+    width: 68%;
+    background: linear-gradient(90deg, #1D9E75, #6BCFC2);
+    border-radius: 5px;
+  }
+
+  /* REWARD BODY */
+  .rb {
+    padding: 11px;
+    background: var(--bg);
+  }
+
+  .srow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .stitle {
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .slink2 {
+    font-size: 11px;
+    color: var(--teal);
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .mlist {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .mi {
+    background: #fff;
+    border-radius: 12px;
+    padding: 9px 11px;
+    border: 1px solid rgba(29, 158, 117, 0.09);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  .mi.done {
+    border-color: rgba(29, 158, 117, 0.25);
+  }
+
+  .mibar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #1D9E75, #4DC9A6);
+    border-radius: 3px 0 0 3px;
+  }
+
+  .miico {
+    width: 33px;
+    height: 33px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .miico.d {
+    background: linear-gradient(135deg, #E6FAF4, #C0EDD8);
+  }
+
+  .miico.p {
+    background: #F5F8F6;
+  }
+
+  .mitxt {
+    flex: 1;
+  }
+
+  .minm {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .misb {
+    font-size: 10px;
+    color: var(--sub);
+    margin-top: 2px;
+  }
+
+  .miprog {
+    height: 3px;
+    background: rgba(29, 158, 117, 0.08);
+    border-radius: 4px;
+    margin-top: 5px;
+    overflow: hidden;
+  }
+
+  .mifill {
+    height: 100%;
+    background: linear-gradient(90deg, #1D9E75, #4DC9A6);
+    border-radius: 4px;
+  }
+
+  .mirw {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+
+  .cbdg {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: var(--gold3);
+    border-radius: 20px;
+    padding: 3px 6px;
+  }
+
+  .cbico {
+    font-size: 10px;
+  }
+
+  .cbval {
+    font-family: 'Kanit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gd);
+  }
+
+  .chk {
+    width: 18px;
+    height: 18px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #fff;
+  }
+
+  .pnd {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(29, 158, 117, 0.2);
+    border-radius: 50%;
+  }
+
+  .swcard {
+    background: linear-gradient(135deg, #0D2040, #0F3A5C);
+    border-radius: 13px;
+    padding: 11px 12px;
+    border: 1.5px solid rgba(255, 209, 102, 0.15);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 11px;
+  }
+
+  .swglow {
+    position: absolute;
+    top: -24px;
+    right: -14px;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 209, 102, 0.04);
+    border-radius: 50%;
+  }
+
+  .swtop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 7px;
+  }
+
+  .swico {
+    width: 31px;
+    height: 31px;
+    background: rgba(255, 209, 102, 0.11);
+    border: 1px solid rgba(255, 209, 102, 0.24);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  .swttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFD166;
+  }
+
+  .swsub {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.38);
+    margin-top: 1px;
+  }
+
+  .swwins {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .wrow {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 6px 8px;
+    animation: wslide 0.3s ease both;
+  }
+
+  .wrow:nth-child(1) {
+    animation-delay: .05s;
+  }
+
+  .wrow:nth-child(2) {
+    animation-delay: .1s;
+  }
+
+  .wrow:nth-child(3) {
+    animation-delay: .15s;
+  }
+
+  .wdot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .wtxt {
+    flex: 1;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.64);
+  }
+
+  .wcoin {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #FFD166;
+  }
+
+  .shscroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .shi {
+    flex-shrink: 0;
+    width: 78px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 9px 6px;
+    border: 1px solid rgba(29, 158, 117, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  .shi:active {
+    transform: scale(0.95);
+  }
+
+  .shi.ft {
+    border: 1.5px solid rgba(245, 166, 35, 0.34);
+    background: linear-gradient(135deg, #FFFBF0, #FFF5D6);
+  }
+
+  .shem {
+    font-size: 21px;
+  }
+
+  .shnm {
+    font-size: 9px;
+    color: var(--sub);
+    text-align: center;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  .shpr {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: var(--gold3);
+    border-radius: 20px;
+    padding: 2px 6px;
+  }
+
+  .shpico {
+    font-size: 10px;
+  }
+
+  .shpval {
+    font-family: 'Kanit', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gd);
+  }
+
+  /* ══ REDEEM PAGE ══ */
+  .rdpage {
+    background: var(--bg);
+    min-height: 100%;
+  }
+
+  .rdhdr {
+    background: linear-gradient(160deg, #0D2040 0%, #0B2E4A 60%, #0A3D32 100%);
+    padding: 14px 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rdhdr-c {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: rgba(245, 166, 35, 0.07);
+    border-radius: 50%;
+  }
+
+  .rdhdr-back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 13px;
+    cursor: pointer;
+  }
+
+  .back-arr {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .rdhdr-ttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .rd-bal-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rd-coin-ico {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(145deg, #FFD166, #F5A623);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .rd-bal-lbl {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .rd-bal-amt {
+    font-family: 'Kanit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #FFD166;
+    line-height: 1;
+  }
+
+  .rd-bal-amt span {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 209, 102, 0.48);
+    margin-left: 2px;
+  }
+
+  /* category filter */
+  .rd-cats {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 11px 11px 0;
+    scrollbar-width: none;
+    background: var(--bg);
+  }
+
+  .cat-pill {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(29, 158, 117, 0.18);
+    background: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sub);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .cat-pill.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+  }
+
+  /* reward grid */
+  .rd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    padding: 10px 11px 14px;
+  }
+
+  .rd-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(29, 158, 117, 0.09);
+    cursor: pointer;
+    transition: transform 0.15s;
+    position: relative;
+  }
+
+  .rd-card:active {
+    transform: scale(0.97);
+  }
+
+  .rd-card.cant-afford {
+    opacity: 0.55;
+  }
+
+  .rd-card-img {
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    overflow: hidden;
+  }
+
+  .rd-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+  }
+
+  .rd-card-body {
+    padding: 8px 10px 10px;
+  }
+
+  .rd-card-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+
+  .rd-card-sub {
+    font-size: 10px;
+    color: var(--sub);
+    margin-bottom: 7px;
+    line-height: 1.3;
+  }
+
+  .rd-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rd-price {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background: var(--gold3);
+    border-radius: 20px;
+    padding: 3px 7px;
+  }
+
+  .rd-price-ico {
+    font-size: 11px;
+  }
+
+  .rd-price-val {
+    font-family: 'Kanit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gd);
+  }
+
+  .rd-qty-badge {
+    font-size: 9px;
+    color: var(--sub);
+  }
+
+  .rd-new-badge {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    background: linear-gradient(135deg, #E24B4A, #F09595);
+    border-radius: 20px;
+    padding: 2px 6px;
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .rd-hot-badge {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    background: linear-gradient(135deg, #F5A623, #FFD166);
+    border-radius: 20px;
+    padding: 2px 6px;
+    font-size: 9px;
+    font-weight: 600;
+    color: #6B3800;
+  }
+
+  /* confirm modal */
+  .modal-wrap {
+    display: none;
+    min-height: 520px;
+    background: rgba(13, 32, 64, 0.88);
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .modal-wrap.show {
+    display: flex;
+  }
+
+  .modal-sheet {
+    background: #fff;
+    border-radius: 22px 22px 0 0;
+    width: 100%;
+    padding: 20px 18px 24px;
+    position: relative;
+  }
+
+  .modal-handle {
+    width: 36px;
+    height: 4px;
+    background: #E0E8E4;
+    border-radius: 4px;
+    margin: 0 auto 16px;
+  }
+
+  .modal-item-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .modal-item-ico {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .modal-item-name {
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .modal-item-sub {
+    font-size: 11px;
+    color: var(--sub);
+    margin-top: 2px;
+  }
+
+  .modal-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(29, 158, 117, 0.1);
+    margin-bottom: 14px;
+  }
+
+  .modal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 13px;
+    background: #F8FBF9;
+    border-bottom: 1px solid rgba(29, 158, 117, 0.07);
+  }
+
+  .modal-row:last-child {
+    border-bottom: none;
+  }
+
+  .modal-row-lbl {
+    font-size: 12px;
+    color: var(--sub);
+  }
+
+  .modal-row-val {
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .modal-row-val.gold {
+    color: var(--gd);
+  }
+
+  .modal-row-val.big {
+    font-size: 16px;
+    color: var(--teal);
+  }
+
+  .modal-row-val.red {
+    color: #A32D2D;
+  }
+
+  .modal-confirm-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #F5A623, #FFD166);
+    border: none;
+    border-radius: 13px;
+    padding: 13px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #6B3800;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+
+  .modal-cancel-btn {
+    width: 100%;
+    background: transparent;
+    border: 1.5px solid rgba(29, 158, 117, 0.2);
+    border-radius: 13px;
+    padding: 10px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sub);
+    cursor: pointer;
+  }
+
+  /* success overlay */
+  .sov {
+    display: none;
+    min-height: 520px;
+    background: rgba(13, 32, 64, 0.94);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .sov.show {
+    display: flex;
+  }
+
+  .sov-ring {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin-bottom: 14px;
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .sov-ttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+
+  .sov-sub {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.48);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  .sov-voucher {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    border: 1.5px dashed rgba(245, 166, 35, 0.4);
+    padding: 16px 18px;
+    width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .sov-code-lbl {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .sov-code {
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFD166;
+    letter-spacing: 4px;
+  }
+
+  .sov-code-sub {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 4px;
+  }
+
+  .sov-bal-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+  }
+
+  .sov-bal-val {
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #5DCAA5;
+  }
+
+  .sov-done-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
+    border: none;
+    border-radius: 13px;
+    padding: 13px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+
+  .sov-more-btn {
+    width: 100%;
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 13px;
+    padding: 10px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+  }
+
+  /* ANALYSIS */
+  .aah {
+    background: linear-gradient(135deg, #0D2040, #0B3347);
+    padding: 15px 15px 17px;
+  }
+
+  .aarow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .aattl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .ldot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #5DCAA5;
+    font-weight: 500;
+  }
+
+  .dp {
+    width: 6px;
+    height: 6px;
+    background: #5DCAA5;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  .vgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .vc {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .virow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .vi {
+    font-size: 14px;
+  }
+
+  .vl {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.38);
+    text-align: right;
+  }
+
+  .vv {
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .vu {
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin-left: 2px;
+  }
+
+  .vt {
+    font-size: 10px;
+    margin-top: 3px;
+    color: #5DCAA5;
+  }
+
+  .ab {
+    padding: 11px;
+    background: var(--bg);
+  }
+
+  .ccrd {
+    background: #fff;
+    border-radius: 13px;
+    padding: 11px 12px;
+    border: 1px solid rgba(29, 158, 117, 0.08);
+    margin-bottom: 9px;
+  }
+
+  .chdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .cttl {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .tpill {
+    background: var(--tp);
+    border-radius: 20px;
+    padding: 3px 2px;
+    display: flex;
+    gap: 1px;
+  }
+
+  .tpb {
+    padding: 2px 7px;
+    border: none;
+    background: transparent;
+    border-radius: 16px;
+    font-size: 9px;
+    cursor: pointer;
+    color: var(--teal);
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 500;
+  }
+
+  .tpb.active {
+    background: var(--teal);
+    color: #fff;
+  }
+
+  .spwrap {
+    position: relative;
+    height: 52px;
+  }
+
+  .spwrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .drow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .dlbl {
+    font-size: 9px;
+    color: var(--sub);
+  }
+
+  .mgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-bottom: 9px;
+  }
+
+  .mmini {
+    background: #fff;
+    border-radius: 11px;
+    padding: 9px 10px;
+    border: 1px solid rgba(29, 158, 117, 0.08);
+  }
+
+  .mmrow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+
+  .mmic {
+    font-size: 14px;
+  }
+
+  .mmlb {
+    font-size: 10px;
+    color: var(--sub);
+    font-weight: 500;
+  }
+
+  .mmv {
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .mms {
+    font-size: 9px;
+    color: var(--sub);
+    margin-top: 1px;
+  }
+
+  .slcard {
+    background: linear-gradient(135deg, #0D2040, #0F3A5C);
+    border-radius: 13px;
+    padding: 11px 12px;
+    margin-bottom: 9px;
+  }
+
+  .slhdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+  }
+
+  .slttl {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .slval {
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #5DCAA5;
+  }
+
+  .slsub {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.34);
+  }
+
+  .slstages {
+    display: flex;
+    gap: 2px;
+    height: 14px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 7px;
+  }
+
+  .slleg {
+    display: flex;
+    gap: 8px;
+  }
+
+  .slit {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .sldot {
+    width: 5px;
+    height: 5px;
+    border-radius: 2px;
+  }
+
+  .aic {
+    background: linear-gradient(135deg, #E6FAF4, #F0FBF8);
+    border-radius: 13px;
+    padding: 10px;
+    border: 1.5px solid rgba(29, 158, 117, 0.15);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .aiico {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .aittl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .aibdy {
+    font-size: 10px;
+    color: var(--sub);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  /* ANIMATIONS */
+  @keyframes cfloat {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes pulse {
+
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
+  }
+
+  @keyframes wslide {
+    0% {
+      transform: translateX(-8px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes coinPop {
+    0% {
+      transform: scale(0) translateY(0);
+      opacity: 1;
+    }
+
+    60% {
+      transform: scale(1.2) translateY(-16px);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(0.8) translateY(-34px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes checkBounce {
+    0% {
+      transform: scale(0);
+    }
+
+    60% {
+      transform: scale(1.3);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes popIn {
+    0% {
+      transform: scale(0);
+    }
+
+    70% {
+      transform: scale(1.15);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes coinRain {
+    0% {
+      transform: translateY(-20px) rotate(0deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(130px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cardShake {
+
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    25% {
+      transform: translateX(-4px);
+    }
+
+    75% {
+      transform: translateX(4px);
+    }
+  }
+
+  .burst-cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .burst-coin {
+    position: absolute;
+    font-size: 13px;
+    animation: coinPop 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .rain-coin {
+    position: absolute;
+    font-size: 15px;
+    animation: coinRain 1.2s ease-in forwards;
+  }
+
+  /* ══ NEWS ══ */
+  .nhdr {
+    background: linear-gradient(160deg, #0D2040 0%, #0F3A5C 50%, #0D6B52 100%);
+    padding: 16px 16px 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nhdr::before {
+    content: '';
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: rgba(77, 201, 166, 0.07);
+    top: -70px;
+    right: -40px;
+  }
+
+  .nhdr-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nhdr-ttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  .nhdr-sub {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 3px;
+  }
+
+  .nbadge-cnt {
+    background: rgba(93, 202, 165, 0.15);
+    border: 1px solid rgba(93, 202, 165, 0.3);
+    color: #5DCAA5;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .ncats {
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px 6px;
+    overflow-x: auto;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .ncats::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ncpill {
+    flex-shrink: 0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1.5px solid #E0EDE8;
+    color: var(--sub);
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.2s;
+  }
+
+  .ncpill.active {
+    background: var(--teal);
+    color: #fff;
+    border-color: var(--teal);
+  }
+
+  .nfeed {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--bg);
+  }
+
+  .ncard {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: transform 0.15s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .ncard:active {
+    transform: scale(0.98);
+  }
+
+  .nthumb {
+    width: 100%;
+    height: 106px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nthumb-emoji {
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
+  }
+
+  .ncat-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    z-index: 2;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    color: #fff;
+    letter-spacing: 0.3px;
+  }
+
+  .nbody {
+    padding: 10px 12px 12px;
+  }
+
+  .nttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.35;
+    margin-bottom: 3px;
+  }
+
+  .ndesc {
+    font-size: 10.5px;
+    color: var(--sub);
+    line-height: 1.5;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .nfoot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ndate {
+    font-size: 9.5px;
+    color: #aab5c0;
+    font-weight: 500;
+  }
+
+  .nreadmore {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  /* ══ THAID LOGIN ══ */
+  .thaid-btn {
+    width: 100%;
+    padding: 11px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #1e5dcc, #1a3fa8);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.2px;
+  }
+
+  .admin-lnk {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.38);
+    cursor: pointer;
+  }
+
+  .admin-lnk span {
+    color: #5DCAA5;
+    text-decoration: underline;
+  }
+
+  /* ══ API CHIP ══ */
+  .api-row {
+    display: flex;
+    gap: 6px;
+    margin: 6px 0 0 0;
+  }
+
+  .api-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(29, 158, 117, 0.12);
+    border: 1px solid rgba(93, 202, 165, 0.25);
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 9px;
+    color: #5DCAA5;
+    font-weight: 600;
+  }
+
+  .api-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #5DCAA5;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+
+    0%,
+    100% {
+      opacity: 1
+    }
+
+    50% {
+      opacity: .35
+    }
+  }
+
+  .api-chip.off {
+    background: rgba(255, 100, 100, 0.09);
+    border-color: rgba(255, 100, 100, 0.2);
+    color: #e05;
+  }
+
+  .api-chip.off .api-dot {
+    background: #e05;
+    animation: none;
+  }
+
+  /* ══ STRESS CARD ══ */
+  .strs-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 0 0 0 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  .strs-hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .strs-ttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .strs-val {
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .strs-bar-wrap {
+    background: #f0f5f2;
+    border-radius: 8px;
+    height: 7px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .strs-bar-fill {
+    height: 7px;
+    border-radius: 8px;
+    width: 34%;
+    background: linear-gradient(90deg, #4DC9A6 0%, #FFD166 55%, #FF7B7B 100%);
+    transition: width 0.5s ease;
+  }
+
+  .strs-emojis {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .strs-em {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #E8EFF0;
+    background: #f8fbfa;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .strs-em.active {
+    border-color: var(--teal);
+    background: var(--tp);
+    transform: scale(1.14);
+  }
+
+  .strs-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .strs-lb {
+    font-size: 9px;
+    color: #aab5c0;
+  }
+
+  /* ══ ANALYSIS PERIOD ══ */
+  .aperiod {
+    display: flex;
+    gap: 4px;
+  }
+
+  .apb {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.45);
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Sarabun', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .apb.active {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* ══ ADMIN WEB DASHBOARD ══ */
+  #screen-admin {
+    display: none;
+  }
+
+  #screen-admin.active {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #F0F4F8;
+    overflow: hidden;
+  }
+
+  .adw-wrap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-family: 'Sarabun', sans-serif;
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  .adw-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #0D1F40 0%, #0e2d4a 60%, #0e3d36 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .adw-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 22px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .adw-logo-ico {
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+  }
+
+  .adw-logo-txt {
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  .adw-logo-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 400;
+  }
+
+  .adw-nav {
+    padding: 16px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .adw-nav-lbl {
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.28);
+    letter-spacing: 0.08em;
+    padding: 10px 8px 4px;
+    text-transform: uppercase;
+  }
+
+  .adw-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+
+  .adw-nav-item:hover { background: rgba(255,255,255,0.07); color: #fff; }
+  .adw-nav-item.active { background: rgba(93,202,165,0.18); color: #5DCAA5; font-weight: 600; }
+
+  .adw-nav-ico { font-size: 15px; width: 20px; text-align: center; }
+
+  .adw-nav-badge {
+    margin-left: auto;
+    background: #1D9E75;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 20px;
+  }
+
+  .adw-user {
+    padding: 14px 16px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .adw-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#FFD166,#f4a261);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .adw-uname {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .adw-urole {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* Main area */
+  .adw-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .adw-topbar {
+    background: #fff;
+    border-bottom: 1px solid #E5ECF0;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .adw-page-ttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0D1F40;
+  }
+
+  .adw-page-sub {
+    font-size: 12px;
+    color: #90A4AE;
+    margin-top: 1px;
+  }
+
+  .adw-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .adw-date-chip {
+    background: #F0F4F8;
+    border: 1px solid #DDE6EB;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #546E7A;
+  }
+
+  .adw-export-btn {
+    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 16px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .adw-content {
+    flex: 1;
+    padding: 24px 28px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* KPI row */
+  .adw-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 16px;
+  }
+
+  .adw-kpi {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-left: 4px solid transparent;
+  }
+
+  .adw-kpi.green { border-color: #1D9E75; }
+  .adw-kpi.blue  { border-color: #2196F3; }
+  .adw-kpi.amber { border-color: #FFB300; }
+  .adw-kpi.purple{ border-color: #9C27B0; }
+
+  .adw-kpi-ico {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .adw-kpi.green .adw-kpi-ico { background: #E8F8F2; }
+  .adw-kpi.blue  .adw-kpi-ico { background: #E3F2FD; }
+  .adw-kpi.amber .adw-kpi-ico { background: #FFF8E1; }
+  .adw-kpi.purple .adw-kpi-ico { background: #F3E5F5; }
+
+  .adw-kpi-val {
+    font-family: 'Kanit', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #0D1F40;
+    line-height: 1;
+  }
+
+  .adw-kpi-lbl {
+    font-size: 12px;
+    color: #78909C;
+    margin-top: 3px;
+  }
+
+  .adw-kpi-trend {
+    font-size: 11px;
+    font-weight: 600;
+    color: #1D9E75;
+    margin-top: 5px;
+  }
+
+  /* Two-column grid */
+  .adw-grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .adw-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .adw-card-ttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0D1F40;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .adw-card-lnk {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #1D9E75;
+    cursor: pointer;
+  }
+
+  /* Bar chart rows */
+  .adw-brow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .adw-brow:last-child { margin-bottom: 0; }
+
+  .adw-brow-lbl {
+    font-size: 12px;
+    color: #546E7A;
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .adw-brow-trk {
+    flex: 1;
+    background: #EFF4F2;
+    border-radius: 6px;
+    height: 8px;
+  }
+
+  .adw-brow-fill {
+    height: 8px;
+    border-radius: 6px;
+    background: linear-gradient(90deg,#1D9E75,#4DC9A6);
+  }
+
+  .adw-brow-pct {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0D1F40;
+    width: 36px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .adw-brow-cnt {
+    font-size: 11px;
+    color: #90A4AE;
+    width: 58px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  /* Activity list (legacy classes kept for pills) */
+  .adw-act-ico {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .adw-pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .adw-pill.on   { background: #E1F5EE; color: #1D9E75; }
+  .adw-pill.soon { background: #FFF5D6; color: #B8760A; }
+  .adw-pill.done { background: #F0F4F2; color: #90A4AE; }
+
+  .adw-plus-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px;
+    border: 2px dashed rgba(29,158,117,0.3);
+    border-radius: 10px;
+    background: rgba(29,158,117,0.04);
+    color: #1D9E75;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .adw-plus-btn:hover { background: rgba(29,158,117,0.09); }
+
+  /* Activity type config */
+  .adw-atype-desc {
+    font-size: 11px;
+    color: #90A4AE;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .adw-atype-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #F0F4F8;
+    gap: 8px;
+  }
+
+  .adw-atype-row:last-child { border-bottom: none; }
+
+  .adw-atype-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .adw-atype-ico-edit {
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+
+  .adw-atype-nm {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0D1F40;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .adw-atype-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .adw-atype-coins-wrap {
+    display: flex;
+    align-items: center;
+    background: #F7FAFB;
+    border: 1.5px solid #E2EAF0;
+    border-radius: 8px;
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .adw-atype-coins-wrap:focus-within {
+    border-color: #1D9E75;
+    background: #fff;
+  }
+
+  .adw-atype-inp {
+    width: 52px;
+    border: none;
+    background: transparent;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0D1F40;
+    text-align: right;
+    outline: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .adw-atype-inp::-webkit-outer-spin-button,
+  .adw-atype-inp::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; }
+
+  .adw-atype-coin-unit {
+    font-size: 10px;
+    color: #90A4AE;
+    white-space: nowrap;
+  }
+
+  .adw-atype-save {
+    padding: 5px 10px;
+    background: #1D9E75;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+    white-space: nowrap;
+  }
+
+  .adw-atype-save:hover { background: #178860; }
+  .adw-atype-save.saved { background: #4CAF50; }
+
+  .adw-atype-del {
+    padding: 5px 7px;
+    background: transparent;
+    border: 1.5px solid #E2EAF0;
+    border-radius: 7px;
+    font-size: 11px;
+    color: #90A4AE;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    line-height: 1;
+  }
+
+  .adw-atype-del:hover { border-color: #f44336; color: #f44336; }
+
+  /* Add new type inline form */
+  .adw-atype-add-form {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 14px;
+    background: #F7FAFB;
+    border: 1.5px dashed #CBD5DF;
+    border-radius: 10px;
+  }
+
+  .adw-atype-add-form.open { display: flex; }
+
+  .adw-atype-add-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .adw-atype-add-ico-inp {
+    width: 44px;
+    font-size: 18px;
+    text-align: center;
+    border: 1.5px solid #E2EAF0;
+    border-radius: 8px;
+    padding: 5px 4px;
+    background: #fff;
+    font-family: 'Kanit', sans-serif;
+    outline: none;
+  }
+
+  .adw-atype-add-nm-inp {
+    flex: 1;
+    min-width: 80px;
+    border: 1.5px solid #E2EAF0;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    color: #0D1F40;
+    background: #fff;
+    outline: none;
+  }
+
+  .adw-atype-add-nm-inp:focus,
+  .adw-atype-add-ico-inp:focus { border-color: #1D9E75; }
+
+  .adw-atype-add-coins-inp {
+    width: 70px;
+    border: 1.5px solid #E2EAF0;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0D1F40;
+    background: #fff;
+    text-align: center;
+    outline: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .adw-atype-add-coins-inp::-webkit-outer-spin-button,
+  .adw-atype-add-coins-inp::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; }
+
+  .adw-atype-add-coins-inp:focus { border-color: #1D9E75; }
+
+  .adw-atype-add-btns {
+    display: flex;
+    gap: 6px;
+  }
+
+  .adw-atype-confirm-btn {
+    padding: 6px 14px;
+    background: #1D9E75;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .adw-atype-confirm-btn:hover { background: #178860; }
+
+  .adw-atype-cancel-btn {
+    padding: 6px 12px;
+    background: transparent;
+    border: 1.5px solid #CBD5DF;
+    border-radius: 8px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    color: #607080;
+    cursor: pointer;
+  }
+
+  .adw-atype-cancel-btn:hover { border-color: #90A4AE; }
+
+  /* News table */
+  .adw-table-wrap {
+    overflow-x: auto;
+  }
+
+  .adw-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .adw-table th {
+    background: #F7FAFB;
+    color: #78909C;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #E5ECF0;
+  }
+
+  .adw-table td {
+    padding: 11px 14px;
+    color: #0D1F40;
+    border-bottom: 1px solid #F0F4F8;
+    vertical-align: middle;
+  }
+
+  .adw-table tr:last-child td { border-bottom: none; }
+
+  .adw-table tr:hover td { background: #FAFCFC; }
+
+  .adw-tbl-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 1px solid #E5ECF0;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .adw-tbl-btn:hover { background: #F0F4F8; }
+
+  /* Form inside card */
+  .adw-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .adw-fld label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #546E7A;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .adw-inp {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid #DDE6EB;
+    border-radius: 8px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 13px;
+    color: #0D1F40;
+    background: #F7FAFB;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  .adw-inp:focus { border-color: #1D9E75; background: #fff; }
+
+  .adw-cat-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .adw-cat-opt {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1.5px solid #DDE6EB;
+    color: #78909C;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .adw-cat-opt.sel { background: #1D9E75; color: #fff; border-color: #1D9E75; }
+
+  .adw-submit-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* ══ EMPLOYEE PAGE ══ */
+  .adw-pg { display: none; }
+  .adw-pg.adw-pg-active { display: contents; }
+
+  .emp-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .emp-search-wrap {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1.5px solid #DDE6EB;
+    border-radius: 9px;
+    padding: 0 12px;
+    gap: 8px;
+    flex: 1;
+    min-width: 180px;
+    max-width: 340px;
+    transition: border-color 0.2s;
+  }
+
+  .emp-search-wrap:focus-within { border-color: #1D9E75; }
+
+  .emp-search-ico { font-size: 14px; color: #90A4AE; }
+
+  .emp-search-inp {
+    border: none;
+    background: transparent;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 13px;
+    color: #0D1F40;
+    outline: none;
+    padding: 9px 0;
+    width: 100%;
+  }
+
+  .emp-filter-sel {
+    padding: 9px 12px;
+    border: 1.5px solid #DDE6EB;
+    border-radius: 9px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    color: #546E7A;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .emp-filter-sel:focus { border-color: #1D9E75; }
+
+  .emp-add-btn {
+    padding: 9px 18px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-left: auto;
+    transition: opacity 0.15s;
+  }
+
+  .emp-add-btn:hover { opacity: 0.88; }
+
+  .emp-count-lbl {
+    font-size: 11px;
+    color: #90A4AE;
+    white-space: nowrap;
+  }
+
+
+  /* Modal overlay */
+  .emp-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13,31,64,0.45);
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .emp-modal-overlay.open { display: flex; }
+
+  .emp-modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 28px 24px;
+    width: 520px;
+    max-width: calc(100vw - 40px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    position: relative;
+  }
+
+  .emp-modal-ttl {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0D1F40;
+    margin-bottom: 20px;
+  }
+
+  .emp-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #90A4AE;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .emp-modal-close:hover { color: #0D1F40; }
+
+  .emp-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .emp-fld label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #546E7A;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .emp-fld select,
+  .emp-fld input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid #DDE6EB;
+    border-radius: 8px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 13px;
+    color: #0D1F40;
+    background: #F7FAFB;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  .emp-fld input:focus,
+  .emp-fld select:focus { border-color: #1D9E75; background: #fff; }
+
+  .emp-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .emp-modal-cancel {
+    padding: 9px 18px;
+    border: 1.5px solid #DDE6EB;
+    border-radius: 9px;
+    background: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    color: #546E7A;
+    cursor: pointer;
+  }
+
+  .emp-modal-cancel:hover { border-color: #90A4AE; }
+
+  .emp-modal-save {
+    padding: 9px 22px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .emp-modal-save:hover { opacity: 0.88; }
+
+  /* Pagination */
+  .emp-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    padding-top: 12px;
+  }
+
+  .emp-pg-btn {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 6px;
+    border: 1.5px solid #E5ECF0;
+    border-radius: 7px;
+    background: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    color: #546E7A;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+
+  .emp-pg-btn:hover { border-color: #1D9E75; color: #1D9E75; }
+  .emp-pg-btn.cur   { background: #1D9E75; color: #fff; border-color: #1D9E75; }
+  .emp-pg-btn:disabled { opacity: 0.35; cursor: default; }
+
+  /* ══ ADMIN SCREEN (legacy mobile — kept for reference) ══ */
+  .adm-hdr {
+    background: linear-gradient(160deg, #0D1F40 0%, #1a3a5c 50%, #10645a 100%);
+    padding: 16px 16px 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .adm-hdr::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(77, 201, 166, 0.06);
+    bottom: -65px;
+    right: -35px;
+  }
+
+  .adm-hdr-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .adm-ttl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .adm-sub {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.42);
+    margin-top: 2px;
+  }
+
+  .adm-badge {
+    background: rgba(255, 209, 102, 0.14);
+    border: 1px solid rgba(255, 209, 102, 0.35);
+    color: #FFD166;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .adm-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .adm-st {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+
+  .adm-st-v {
+    font-family: 'Kanit', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .adm-st-l {
+    font-size: 9.5px;
+    color: rgba(255, 255, 255, 0.48);
+    margin-top: 3px;
+  }
+
+  .adm-st-t {
+    font-size: 9px;
+    color: #5DCAA5;
+    margin-top: 3px;
+    font-weight: 600;
+  }
+
+  .adm-body {
+    padding: 10px 12px 12px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .adm-sec {
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .adm-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+  }
+
+  .adm-act-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .adm-act-row:last-child {
+    border-bottom: none;
+    padding-bottom: 2px;
+  }
+
+  .adm-act-ico {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+
+  .adm-act-nm {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .adm-act-meta {
+    font-size: 10px;
+    color: var(--sub);
+    margin-top: 1px;
+  }
+
+  .adm-pill {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  .adm-pill.on {
+    background: #E1F5EE;
+    color: #1D9E75;
+  }
+
+  .adm-pill.soon {
+    background: #FFF5D6;
+    color: #B8760A;
+  }
+
+  .adm-pill.done {
+    background: #f0f4f2;
+    color: var(--sub);
+  }
+
+  .adm-plus-btn {
+    width: 100%;
+    padding: 10px;
+    border: 2px dashed rgba(29, 158, 117, 0.3);
+    border-radius: 12px;
+    background: rgba(29, 158, 117, 0.04);
+    color: var(--teal);
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .adm-rpt-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .adm-rpt-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .adm-rpt-v {
+    font-family: 'Kanit', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .adm-rpt-l {
+    font-size: 9.5px;
+    color: var(--sub);
+    margin-top: 3px;
+  }
+
+  .adm-rpt-t {
+    font-size: 9px;
+    color: var(--teal);
+    margin-top: 3px;
+    font-weight: 600;
+  }
+
+  .adm-brow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .adm-brow-lbl {
+    font-size: 10px;
+    color: var(--sub);
+    width: 56px;
+    flex-shrink: 0;
+  }
+
+  .adm-brow-trk {
+    flex: 1;
+    background: #EFF4F2;
+    border-radius: 4px;
+    height: 6px;
+  }
+
+  .adm-brow-fill {
+    height: 6px;
+    border-radius: 4px;
+    background: var(--teal);
+  }
+
+  .adm-brow-pct {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--navy);
+    width: 28px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ══ ADMIN ARTICLE FORM ══ */
+  .adm-form-ttl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .adm-fld {
+    margin-bottom: 8px;
+  }
+
+  .adm-flbl {
+    display: block;
+    font-size: 10px;
+    color: var(--sub);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .adm-inp,
+  .adm-sel {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid #E0EDE8;
+    border-radius: 9px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 11px;
+    color: var(--navy);
+    background: #f8fbfa;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .adm-inp:focus,
+  .adm-sel:focus {
+    border-color: var(--teal);
+    background: #fff;
+  }
+
+  .adm-cat-row {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .adm-cat-opt {
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1.5px solid #E0EDE8;
+    color: var(--sub);
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .adm-cat-opt.sel {
+    background: var(--teal);
+    color: #fff;
+    border-color: var(--teal);
+  }
+
+  .adm-submit-btn {
+    width: 100%;
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--teal), var(--teal2));
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+
+  .adm-art-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .adm-art-row:last-child {
+    border-bottom: none;
+    padding-bottom: 2px;
+  }
+
+  .adm-art-cat {
+    flex-shrink: 0;
+  }
+
+  .adm-art-nm {
+    flex: 1;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .adm-art-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .adm-art-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .adm-art-btn.edit {
+    background: #E1F5EE;
+    color: var(--teal);
+  }
+
+  .adm-art-btn.del {
+    background: #FEECEC;
+    color: #e05;
+  }
+
+  /* ══ NEWS SEARCH ══ */
+  .n-search-wrap {
+    padding: 8px 12px 4px;
+    background: #fff;
+  }
+
+  .n-search {
+    width: 100%;
+    padding: 8px 12px 8px 34px;
+    border: 1.5px solid #E0EDE8;
+    border-radius: 22px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 12px;
+    color: var(--navy);
+    background: #f8fbfa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235A7A9A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") no-repeat 12px center;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .n-search:focus {
+    border-color: var(--teal);
+    background-color: #fff;
+  }
+
+  .n-empty {
+    text-align: center;
+    padding: 28px 16px;
+    color: var(--sub);
+    font-size: 12px;
+  }
+
+  .n-empty-ico {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  /* ── Chatbot ── */
+  .chat-hdr {
+    background: linear-gradient(135deg, var(--navy) 0%, #0e3d5a 100%);
+    padding: 14px 14px 10px;
+  }
+
+  .chat-hdr-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 180, 160, 0.4);
+  }
+
+  .chat-hdr-info {
+    flex: 1;
+  }
+
+  .chat-hdr-name {
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .chat-hdr-status {
+    font-size: 10px;
+    color: var(--teal2);
+    margin-top: 1px;
+  }
+
+  .chat-hdr-status::before {
+    content: '●';
+    margin-right: 4px;
+    color: #4ade80;
+  }
+
+  .chat-msgs {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f0f4f8;
+    height: calc(100% - 160px);
+    scrollbar-width: none;
+  }
+
+  .chat-msgs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chat-bubble-wrap {
+    display: flex;
+    gap: 7px;
+    align-items: flex-end;
+  }
+
+  .chat-bubble-wrap.user {
+    flex-direction: row-reverse;
+  }
+
+  .chat-bot-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--teal), var(--teal2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .chat-bubble {
+    max-width: 78%;
+    padding: 9px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    line-height: 1.55;
+    font-family: 'Sarabun', sans-serif;
+  }
+
+  .chat-bubble-wrap.bot .chat-bubble {
+    background: #fff;
+    color: #1a2a3a;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .chat-bubble-wrap.user .chat-bubble {
+    background: linear-gradient(135deg, var(--teal), #0098a0);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+
+  .chat-time {
+    font-size: 9px;
+    color: #aab;
+    margin-top: 3px;
+  }
+
+  .chat-bubble-wrap.user .chat-time {
+    text-align: right;
+  }
+
+  .chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 10px 8px;
+  }
+
+  .chat-sug {
+    background: #fff;
+    border: 1px solid var(--teal2);
+    color: var(--teal);
+    border-radius: 20px;
+    padding: 5px 11px;
+    font-size: 11px;
+    font-family: 'Sarabun', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .chat-sug:hover {
+    background: var(--teal);
+    color: #fff;
+  }
+
+  .chat-input-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 10px 10px;
+    background: #fff;
+    border-top: 1px solid #e5eaf0;
+  }
+
+  .chat-inp {
+    flex: 1;
+    border: 1.5px solid #d0dce8;
+    border-radius: 22px;
+    padding: 8px 13px;
+    font-size: 12px;
+    font-family: 'Sarabun', sans-serif;
+    outline: none;
+    color: #1a2a3a;
+    background: #f7fafc;
+    transition: border-color 0.2s;
+  }
+
+  .chat-inp:focus {
+    border-color: var(--teal2);
+    background: #fff;
+  }
+
+  .chat-send-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--teal), var(--teal2));
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 180, 160, 0.35);
+    transition: transform 0.15s;
+  }
+
+  .chat-send-btn:active {
+    transform: scale(0.92);
+  }
+
+  .chat-typing {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 8px 12px;
+  }
+
+  .chat-typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b0bec5;
+    animation: blink 1.2s infinite;
+  }
+
+  .chat-typing span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .chat-typing span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+
+    0%,
+    80%,
+    100% {
+      opacity: 0.3
+    }
+
+    40% {
+      opacity: 1
+    }
+  }
+</style>
+
+<div class="wrap">
+  <div class="tab-nav">
+    <button class="tb active" onclick="go('login')"><span class="tb-i">🔐</span>Login</button>
+    <button class="tb" onclick="go('reward')"><span class="tb-i">🏃</span>Daily Challenge</button>
+    <button class="tb" onclick="go('redeem')"><span class="tb-i">🎁</span>แลกรางวัล</button>
+    <button class="tb" onclick="go('analysis')"><span class="tb-i">📊</span>วิเคราะห์</button>
+    <button class="tb" onclick="go('news')"><span class="tb-i">📰</span>ข่าวสาร</button>
+    <button class="tb" onclick="go('chatbot')"><span class="tb-i">🤖</span>AI Chat</button>
+  </div>
+
+  <!-- ══ LOGIN ══ -->
+  <div class="screen active" id="screen-login">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="lbg">
+        <svg class="lmesh" viewBox="0 0 360 530">
+          <g opacity=".32">
+            <circle cx="40" cy="80" r="3" fill="#5DCAA5" />
+            <circle cx="110" cy="44" r="3" fill="#5DCAA5" />
+            <circle cx="288" cy="70" r="3" fill="#4DC9A6" />
+            <circle cx="323" cy="126" r="3" fill="#5DCAA5" />
+            <circle cx="26" cy="186" r="3" fill="#4DC9A6" />
+            <circle cx="308" cy="206" r="3" fill="#5DCAA5" />
+          </g>
+          <g stroke="#5DCAA5" stroke-width=".5" opacity=".11">
+            <line x1="40" y1="80" x2="110" y2="44" />
+            <line x1="110" y1="44" x2="288" y2="70" />
+            <line x1="288" y1="70" x2="323" y2="126" />
+            <line x1="40" y1="80" x2="26" y2="186" />
+            <line x1="323" y1="126" x2="308" y2="206" />
+            <line x1="26" y1="186" x2="110" y2="44" />
+          </g>
+          <circle cx="306" cy="432" r="70" fill="rgba(29,158,117,0.06)" />
+          <circle cx="44" cy="468" r="44" fill="rgba(93,202,165,0.04)" />
+        </svg>
+        <div class="lcon">
+          <div class="lring">
+            <div class="linner"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M2 12L5 12L7 6L11 18L14 8L16 12L22 12" stroke="#5DCAA5" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></div>
+          </div>
+          <div class="ltitle">เชื่อมสุข<br><span>SookSync</span></div>
+          <div class="lsub">เชื่อมทุกข้อมูลร่างกาย สู่สุขภาพที่เข้าใจคุณ</div>
+          <!-- <div class="wbox"> -->
+            <!-- <span style="font-size:17px;">❤️</span> -->
+            <!-- <span style="font-size:10px;color:#5DCAA5;font-weight:600;margin-top:2px;">
+              Good Heart
+            </span> -->
+          <!-- </div> -->
+          <div class="lform">
+            <label class="llbl">อีเมล / Email</label>
+            <input class="linput" type="email" placeholder="your@email.com" value="sorrawit@sooksync.th" />
+            <label class="llbl">รหัสผ่าน / Password</label>
+            <input class="linput" type="password" value="••••••••" />
+            <div class="lfgt">ลืมรหัสผ่าน?</div>
+            <button class="lbtn" onclick="go('reward')">เข้าสู่ระบบ →</button>
+            <div class="ldiv">
+            </div>
+            <div class="signup">ยังไม่มีบัญชี? <span class="slink">สมัครสมาชิก</span></div>
+            <button class="thaid-btn" onclick="go('reward')">🪪 เข้าสู่ระบบด้วย ThaiID</button>
+            <div class="admin-lnk" onclick="go('admin')">ผู้ดูแลระบบ? <span>เข้าสู่ระบบ Admin →</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bnav">
+        <div class="bn active">
+          <div class="bn-iw">🔐</div><span class="bn-lb">Login</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REWARD ══ -->
+  <div class="screen" id="screen-reward">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="rh">
+        <div class="rhc1"></div>
+        <div class="rhc2"></div>
+        <div class="rhtop">
+          <div>
+            <div class="rhgreet">สวัสดี, ยินดีต้อนรับกลับ!</div>
+            <div class="rhname">คุณสรวิชญ์ 💪</div>
+          </div>
+          <div>
+            <div class="spill">🔥 21 วัน</div>
+            <div class="api-row">
+              <div class="api-chip">
+                <div class="api-dot"></div>GARMIN API
+              </div>
+              <div class="api-chip">
+                <div class="api-dot"></div>Ultrahuman
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cwallet">
+          <div class="cwsh"></div>
+          <div class="cwtop">
+            <div class="cwl">
+              <div class="cbig">🪙</div>
+              <div>
+                <div class="cwlbl">SookCoins ของคุณ</div>
+                <div class="cwamt" id="r-coinTotal">2,480 <span>เหรียญ</span></div>
+              </div>
+            </div><button class="rdmbtn" onclick="go('redeem')">แลกรางวัล ›</button>
+          </div>
+          <div class="cwdiv"></div>
+          <div class="cwerow">
+            <div class="echip">
+              <div class="enum gold" id="r-today">+120</div>
+              <div class="elbl">วันนี้</div>
+            </div>
+            <div class="echip">
+              <div class="enum gold">+840</div>
+              <div class="elbl">สัปดาห์นี้</div>
+            </div>
+            <div class="echip">
+              <div class="enum">14,200</div>
+              <div class="elbl">รวมทั้งหมด</div>
+            </div>
+          </div>
+        </div>
+        <div class="xpw">
+          <div class="xrow"><span class="xlv">ระดับ 12 — นักวิ่งกลาง</span><span class="xval"><span>6,800</span> /
+              10,000 XP</span></div>
+          <div class="xtrk">
+            <div class="xfill"></div>
+          </div>
+        </div>
+        <div style="height:10px;"></div>
+      </div>
+      <div class="rb">
+        <div class="srow"><span class="stitle">ภารกิจวันนี้</span><span class="slink2">ดูทั้งหมด →</span></div>
+        <div class="mlist">
+          <div class="mi done" onclick="completeMission(this,50)">
+            <div class="mibar"></div>
+            <div class="miico d">🏃</div>
+            <div class="mitxt">
+              <div class="minm">วิ่ง 3 กิโลเมตร</div>
+              <div class="misb">3.2 / 3.0 กม. · เสร็จแล้ว!</div>
+              <div class="miprog">
+                <div class="mifill" style="width:100%"></div>
+              </div>
+            </div>
+            <div class="mirw">
+              <div class="cbdg"><span class="cbico">🪙</span><span class="cbval">+50</span></div>
+              <div class="chk">✓</div>
+            </div>
+          </div>
+          <div class="mi" onclick="completeMission(this,30)">
+            <div class="miico p">💪</div>
+            <div class="mitxt">
+              <div class="minm">วิดพื้น 20 ครั้ง</div>
+              <div class="misb">12 / 20 ครั้ง · สู้ต่อไป!</div>
+              <div class="miprog">
+                <div class="mifill" style="width:60%"></div>
+              </div>
+            </div>
+            <div class="mirw">
+              <div class="cbdg"><span class="cbico">🪙</span><span class="cbval">+30</span></div>
+              <div class="pnd"></div>
+            </div>
+          </div>
+          <div class="mi" onclick="completeMission(this,40)">
+            <div class="miico p">🏋️</div>
+            <div class="mitxt">
+              <div class="minm">สควอท 30 ครั้ง</div>
+              <div class="misb">0 / 30 ครั้ง · เริ่มเลย!</div>
+              <div class="miprog">
+                <div class="mifill" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="mirw">
+              <div class="cbdg"><span class="cbico">🪙</span><span class="cbval">+40</span></div>
+              <div class="pnd"></div>
+            </div>
+          </div>
+          <div class="mi done" onclick="completeMission(this,60)">
+            <div class="mibar"></div>
+            <div class="miico d">🤸</div>
+            <div class="mitxt">
+              <div class="minm">ยืดกล้ามเนื้อ 10 นาที</div>
+              <div class="misb">10 / 10 นาที · เยี่ยมมาก!</div>
+              <div class="miprog">
+                <div class="mifill" style="width:100%"></div>
+              </div>
+            </div>
+            <div class="mirw">
+              <div class="cbdg"><span class="cbico">🪙</span><span class="cbval">+60</span></div>
+              <div class="chk">✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="srow"><span class="stitle">✨ Small Wins วันนี้</span></div>
+        <div class="swcard">
+          <div class="swglow"></div>
+          <div class="swtop">
+            <div class="swico">🌟</div>
+            <div>
+              <div class="swttl">คุณทำได้ดีมากวันนี้!</div>
+              <div class="swsub">ทุกก้าวเล็กๆ คือชัยชนะของคุณ</div>
+            </div>
+          </div>
+          <div class="swwins">
+            <div class="wrow">
+              <div class="wdot" style="background:#4DC9A6;"></div>
+              <div class="wtxt">ออกกำลังกายครบ 5 วันติดต่อกัน</div>
+              <div class="wcoin">🪙 +20</div>
+            </div>
+            <div class="wrow">
+              <div class="wdot" style="background:#FFD166;"></div>
+              <div class="wtxt">อัตราหัวใจพักต่ำกว่า 70 BPM</div>
+              <div class="wcoin">🪙 +15</div>
+            </div>
+            <div class="wrow">
+              <div class="wdot" style="background:#9FE1CB;"></div>
+              <div class="wtxt">เข้าแอปครบ 21 วันไม่ขาด</div>
+              <div class="wcoin">🪙 +50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bnav">
+        <div class="bn" onclick="go('login')">
+          <div class="bn-iw">🏠</div><span class="bn-lb">หน้าแรก</span>
+        </div>
+        <div class="bn active">
+          <div class="bn-iw">🏃</div><span class="bn-lb">Daily Challenge</span>
+        </div>
+        <div class="bn" onclick="go('redeem')">
+          <div class="bn-iw">🎁</div><span class="bn-lb">แลกรางวัล</span>
+        </div>
+        <div class="bn" onclick="go('analysis')">
+          <div class="bn-iw">📊</div><span class="bn-lb">วิเคราะห์</span>
+        </div>
+        <div class="bn" onclick="go('news')">
+          <div class="bn-iw">📰</div><span class="bn-lb">ข่าวสาร</span>
+        </div>
+        <div class="bn" onclick="go('chatbot')">
+          <div class="bn-iw">🤖</div><span class="bn-lb">AI Chat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REDEEM PAGE ══ -->
+  <div class="screen" id="screen-redeem">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="rdpage">
+
+        <!-- header -->
+        <div class="rdhdr">
+          <div class="rdhdr-c"></div>
+          <div class="rdhdr-back" onclick="go('reward')">
+            <div class="back-arr">←</div><span class="rdhdr-ttl">แลก SookCoins</span>
+          </div>
+          <div class="rd-bal-row">
+            <div class="rd-coin-ico">🪙</div>
+            <div>
+              <div class="rd-bal-lbl">ยอดเหรียญของคุณ</div>
+              <div class="rd-bal-amt" id="rd-bal">2,480 <span>เหรียญ</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- category filter -->
+        <div class="rd-cats">
+          <div class="cat-pill active" onclick="filterCat(this,'all')">ทั้งหมด</div>
+          <div class="cat-pill" onclick="filterCat(this,'gadget')">📱 Gadget</div>
+          <div class="cat-pill" onclick="filterCat(this,'food')">🍽️ อาหาร & เครื่องดื่ม</div>
+          <div class="cat-pill" onclick="filterCat(this,'health')">💊 สุขภาพ</div>
+          <div class="cat-pill" onclick="filterCat(this,'sport')">🏃 กีฬา</div>
+          <div class="cat-pill" onclick="filterCat(this,'beauty')">✨ ความงาม</div>
+        </div>
+
+        <!-- reward grid -->
+        <div class="rd-grid" id="rdGrid"></div>
+
+        <!-- confirm modal (bottom sheet) -->
+        <div class="modal-wrap" id="modalWrap">
+          <div class="modal-sheet">
+            <div class="modal-handle"></div>
+            <div class="modal-item-row">
+              <div class="modal-item-ico" id="modal-ico" style="background:#E1F5EE;"></div>
+              <div>
+                <div class="modal-item-name" id="modal-name"></div>
+                <div class="modal-item-sub" id="modal-sub"></div>
+              </div>
+            </div>
+            <div class="modal-rows">
+              <div class="modal-row"><span class="modal-row-lbl">ราคา</span><span class="modal-row-val gold"
+                  id="modal-price"></span></div>
+              <div class="modal-row"><span class="modal-row-lbl">ยอดเหรียญปัจจุบัน</span><span class="modal-row-val"
+                  id="modal-current"></span></div>
+              <div class="modal-row"><span class="modal-row-lbl">ยอดคงเหลือหลังแลก</span><span class="modal-row-val big"
+                  id="modal-after"></span></div>
+            </div>
+            <button class="modal-confirm-btn" id="modal-confirm-btn" onclick="confirmRedeem()">ยืนยันการแลก 🎁</button>
+            <button class="modal-cancel-btn" onclick="closeModal()">ยกเลิก</button>
+          </div>
+        </div>
+
+        <!-- success overlay -->
+        <div class="sov" id="sovOverlay">
+          <div class="sov-ring">🎁</div>
+          <div class="sov-ttl">แลกรางวัลสำเร็จ! 🎉</div>
+          <div class="sov-sub" id="sov-sub">คุณได้รับรางวัลแล้ว<br>ตรวจสอบ voucher ได้ที่ด้านล่าง</div>
+          <div class="sov-voucher">
+            <div class="sov-code-lbl">รหัส Voucher ของคุณ</div>
+            <div class="sov-code" id="sov-code">SOOK-XXXX</div>
+            <div class="sov-code-sub">ใช้ได้ถึง 30 วันนับจากวันที่แลก</div>
+          </div>
+          <div class="sov-bal-row">ยอดเหรียญคงเหลือ: <span class="sov-bal-val" id="sov-bal">2,480</span> เหรียญ</div>
+          <button class="sov-done-btn" onclick="afterRedeem()">กลับหน้าหลัก</button>
+          <button class="sov-more-btn" onclick="closeSuccess()">แลกรางวัลเพิ่ม</button>
+        </div>
+
+      </div>
+      <div class="bnav">
+        <div class="bn" onclick="go('login')">
+          <div class="bn-iw">🏠</div><span class="bn-lb">หน้าแรก</span>
+        </div>
+        <div class="bn" onclick="go('reward')">
+          <div class="bn-iw">🏃</div><span class="bn-lb">Daily Challenge</span>
+        </div>
+        <div class="bn active">
+          <div class="bn-iw">🎁</div><span class="bn-lb">แลกรางวัล</span>
+        </div>
+        <div class="bn" onclick="go('analysis')">
+          <div class="bn-iw">📊</div><span class="bn-lb">วิเคราะห์</span>
+        </div>
+        <div class="bn" onclick="go('news')">
+          <div class="bn-iw">📰</div><span class="bn-lb">ข่าวสาร</span>
+        </div>
+        <div class="bn" onclick="go('chatbot')">
+          <div class="bn-iw">🤖</div><span class="bn-lb">AI Chat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ANALYSIS ══ -->
+  <div class="screen" id="screen-analysis">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="aah">
+        <div class="aarow">
+          <div>
+            <div class="aattl">วิเคราะห์สุขภาพ</div>
+            <div class="aperiod" style="margin-top:5px;">
+              <button class="apb active">วัน</button>
+              <button class="apb">เดือน</button>
+              <button class="apb">ปี</button>
+            </div>
+          </div>
+          <div class="ldot">
+            <div class="dp"></div>
+          </div>
+        </div>
+        <div class="vgrid">
+          <div class="vc">
+            <div class="virow"><span class="vi">❤️</span><span class="vl">อัตราหัวใจ</span></div><span
+              class="vv">72<span class="vu">bpm</span></span>
+            <div class="vt">↑ ปกติ</div>
+          </div>
+          <div class="vc">
+            <div class="virow"><span class="vi">🫁</span><span class="vl">ออกซิเจน</span></div><span class="vv">98<span
+                class="vu">%</span></span>
+            <div class="vt">↑ ดีเยี่ยม</div>
+          </div>
+          <div class="vc">
+            <div class="virow"><span class="vi">🔥</span><span class="vl">แคลอรี่</span></div><span
+              class="vv">1,247<span class="vu">kcal</span></span>
+            <div class="vt">↑ +8%</div>
+          </div>
+          <div class="vc">
+            <div class="virow"><span class="vi">🧘</span><span class="vl">ความเครียด</span></div><span
+              class="vv">34<span class="vu">/100</span></span>
+            <div class="vt">↓ ต่ำ</div>
+          </div>
+        </div>
+      </div>
+      <div class="ab">
+        <div class="mgrid">
+          <div class="mmini">
+            <div class="mmrow"><span class="mmic">🚶</span><span class="mmlb">ก้าววันนี้</span></div>
+            <div class="mmv">8,214</div>
+            <div class="mms">ค่าเฉลี่ย 8,000</div>
+          </div>
+          <div class="mmini">
+            <div class="mmrow"><span class="mmic">⏱️</span><span class="mmlb">ออกกำลังกาย</span></div>
+            <div class="mmv">42 <span style="font-size:10px;font-weight:400;color:var(--sub);">นาที</span></div>
+            <div class="mms">ค่าเฉลี่ย 30 นาที</div>
+          </div>
+          <div class="mmini">
+            <div class="mmrow"><span class="mmic">📏</span><span class="mmlb">ระยะทาง</span></div>
+            <div class="mmv">5.8 <span style="font-size:10px;font-weight:400;color:var(--sub);">กม.</span></div>
+            <div class="mms">ค่าเฉลี่ย 4.2 กม./วัน</div>
+          </div>
+          <div class="mmini">
+            <div class="mmrow"><span class="mmic">🔥</span><span class="mmlb">แคลลอรี่เผาผลาญ</span></div>
+            <div class="mmv">320 <span style="font-size:10px;font-weight:400;color:var(--sub);">kcal</span></div>
+            <div class="mms">ค่าเฉลี่ย 500 kcal</div>
+          </div>
+        </div>
+        <div class="slcard">
+          <div class="slhdr"><span class="slttl">😴 การนอนหลับ</span>
+            <div>
+              <div class="slval">7h 32m</div>
+              <div class="slsub">คืนที่แล้ว</div>
+            </div>
+          </div>
+          <div class="slstages">
+            <div style="flex:2;background:#1D9E75;"></div>
+            <div style="flex:2.5;background:#4DC9A6;"></div>
+            <div style="flex:3;background:#9FE1CB;"></div>
+            <div style="flex:.5;background:rgba(255,255,255,.11);"></div>
+          </div>
+          <div class="slleg">
+            <div class="slit">
+              <div class="sldot" style="background:#1D9E75;"></div>หลับลึก
+            </div>
+            <div class="slit">
+              <div class="sldot" style="background:#4DC9A6;"></div>REM
+            </div>
+            <div class="slit">
+              <div class="sldot" style="background:#9FE1CB;"></div>หลับตื้น
+            </div>
+            <div class="slit">
+              <div class="sldot" style="background:rgba(255,255,255,.15);"></div>ตื่น
+            </div>
+          </div>
+        </div>
+        <div class="aic">
+          <div class="aiico">🤖</div>
+          <div>
+            <div class="aittl">AI Insight ของวันนี้</div>
+            <div class="aibdy">
+              <p style="margin:0 0 8px;">อัตราการเต้นหัวใจขณะพักของคุณลดลงเหลือ <strong>62 bpm</strong> ดีขึ้น 5% จากสัปดาห์ที่แล้ว ซึ่งบ่งชี้ว่าสุขภาพหัวใจและหลอดเลือดของคุณกำลังพัฒนาขึ้นอย่างต่อเนื่อง</p>
+              <p style="margin:0 0 8px;">📈 <strong>แนวโน้มการออกกำลังกาย:</strong> คุณออกกำลังกาย 5 วันจาก 7 วันในสัปดาห์นี้ เฉลี่ย 38 นาทีต่อวัน ช่วงเวลาที่คุณออกกำลังกายได้ดีที่สุดคือ <strong>07:00–08:30 น.</strong> ซึ่งตรงกับจังหวะร่างกายของคุณ ลองกำหนดตารางในช่วงนี้สม่ำเสมอเพื่อผลลัพธ์ที่ดียิ่งขึ้น</p>
+              <p style="margin:0 0 8px;">🔥 <strong>การเผาผลาญ:</strong> แคลลอรี่ที่เผาผลาญวันนี้ (320 kcal) ยังต่ำกว่าเป้าหมาย 500 kcal อยู่ 36% แนะนำให้เพิ่มกิจกรรมเบาๆ เช่น เดินหลังอาหารกลางวัน 15 นาที หรือขึ้นบันไดแทนลิฟต์ เพื่อช่วยเพิ่มค่านี้โดยไม่ต้องออกกำลังกายหนักเพิ่ม</p>
+              <p style="margin:0;">😴 <strong>การนอนหลับ:</strong> การนอนคืนที่แล้ว 7h 32m ใกล้เคียงกับช่วงอุดมคติ 7–8 ชั่วโมง อย่างไรก็ตาม สัดส่วน Deep Sleep ของคุณอยู่ที่ประมาณ 18% ซึ่งค่อนข้างน้อย ลองหลีกเลี่ยงหน้าจอก่อนนอน 30 นาที และปรับอุณหภูมิห้องให้อยู่ที่ 22–24°C เพื่อเพิ่มคุณภาพการนอน</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bnav">
+        <div class="bn" onclick="go('login')">
+          <div class="bn-iw">🏠</div><span class="bn-lb">หน้าแรก</span>
+        </div>
+        <div class="bn" onclick="go('reward')">
+          <div class="bn-iw">🏃</div><span class="bn-lb">Daily Challenge</span>
+        </div>
+        <div class="bn" onclick="go('redeem')">
+          <div class="bn-iw">🎁</div><span class="bn-lb">แลกรางวัล</span>
+        </div>
+        <div class="bn active">
+          <div class="bn-iw">📊</div><span class="bn-lb">วิเคราะห์</span>
+        </div>
+        <div class="bn" onclick="go('news')">
+          <div class="bn-iw">📰</div><span class="bn-lb">ข่าวสาร</span>
+        </div>
+        <div class="bn" onclick="go('chatbot')">
+          <div class="bn-iw">🤖</div><span class="bn-lb">AI Chat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ADMIN WEB DASHBOARD ══ -->
+  <div class="screen" id="screen-admin">
+    <div class="adw-wrap">
+
+      <!-- Sidebar -->
+      <aside class="adw-sidebar">
+        <div class="adw-logo">
+          <div class="adw-logo-ico">💚</div>
+          <div>
+            <div class="adw-logo-txt">SookSync</div>
+            <div class="adw-logo-sub">Admin Portal</div>
+          </div>
+        </div>
+        <nav class="adw-nav">
+          <div class="adw-nav-item active" id="adw-nav-dashboard" onclick="adwNav('dashboard')">
+            <span class="adw-nav-ico">📊</span> Dashboard
+          </div>
+          <div class="adw-nav-item" id="adw-nav-employees" onclick="adwNav('employees')">
+            <span class="adw-nav-ico">👥</span> พนักงาน
+          </div>
+          <div class="adw-nav-item" onclick="go('login')">
+            <span class="adw-nav-ico">🚪</span> ออกจากระบบ
+          </div>
+        </nav>
+        <div class="adw-user">
+          <div class="adw-avatar">👑</div>
+          <div>
+            <div class="adw-uname">Admin HR</div>
+            <div class="adw-urole">Super Administrator</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <div class="adw-main">
+
+        <!-- ─── DASHBOARD PAGE ─── -->
+        <div class="adw-pg adw-pg-active" id="adw-pg-dashboard">
+
+        <!-- Top bar -->
+        <div class="adw-topbar">
+          <div>
+            <div class="adw-page-ttl">Dashboard ภาพรวม</div>
+            <div class="adw-page-sub">SookSync · ข้อมูลสุขภาพองค์กร อัปเดตล่าสุด 11 พ.ค. 2568</div>
+          </div>
+          <div class="adw-topbar-right">
+            <div class="adw-date-chip">📅 มิถุนายน 2568</div>
+            <button class="adw-export-btn">⬇ Export รายงาน</button>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="adw-content">
+
+          <!-- KPI Cards -->
+          <div class="adw-kpi-row">
+            <div class="adw-kpi green">
+              <div class="adw-kpi-ico">👥</div>
+              <div>
+                <div class="adw-kpi-val">247</div>
+                <div class="adw-kpi-lbl">พนักงานทั้งหมด</div>
+                <div class="adw-kpi-trend">↑ +3 เดือนนี้</div>
+              </div>
+            </div>
+            <div class="adw-kpi blue">
+              <div class="adw-kpi-ico">⚡</div>
+              <div>
+                <div class="adw-kpi-val">189</div>
+                <div class="adw-kpi-lbl">Active วันนี้</div>
+                <div class="adw-kpi-trend">↑ 76.5% engagement</div>
+              </div>
+            </div>
+            <div class="adw-kpi amber">
+              <div class="adw-kpi-ico">🚶</div>
+              <div>
+                <div class="adw-kpi-val">7,842</div>
+                <div class="adw-kpi-lbl">ก้าวเฉลี่ย / วัน</div>
+                <div class="adw-kpi-trend">↑ +12% vs เดือนก่อน</div>
+              </div>
+            </div>
+            <div class="adw-kpi purple">
+              <div class="adw-kpi-ico">❤️</div>
+              <div>
+                <div class="adw-kpi-val">82</div>
+                <div class="adw-kpi-lbl">Health Score เฉลี่ย</div>
+                <div class="adw-kpi-trend">เป้าหมาย 85 · +3 ต้องการ</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Activity Chart + Activity Management -->
+          <div class="adw-grid2">
+
+            <!-- Activity completion -->
+            <div class="adw-card">
+              <div class="adw-card-ttl">
+                📊 สรุปการทำกิจกรรม (วันนี้)
+                <span class="adw-card-lnk">ดูรายงานเต็ม →</span>
+              </div>
+              <div class="adw-brow">
+                <div class="adw-brow-lbl">การเดิน</div>
+                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:74%;"></div></div>
+                <div class="adw-brow-pct">74%</div>
+                <div class="adw-brow-cnt">183 คน</div>
+              </div>
+              <div class="adw-brow">
+                <div class="adw-brow-lbl">ออกกำลังกาย</div>
+                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:61%;background:linear-gradient(90deg,#2196F3,#64B5F6);"></div></div>
+                <div class="adw-brow-pct">61%</div>
+                <div class="adw-brow-cnt">151 คน</div>
+              </div>
+              <div class="adw-brow">
+                <div class="adw-brow-lbl">ดื่มน้ำ 2L</div>
+                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:57%;background:linear-gradient(90deg,#00BCD4,#80DEEA);"></div></div>
+                <div class="adw-brow-pct">57%</div>
+                <div class="adw-brow-cnt">141 คน</div>
+              </div>
+              <div class="adw-brow">
+                <div class="adw-brow-lbl">นอนหลับ 7h+</div>
+                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:39%;background:linear-gradient(90deg,#9C27B0,#CE93D8);"></div></div>
+                <div class="adw-brow-pct">39%</div>
+                <div class="adw-brow-cnt">96 คน</div>
+              </div>
+              <div class="adw-brow">
+                <div class="adw-brow-lbl">สมาธิ</div>
+                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:28%;background:linear-gradient(90deg,#FF9800,#FFCC02);"></div></div>
+                <div class="adw-brow-pct">28%</div>
+                <div class="adw-brow-cnt">69 คน</div>
+              </div>
+            </div>
+
+            <!-- Activity type config -->
+            <div class="adw-card">
+              <div class="adw-card-ttl">
+                🎯 ประเภทของกิจกรรม
+                <span class="adw-card-lnk" style="font-size:11px;color:#90A4AE;font-weight:400;">coins ต่อประเภท</span>
+              </div>
+              <div class="adw-atype-desc">กำหนด coins ที่ผู้ใช้จะได้รับต่อกิจกรรมแต่ละประเภท — รายการกิจกรรมจริงดึงจาก API ภายนอก</div>
+              <div id="adwAtypeList">
+                <div class="adw-atype-row" data-id="run">
+                  <div class="adw-atype-left">
+                    <div class="adw-act-ico">🏃</div>
+                    <div class="adw-atype-nm">วิ่ง</div>
+                  </div>
+                  <div class="adw-atype-right">
+                    <div class="adw-atype-coins-wrap">
+                      <span style="font-size:14px;">🪙</span>
+                      <input class="adw-atype-inp" type="number" value="100" min="0" />
+                      <span class="adw-atype-coin-unit">cdg coins</span>
+                    </div>
+                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                  </div>
+                </div>
+                <div class="adw-atype-row" data-id="walk">
+                  <div class="adw-atype-left">
+                    <div class="adw-act-ico">🚶</div>
+                    <div class="adw-atype-nm">เดิน</div>
+                  </div>
+                  <div class="adw-atype-right">
+                    <div class="adw-atype-coins-wrap">
+                      <span style="font-size:14px;">🪙</span>
+                      <input class="adw-atype-inp" type="number" value="50" min="0" />
+                      <span class="adw-atype-coin-unit">cdg coins</span>
+                    </div>
+                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                  </div>
+                </div>
+                <div class="adw-atype-row" data-id="squat">
+                  <div class="adw-atype-left">
+                    <div class="adw-act-ico">🏋️</div>
+                    <div class="adw-atype-nm">สควอต</div>
+                  </div>
+                  <div class="adw-atype-right">
+                    <div class="adw-atype-coins-wrap">
+                      <span style="font-size:14px;">🪙</span>
+                      <input class="adw-atype-inp" type="number" value="80" min="0" />
+                      <span class="adw-atype-coin-unit">cdg coins</span>
+                    </div>
+                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                  </div>
+                </div>
+                <div class="adw-atype-row" data-id="swim">
+                  <div class="adw-atype-left">
+                    <div class="adw-act-ico">🏊</div>
+                    <div class="adw-atype-nm">ว่ายน้ำ</div>
+                  </div>
+                  <div class="adw-atype-right">
+                    <div class="adw-atype-coins-wrap">
+                      <span style="font-size:14px;">🪙</span>
+                      <input class="adw-atype-inp" type="number" value="120" min="0" />
+                      <span class="adw-atype-coin-unit">cdg coins</span>
+                    </div>
+                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                  </div>
+                </div>
+                <div class="adw-atype-row" data-id="cycle">
+                  <div class="adw-atype-left">
+                    <div class="adw-act-ico">🚴</div>
+                    <div class="adw-atype-nm">ปั่นจักรยาน</div>
+                  </div>
+                  <div class="adw-atype-right">
+                    <div class="adw-atype-coins-wrap">
+                      <span style="font-size:14px;">🪙</span>
+                      <input class="adw-atype-inp" type="number" value="90" min="0" />
+                      <span class="adw-atype-coin-unit">cdg coins</span>
+                    </div>
+                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                  </div>
+                </div>
+                <div class="adw-atype-row" data-id="yoga">
+                  <div class="adw-atype-left">
+                    <div class="adw-act-ico">🧘</div>
+                    <div class="adw-atype-nm">โยคะ</div>
+                  </div>
+                  <div class="adw-atype-right">
+                    <div class="adw-atype-coins-wrap">
+                      <span style="font-size:14px;">🪙</span>
+                      <input class="adw-atype-inp" type="number" value="70" min="0" />
+                      <span class="adw-atype-coin-unit">cdg coins</span>
+                    </div>
+                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                  </div>
+                </div>
+                <div class="adw-atype-row" data-id="pushup">
+                  <div class="adw-atype-left">
+                    <div class="adw-act-ico">💪</div>
+                    <div class="adw-atype-nm">วิดพื้น</div>
+                  </div>
+                  <div class="adw-atype-right">
+                    <div class="adw-atype-coins-wrap">
+                      <span style="font-size:14px;">🪙</span>
+                      <input class="adw-atype-inp" type="number" value="60" min="0" />
+                      <span class="adw-atype-coin-unit">cdg coins</span>
+                    </div>
+                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Inline add form -->
+              <div class="adw-atype-add-form" id="adwAtypeAddForm">
+                <div class="adw-atype-add-row" style="align-items:flex-start;gap:12px;">
+                  <!-- Emoji picker -->
+                  <div style="display:flex;flex-direction:column;gap:6px;position:relative;">
+                    <div style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;">ไอคอน</div>
+                    <div id="adwEmojiPreview" style="width:44px;height:44px;border:1.5px solid #1D9E75;border-radius:10px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;user-select:none;" onclick="adwToggleEmojiPicker()" title="เลือก emoji">🏅</div>
+                    <div id="adwEmojiPicker" style="display:none;position:absolute;top:100%;left:0;margin-top:6px;z-index:200;background:#fff;border:1.5px solid #E2EAF0;border-radius:12px;padding:10px;box-shadow:0 6px 24px rgba(0,0,0,0.15);width:224px;max-height:220px;overflow-y:auto;">
+                      <div style="font-size:10px;font-weight:700;color:#90A4AE;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">เลือก emoji</div>
+                      <div id="adwEmojiGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;"></div>
+                    </div>
+                  </div>
+                  <!-- Name + Coins -->
+                  <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+                    <div style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;">ชื่อประเภท</div>
+                    <input class="adw-atype-add-nm-inp" id="adwNewNm" type="text" placeholder="เช่น เต้น, บอดี้เวท..." />
+                    <div style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;margin-top:2px;">cdg coins ที่ได้รับ</div>
+                    <input class="adw-atype-add-coins-inp" id="adwNewCoins" type="number" min="0" placeholder="0" style="width:100%;box-sizing:border-box;" />
+                  </div>
+                </div>
+                <div class="adw-atype-add-btns" style="margin-top:4px;">
+                  <button class="adw-atype-confirm-btn" onclick="confirmAddAtype()">+ เพิ่ม</button>
+                  <button class="adw-atype-cancel-btn" onclick="cancelAddAtype()">ยกเลิก</button>
+                </div>
+              </div>
+
+              <button class="adw-plus-btn" id="adwAtypeAddBtn" onclick="openAddAtypeForm()">+ เพิ่มประเภทใหม่</button>
+
+            </div>
+          </div>
+
+          <!-- Row 3: Add article form + News table -->
+          <div class="adw-grid2">
+
+            <!-- Add article form -->
+            <div class="adw-card">
+              <div class="adw-card-ttl">✏️ เพิ่มบทความใหม่</div>
+              <div class="adw-form-grid">
+                <div class="adw-fld" style="grid-column:1/-1;">
+                  <label>ชื่อบทความ</label>
+                  <input class="adw-inp" type="text" placeholder="ระบุชื่อบทความ..." />
+                </div>
+                <div class="adw-fld">
+                  <label>URL บทความ</label>
+                  <input class="adw-inp" type="url" placeholder="https://..." />
+                </div>
+                <div class="adw-fld">
+                  <label>วันที่เผยแพร่</label>
+                  <input class="adw-inp" type="date" />
+                </div>
+              </div>
+              <div class="adw-fld" style="margin-bottom:16px;">
+                <label>ประเภท</label>
+                <div class="adw-cat-row" style="margin-top:6px;">
+                  <div class="adw-cat-opt sel" onclick="this.classList.toggle('sel')">สุขภาพ</div>
+                  <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">อากาศ</div>
+                  <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">ไลฟ์สไตล์</div>
+                  <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">โภชนาการ</div>
+                </div>
+              </div>
+              <button class="adw-submit-btn"
+                onclick="this.textContent='✓ เพิ่มแล้ว!';setTimeout(()=>this.textContent='+ เพิ่มบทความ',1500)">
+                + เพิ่มบทความ
+              </button>
+            </div>
+
+            <!-- News table -->
+            <div class="adw-card">
+              <div class="adw-card-ttl">
+                📋 บทความทั้งหมด
+                <span class="adw-card-lnk">6 รายการ</span>
+              </div>
+              <div class="adw-table-wrap">
+                <table class="adw-table">
+                  <thead>
+                    <tr>
+                      <th>ประเภท</th>
+                      <th>ชื่อบทความ</th>
+                      <th>วันที่</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="adw-pill on">สุขภาพ</span></td>
+                      <td>Heat Stroke ภัยเงียบในหน้าร้อน</td>
+                      <td style="color:#90A4AE;font-size:12px;">1 มิ.ย. 68</td>
+                      <td style="display:flex;gap:4px;">
+                        <button class="adw-tbl-btn">✏️</button>
+                        <button class="adw-tbl-btn">🗑</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="adw-pill on">สุขภาพ</span></td>
+                      <td>PM2.5 ทำให้ค่า SpO2 ตก</td>
+                      <td style="color:#90A4AE;font-size:12px;">28 พ.ค. 68</td>
+                      <td style="display:flex;gap:4px;">
+                        <button class="adw-tbl-btn">✏️</button>
+                        <button class="adw-tbl-btn">🗑</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="adw-pill on">สุขภาพ</span></td>
+                      <td>Smart Life EP.1: นอนหลับกับภูมิแพ้</td>
+                      <td style="color:#90A4AE;font-size:12px;">20 พ.ค. 68</td>
+                      <td style="display:flex;gap:4px;">
+                        <button class="adw-tbl-btn">✏️</button>
+                        <button class="adw-tbl-btn">🗑</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="adw-pill soon">อากาศ</span></td>
+                      <td>Qais Air vs E.coli: ทดสอบในแล็บ</td>
+                      <td style="color:#90A4AE;font-size:12px;">15 พ.ค. 68</td>
+                      <td style="display:flex;gap:4px;">
+                        <button class="adw-tbl-btn">✏️</button>
+                        <button class="adw-tbl-btn">🗑</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="adw-pill soon">อากาศ</span></td>
+                      <td>Qais Air ต้านไวรัสในอากาศได้จริง?</td>
+                      <td style="color:#90A4AE;font-size:12px;">10 พ.ค. 68</td>
+                      <td style="display:flex;gap:4px;">
+                        <button class="adw-tbl-btn">✏️</button>
+                        <button class="adw-tbl-btn">🗑</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="adw-pill done">ไลฟ์สไตล์</span></td>
+                      <td>Alive Service Center: Ultrahuman</td>
+                      <td style="color:#90A4AE;font-size:12px;">2 พ.ค. 68</td>
+                      <td style="display:flex;gap:4px;">
+                        <button class="adw-tbl-btn">✏️</button>
+                        <button class="adw-tbl-btn">🗑</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /adw-content -->
+        </div><!-- /adw-pg-dashboard -->
+
+        <!-- ─── EMPLOYEE PAGE ─── -->
+        <div class="adw-pg" id="adw-pg-employees">
+
+          <!-- Top bar -->
+          <div class="adw-topbar">
+            <div>
+              <div class="adw-page-ttl">จัดการพนักงาน</div>
+              <div class="adw-page-sub" id="empSubLbl">รายชื่อพนักงานทั้งหมด</div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="adw-content">
+            <div class="adw-card" style="padding-bottom:8px;">
+
+              <!-- Toolbar -->
+              <div class="emp-toolbar" style="margin-bottom:16px;">
+                <div class="emp-search-wrap">
+                  <span class="emp-search-ico">🔍</span>
+                  <input class="emp-search-inp" id="empSearch" type="text" placeholder="ค้นหาชื่อ หรือ รหัสพนักงาน..." oninput="empRender()" />
+                </div>
+                <span class="emp-count-lbl" id="empCountLbl"></span>
+                <button class="emp-add-btn" onclick="empOpenModal()">+ เพิ่มพนักงาน</button>
+              </div>
+
+              <!-- Table -->
+              <div class="adw-table-wrap">
+                <table class="adw-table">
+                  <thead>
+                    <tr>
+                      <th>รหัส</th>
+                      <th>ชื่อ-สกุล</th>
+                      <th style="text-align:center;">🪙 cdg coins</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="empTbody"></tbody>
+                </table>
+              </div>
+
+              <!-- Pagination -->
+              <div class="emp-pagination" id="empPagination"></div>
+            </div>
+          </div>
+        </div><!-- /adw-pg-employees -->
+
+      </div><!-- /adw-main -->
+    </div><!-- /adw-wrap -->
+  </div>
+
+  <!-- Employee Modal -->
+  <div class="emp-modal-overlay" id="empModalOverlay" onclick="empCloseModalOutside(event)">
+    <div class="emp-modal">
+      <div class="emp-modal-ttl" id="empModalTtl">เพิ่มพนักงานใหม่</div>
+      <button class="emp-modal-close" onclick="empCloseModal()">✕</button>
+      <div class="emp-form-grid">
+        <div class="emp-fld">
+          <label>รหัสพนักงาน</label>
+          <input id="empFldId" type="text" placeholder="SS-0001" />
+        </div>
+        <div class="emp-fld">
+          <label>ชื่อ-สกุล</label>
+          <input id="empFldName" type="text" placeholder="ชื่อ นามสกุล" />
+        </div>
+        <div class="emp-fld" style="grid-column:1/-1;">
+          <label>อีเมล</label>
+          <input id="empFldEmail" type="email" placeholder="email@company.com" />
+        </div>
+        <div class="emp-fld" id="empPwdGroup">
+          <label id="empPwdLbl">รหัสผ่าน</label>
+          <input id="empFldPwd" type="password" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+        <div class="emp-fld" id="empPwdConfirmGroup">
+          <label>ยืนยันรหัสผ่าน</label>
+          <input id="empFldPwdConfirm" type="password" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+      </div>
+      <div class="emp-modal-footer">
+        <button class="emp-modal-cancel" onclick="empCloseModal()">ยกเลิก</button>
+        <button class="emp-modal-save" onclick="empSave()">บันทึก</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NEWS ══ -->
+  <div class="screen" id="screen-news">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="nhdr">
+        <div class="nhdr-row">
+          <div>
+            <div class="nhdr-ttl">ข่าวสาร & สุขภาพ</div>
+            <div class="nhdr-sub">บทความดีๆ จาก Alive Store</div>
+          </div>
+          <div class="nbadge-cnt">6 บทความ</div>
+        </div>
+      </div>
+      <div class="ncats">
+        <div class="ncpill active">ทั้งหมด</div>
+        <div class="ncpill">สุขภาพ</div>
+        <div class="ncpill">อากาศ</div>
+        <div class="ncpill">ไลฟ์สไตล์</div>
+      </div>
+      <div class="n-search-wrap">
+        <input class="n-search" id="newsSearch" type="text" placeholder="ค้นหาบทความ..."
+          oninput="searchNews(this.value)" />
+      </div>
+      <div id="noResults" class="n-empty" style="display:none;">
+        <div class="n-empty-ico">🔍</div>ไม่พบบทความที่ค้นหา<br><span style="font-size:10px;">ลองใช้คำค้นอื่น</span>
+      </div>
+      <div class="nfeed" id="newsFeed">
+
+        <a class="ncard" href="https://www.alive.store/heatstroke/" target="_blank">
+          <div class="nthumb" style="background:linear-gradient(135deg,#4a2000,#c8540a);">
+            <span class="nthumb-emoji">☀️</span>
+            <div class="ncat-badge" style="background:rgba(255,90,0,0.8);">สุขภาพ</div>
+          </div>
+          <div class="nbody">
+            <div class="nttl">Heat Stroke ภัยเงียบในหน้าร้อน</div>
+            <div class="ndesc">อากาศร้อน 40°C+ ระวัง! รู้จักสัญญาณอันตรายและวิธีป้องกัน Heat Stroke ก่อนสาย</div>
+            <div class="nfoot">
+              <span class="ndate">25 มี.ค. 68</span>
+              <span class="nreadmore">อ่านต่อ →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="ncard" href="https://www.alive.store/pm2-5-spo2/" target="_blank">
+          <div class="nthumb" style="background:linear-gradient(135deg,#1a3a4a,#2d7a8e);">
+            <span class="nthumb-emoji">😷</span>
+            <div class="ncat-badge" style="background:rgba(13,100,130,0.85);">สุขภาพ</div>
+          </div>
+          <div class="nbody">
+            <div class="nttl">PM2.5 ทำให้ค่า SpO2 ตก — ข้อมูลจริง</div>
+            <div class="ndesc">ข้อมูลจาก Smartwatch: เมื่อ PM2.5 พุ่งสูง ค่าออกซิเจนในเลือดลดลงทันที ดูตัวเลขจริง</div>
+            <div class="nfoot">
+              <span class="ndate">10 มี.ค. 68</span>
+              <span class="nreadmore">อ่านต่อ →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="ncard" href="https://www.alive.store/smartlifebyalive-ep1-sleep-allergy/" target="_blank">
+          <div class="nthumb" style="background:linear-gradient(135deg,#1a2a4a,#2d5a8e);">
+            <span class="nthumb-emoji">😴</span>
+            <div class="ncat-badge" style="background:rgba(29,80,158,0.85);">สุขภาพ</div>
+          </div>
+          <div class="nbody">
+            <div class="nttl">Smart Life EP.1: นอนหลับกับภูมิแพ้</div>
+            <div class="ndesc">การนอนหลับไม่เพียงพอกระตุ้นภูมิแพ้ได้จริงหรือ? ค้นพบความสัมพันธ์ที่ซ่อนอยู่</div>
+            <div class="nfoot">
+              <span class="ndate">12 เม.ย. 68</span>
+              <span class="nreadmore">อ่านต่อ →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="ncard" href="https://www.alive.store/ecoli-qais/" target="_blank">
+          <div class="nthumb" style="background:linear-gradient(135deg,#0d3a2a,#1d9e75);">
+            <span class="nthumb-emoji">🦠</span>
+            <div class="ncat-badge" style="background:rgba(13,100,60,0.85);">อากาศ</div>
+          </div>
+          <div class="nbody">
+            <div class="nttl">Qais Air vs E.coli: ทดสอบในแล็บจริง!</div>
+            <div class="ndesc">ผลทดสอบในห้องแล็บ: Qais Air กำจัดเชื้อ E.coli ได้มากถึง 99.9% ได้ยังไง?</div>
+            <div class="nfoot">
+              <span class="ndate">3 เม.ย. 68</span>
+              <span class="nreadmore">อ่านต่อ →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="ncard" href="https://www.alive.store/qais-air-virus/" target="_blank">
+          <div class="nthumb" style="background:linear-gradient(135deg,#0d2040,#1d5a8e);">
+            <span class="nthumb-emoji">🌬️</span>
+            <div class="ncat-badge" style="background:rgba(13,50,120,0.85);">อากาศ</div>
+          </div>
+          <div class="nbody">
+            <div class="nttl">Qais Air ต้านไวรัสในอากาศได้จริง?</div>
+            <div class="ndesc">ผลทดสอบยืนยัน: Qais Air ลด airborne virus ได้ถึง 99.99% ภายใน 30 นาที</div>
+            <div class="nfoot">
+              <span class="ndate">18 มี.ค. 68</span>
+              <span class="nreadmore">อ่านต่อ →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="ncard" href="https://www.alive.store/alive-service-center-ultrahuman/" target="_blank">
+          <div class="nthumb" style="background:linear-gradient(135deg,#2d1a4a,#6b3a8e);">
+            <span class="nthumb-emoji">💍</span>
+            <div class="ncat-badge" style="background:rgba(80,30,130,0.85);">ไลฟ์สไตล์</div>
+          </div>
+          <div class="nbody">
+            <div class="nttl">Alive Service Center: รับ-ส่งซ่อม Ultrahuman</div>
+            <div class="ndesc">ศูนย์บริการ Ultrahuman Ring อย่างเป็นทางการในไทย รับ-ส่งซ่อมสะดวก ไม่ต้องส่งต่างประเทศ
+            </div>
+            <div class="nfoot">
+              <span class="ndate">8 เม.ย. 68</span>
+              <span class="nreadmore">อ่านต่อ →</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="bnav">
+        <div class="bn" onclick="go('login')">
+          <div class="bn-iw">🏠</div><span class="bn-lb">หน้าแรก</span>
+        </div>
+        <div class="bn" onclick="go('reward')">
+          <div class="bn-iw">🏃</div><span class="bn-lb">Daily Challenge</span>
+        </div>
+        <div class="bn" onclick="go('redeem')">
+          <div class="bn-iw">🎁</div><span class="bn-lb">แลกรางวัล</span>
+        </div>
+        <div class="bn" onclick="go('analysis')">
+          <div class="bn-iw">📊</div><span class="bn-lb">วิเคราะห์</span>
+        </div>
+        <div class="bn active">
+          <div class="bn-iw">📰</div><span class="bn-lb">ข่าวสาร</span>
+        </div>
+        <div class="bn" onclick="go('chatbot')">
+          <div class="bn-iw">🤖</div><span class="bn-lb">AI Chat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Screen: Chatbot ── -->
+  <div class="screen" id="screen-chatbot">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="chat-hdr">
+        <div class="chat-hdr-row">
+          <div class="chat-avatar">🤖</div>
+          <div class="chat-hdr-info">
+            <div class="chat-hdr-name">SookSync AI</div>
+            <div class="chat-hdr-status">พร้อมให้คำปรึกษาด้านสุขภาพ</div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-msgs" id="chatMsgs">
+        <div class="chat-bubble-wrap bot">
+          <div class="chat-bot-icon">🤖</div>
+          <div>
+            <div class="chat-bubble">สวัสดีครับ! ผม SookSync AI ผู้ช่วยด้านสุขภาพของคุณ
+              😊<br>วันนี้อยากปรึกษาเรื่องอะไรครับ?</div>
+            <div class="chat-time">9:41</div>
+          </div>
+        </div>
+        <div class="chat-bubble-wrap bot">
+          <div class="chat-bot-icon">🤖</div>
+          <div>
+            <div class="chat-bubble">📊 จากข้อมูลสุขภาพวันนี้ของคุณ:<br>• ก้าว: 6,240 / 10,000<br>• การนอน: 7h 12m
+              ✅<br>• ดื่มน้ำ: 1.2 / 2.5 ลิตร ⚠️<br><br>แนะนำดื่มน้ำเพิ่มอีก 3 แก้วครับ!</div>
+            <div class="chat-time">9:41</div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-suggestions">
+        <div class="chat-sug" onclick="sendSug(this)">💧 ดื่มน้ำเท่าไหร่ดี?</div>
+        <div class="chat-sug" onclick="sendSug(this)">🏃 ออกกำลังกายวันนี้</div>
+        <div class="chat-sug" onclick="sendSug(this)">😴 คุณภาพการนอน</div>
+        <div class="chat-sug" onclick="sendSug(this)">🥗 โภชนาการแนะนำ</div>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-inp" id="chatInp" type="text" placeholder="พิมพ์คำถามด้านสุขภาพ..."
+          onkeydown="if(event.key==='Enter')sendChat()" />
+        <button class="chat-send-btn" onclick="sendChat()">➤</button>
+      </div>
+      <div class="bnav">
+        <div class="bn" onclick="go('login')">
+          <div class="bn-iw">🏠</div><span class="bn-lb">หน้าแรก</span>
+        </div>
+        <div class="bn" onclick="go('reward')">
+          <div class="bn-iw">🏃</div><span class="bn-lb">Daily Challenge</span>
+        </div>
+        <div class="bn" onclick="go('redeem')">
+          <div class="bn-iw">🎁</div><span class="bn-lb">แลกรางวัล</span>
+        </div>
+        <div class="bn" onclick="go('analysis')">
+          <div class="bn-iw">📊</div><span class="bn-lb">วิเคราะห์</span>
+        </div>
+        <div class="bn" onclick="go('news')">
+          <div class="bn-iw">📰</div><span class="bn-lb">ข่าวสาร</span>
+        </div>
+        <div class="bn active">
+          <div class="bn-iw">🤖</div><span class="bn-lb">AI Chat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let totalCoins = 2480;
+  let todayCoins = 120;
+  let pendingItem = null;
+
+  const REWARDS = [
+    { id: 1, name: 'GARMIN Vivoactive 6', sub: 'GPS Smartwatch ติดตามสุขภาพ', price: 10990, emoji: '⌚', img: 'https://res.garmin.com/transform/image/upload/c_limit,dpr_1.0,f_auto,h_1289,q_auto,w_2600/c_limit,h_1289,w_2600/v1/Product_Images/th_TH/products/010-02985-40/v/cf-xl?pgw=1&pgwact=1', bg: '#E8F0FE', cat: 'gadget', hot: true, qty: 'เหลือ 3 ชิ้น' },
+    { id: 2, name: 'GARMIN Venu 4', sub: 'Smartwatch AMOLED แบต 12 วัน', price: 18390, emoji: '⌚', img: 'https://www.garmin.com/en-US/newsroom/wp-content/uploads/2025/09/Venu-4-hero-image-1480x975.jpg', bg: '#E1F5EE', cat: 'gadget', isnew: true, qty: 'เหลือ 2 ชิ้น' },
+    { id: 3, name: 'Ultrahuman Ring Air', sub: 'Smart Ring ติดตามสุขภาพ 24/7', price: 12990, emoji: '💍', img: 'https://cdn.speedsize.com/3f711f28-1488-44dc-b013-5e43284ac4b0/https://public-web-assets.uh-static.com/web_v2/illustrations/ring-air-front.png/w_1080', bg: '#F5F0FF', cat: 'gadget', isnew: true, qty: 'เหลือ 5 ชิ้น' },
+    { id: 4, name: 'Qais Air เครื่องฟอกอากาศ', sub: 'ฆ่าเชื้อ ดับกลิ่น ไม่มีไส้กรอง', price: 7900, emoji: '🌬️', img: 'https://www.sunstar.com/newsroom/media_131cc1270b549c7d2190a508b996441cecd17d7c8.png?width=750&format=png&optimize=medium', bg: '#EEF4FF', cat: 'gadget', qty: 'เหลือ 4 ชิ้น' },
+    { id: 5, name: 'Huawei Watch GT 4 Pro', sub: 'GPS Smart Watch ไทเทเนียม', price: 7490, emoji: '⌚', img: 'https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-fit4-pro/images/kv/huawei-watch-fit4-pro-kv-thumb.jpg', bg: '#FFF5D6', cat: 'gadget', qty: 'เหลือ 5 ชิ้น' },
+    { id: 6, name: 'Redmi Watch 5 Lite', sub: 'AMOLED แบต 18 วัน มี GPS', price: 1990, emoji: '⌚', img: 'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-watch5-lite.jpg', bg: '#F0FBF7', cat: 'gadget', isnew: true, qty: 'เหลือ 8 ชิ้น' },
+    { id: 7, name: 'Jisulife Ultra Fan', sub: 'พัดลมพกพา 9000mAh ปรับ 100 ระดับ', price: 2799, emoji: '🌀', img: 'https://jisulife.com/cdn/shop/files/ultra2-main_1.jpg?v=1747213795&width=1946', bg: '#FBEAF0', cat: 'gadget', qty: 'เหลือ 6 ชิ้น' },
+    { id: 7, name: 'คูปอง Starbucks', sub: 'Voucher มูลค่า 300 บาท', price: 500, emoji: '☕', img: 'star-v.png', bg: '#F0FFF4', cat: 'food', hot: true, qty: 'เหลือ 24 ชิ้น' },
+    { id: 8, name: 'เสื้อวิ่ง SookSync', sub: 'ไซส์ M-XL ระบายอากาศดี', price: 2000, emoji: '🎽', bg: '#E1F5EE', cat: 'sport', qty: 'เหลือ 8 ชิ้น' },
+    { id: 9, name: 'วิตามิน C 1000mg', sub: '30 เม็ด บำรุงภูมิคุ้มกัน', price: 800, emoji: '💊', bg: '#FBEAF0', cat: 'health', isnew: true, qty: 'เหลือ 15 ชิ้น' },
+    { id: 10, name: 'ส่วนลดฟิตเนส', sub: 'Fitness First 1 เดือน', price: 1500, emoji: '🏋️', bg: '#E6F1FB', cat: 'sport', qty: 'เหลือ 5 ชิ้น' },
+    { id: 11, name: 'ครีมกันแดด SPF50', sub: 'Skin Aqua 80ml', price: 600, emoji: '🧴', bg: '#FBEAF0', cat: 'beauty', qty: 'เหลือ 20 ชิ้น' },
+    { id: 12, name: 'น้ำผลไม้ปั่น', sub: 'Boost Juice 1 แก้ว', price: 350, emoji: '🥤', bg: '#FFF5D6', cat: 'food', hot: true, qty: 'เหลือ 50 ชิ้น' },
+    { id: 13, name: 'หน้ากากผิวหน้า', sub: 'Snail White 5 แผ่น', price: 400, emoji: '✨', bg: '#F0FBF7', cat: 'beauty', isnew: true, qty: 'เหลือ 30 ชิ้น' },
+    { id: 14, name: 'โปรตีนเชค', sub: 'Whey 1 กระป๋อง 500g', price: 1200, emoji: '💪', bg: '#E1F5EE', cat: 'health', qty: 'เหลือ 12 ชิ้น' },
+
+  ];
+
+  function renderGrid(cat) {
+    const grid = document.getElementById('rdGrid');
+    grid.innerHTML = '';
+    const filtered = cat === 'all' ? REWARDS : REWARDS.filter(r => r.cat === cat);
+    filtered.forEach(r => {
+      const cantAfford = r.price > totalCoins;
+      const div = document.createElement('div');
+      div.className = 'rd-card' + (cantAfford ? ' cant-afford' : '');
+      div.onclick = () => openModal(r);
+      div.innerHTML = `
+      ${r.hot ? '<div class="rd-hot-badge">🔥 ยอดนิยม</div>' : ''}
+      ${r.isnew ? '<div class="rd-new-badge">✨ ใหม่</div>' : ''}
+      <div class="rd-card-img" style="background:${r.bg};">${r.img ? '<img src="' + r.img + '" alt="' + r.name + '" onerror="this.outerHTML=\'' + r.emoji + '\'">' : r.emoji}</div>
+      <div class="rd-card-body">
+        <div class="rd-card-name">${r.name}</div>
+        <div class="rd-card-sub">${r.sub}</div>
+        <div class="rd-card-footer">
+          <div class="rd-price"><span class="rd-price-ico">🪙</span><span class="rd-price-val">${r.price.toLocaleString()}</span></div>
+          <div class="rd-qty-badge">${r.qty}</div>
+        </div>
+      </div>`;
+      grid.appendChild(div);
+    });
+  }
+
+  function filterCat(el, cat) {
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    renderGrid(cat);
+  }
+
+  function openModal(r) {
+    pendingItem = r;
+    const after = totalCoins - r.price;
+    document.getElementById('modal-ico').textContent = r.emoji;
+    document.getElementById('modal-ico').style.background = r.bg;
+    document.getElementById('modal-name').textContent = r.name;
+    document.getElementById('modal-sub').textContent = r.sub;
+    document.getElementById('modal-price').textContent = '🪙 ' + r.price.toLocaleString() + ' เหรียญ';
+    document.getElementById('modal-current').textContent = totalCoins.toLocaleString() + ' เหรียญ';
+    const afterEl = document.getElementById('modal-after');
+    const confirmBtn = document.getElementById('modal-confirm-btn');
+    if (after < 0) {
+      afterEl.textContent = 'เหรียญไม่พอ (' + Math.abs(after).toLocaleString() + ' ขาด)';
+      afterEl.className = 'modal-row-val red';
+      confirmBtn.style.opacity = '0.5';
+      confirmBtn.style.cursor = 'not-allowed';
+    } else {
+      afterEl.textContent = after.toLocaleString() + ' เหรียญ';
+      afterEl.className = 'modal-row-val big';
+      confirmBtn.style.opacity = '1';
+      confirmBtn.style.cursor = 'pointer';
+    }
+    document.getElementById('modalWrap').classList.add('show');
+  }
+
+  function closeModal() {
+    document.getElementById('modalWrap').classList.remove('show');
+    pendingItem = null;
+  }
+
+  function confirmRedeem() {
+    if (!pendingItem) return;
+    if (pendingItem.price > totalCoins) return;
+    totalCoins -= pendingItem.price;
+    const code = 'SOOK-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+    document.getElementById('sov-sub').innerHTML = `คุณได้รับ <strong>${pendingItem.name}</strong> แล้ว<br>ตรวจสอบ voucher ได้ที่ด้านล่าง`;
+    document.getElementById('sov-code').textContent = code;
+    document.getElementById('sov-bal').textContent = totalCoins.toLocaleString();
+    closeModal();
+    document.getElementById('sovOverlay').classList.add('show');
+    syncAllBalances();
+    coinRain();
+  }
+
+  function afterRedeem() {
+    document.getElementById('sovOverlay').classList.remove('show');
+    go('reward');
+  }
+
+  function closeSuccess() {
+    document.getElementById('sovOverlay').classList.remove('show');
+    renderGrid('all');
+    document.querySelectorAll('.cat-pill').forEach((p, i) => i === 0 ? p.classList.add('active') : p.classList.remove('active'));
+  }
+
+  function syncAllBalances() {
+    const rdbal = document.getElementById('rd-bal');
+    if (rdbal) rdbal.innerHTML = totalCoins.toLocaleString() + ' <span>เหรียญ</span>';
+    const rct = document.getElementById('r-coinTotal');
+    if (rct) animCount(rct, totalCoins + pendingItem.price, totalCoins, true);
+    renderGrid('all');
+  }
+
+  function animCount(el, from, to, isCoin) {
+    const dur = 700, start = performance.now();
+    function step(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const val = Math.round(from + (to - from) * ease);
+      el.innerHTML = isCoin ? val.toLocaleString() + ' <span>เหรียญ</span>' : val.toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function coinRain() {
+    const ov = document.getElementById('sovOverlay');
+    if (!ov) return;
+    const burst = document.createElement('div'); burst.className = 'burst-cont';
+    for (let i = 0; i < 14; i++) {
+      const c = document.createElement('div'); c.className = 'rain-coin'; c.textContent = '🪙';
+      c.style.left = (Math.random() * 90 + 5) + '%'; c.style.top = '-20px';
+      c.style.animationDelay = (i * 0.08) + 's';
+      c.style.animationDuration = (0.9 + Math.random() * 0.5) + 's';
+      burst.appendChild(c);
+    }
+    ov.appendChild(burst); setTimeout(() => burst.remove(), 2500);
+  }
+
+  function go(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tb').forEach(b => b.classList.remove('active'));
+    document.getElementById('screen-' + name).classList.add('active');
+    const tabNav = document.querySelector('.tab-nav');
+    if (tabNav) tabNav.style.display = name === 'admin' ? 'none' : '';
+    const map = { login: 0, reward: 1, redeem: 2, analysis: 3, news: 4, chatbot: 5 };
+    if (map[name] !== undefined) document.querySelectorAll('.tb')[map[name]].classList.add('active');
+    if (name === 'redeem') {
+      const rdbal = document.getElementById('rd-bal');
+      if (rdbal) rdbal.innerHTML = totalCoins.toLocaleString() + ' <span>เหรียญ</span>';
+      renderGrid('all');
+      document.getElementById('sovOverlay').classList.remove('show');
+      document.getElementById('modalWrap').classList.remove('show');
+    }
+    if (name === 'admin') {
+      adwNav('dashboard');
+      empRender();
+    }
+  }
+
+  const AI_REPLIES = {
+    'น้ำ': ['💧 ควรดื่มน้ำ 2–2.5 ลิตรต่อวันครับ\nสำหรับคุณ เหลืออีกประมาณ 1.3 ลิตร หรือ ~5 แก้ว ลองตั้งเตือนทุก 1 ชั่วโมงนะครับ 😊', '💧 เคล็ดลับ: ดื่มน้ำ 1 แก้วหลังตื่นนอน และก่อนมื้ออาหารทุกมื้อ จะช่วยให้ครบโควตาได้ง่ายขึ้นครับ'],
+    'ออกกำลัง': ['🏃 วันนี้คุณเดินไป 6,240 ก้าวแล้ว ขาดอีก 3,760 ก้าว\nแนะนำเดินเร็ว 30 นาทีตอนเย็นจะครบเป้าครับ!', '💪 ออกกำลังกาย 150 นาที/สัปดาห์ คือเป้าหมาย WHO\nลองเริ่มจากเดิน → จ็อก → วิ่งเบาๆ ได้เลยครับ'],
+    'นอน': ['😴 คืนนี้คุณนอน 7h 12m เกณฑ์ดีครับ! (7–9 ชม.)\nลองเข้านอนก่อน 22:30 จะช่วยให้ deep sleep มากขึ้นครับ', '🌙 เคล็ดลับนอนหลับดี: งดหน้าจอ 30 นาทีก่อนนอน, อุณหภูมิห้อง 22–26°C และหลีกเลี่ยงคาเฟอีนหลัง 14:00 ครับ'],
+    'อาหาร': ['🥗 วันนี้แนะนำเพิ่มผักใบเขียวและโปรตีนลีน เช่น ปลา หรือไก่ไม่ติดหนังครับ', '🍽️ สูตรจาน Healthy: 1/2 จานผัก, 1/4 โปรตีน, 1/4 คาร์บซับซ้อน (ข้าวกล้อง/มันเทศ) ครับ'],
+    'เครียด': ['🧘 ระดับความเครียดวันนี้ของคุณอยู่ที่ 34/100 (ต่ำ) ดีมากครับ!\nลอง breathing 4-7-8: หายใจเข้า 4 วิ กลั้น 7 วิ ออก 8 วิ', '💆 การจัดการความเครียด: เดิน 10 นาทีกลางแจ้ง, ฟังเพลงผ่อนคลาย หรือเขียน journal ทุกวันครับ'],
+    'default': ['🤔 ขอบคุณครับ! ผมกำลังวิเคราะห์ข้อมูลสุขภาพของคุณ...', '💡 แนะนำให้โฟกัส 3 สิ่งวันนี้: ดื่มน้ำให้ครบ, เดิน 10,000 ก้าว, และนอนหลับ 7+ ชั่วโมงครับ 😊']
+  };
+
+  function getChatReply(text) {
+    const t = text.toLowerCase();
+    for (const key of Object.keys(AI_REPLIES)) {
+      if (key !== 'default' && t.includes(key)) {
+        const arr = AI_REPLIES[key];
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+    }
+    const arr = AI_REPLIES['default'];
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function appendMsg(text, type, timeStr) {
+    const msgs = document.getElementById('chatMsgs');
+    if (!msgs) return;
+    const now = timeStr || new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+    const wrap = document.createElement('div');
+    wrap.className = 'chat-bubble-wrap ' + type;
+    if (type === 'bot') {
+      wrap.innerHTML = `<div class="chat-bot-icon">🤖</div><div><div class="chat-bubble">${text.replace(/\n/g, '<br>')}</div><div class="chat-time">${now}</div></div>`;
+    } else {
+      wrap.innerHTML = `<div><div class="chat-bubble">${text}</div><div class="chat-time">${now}</div></div>`;
+    }
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showTyping() {
+    const msgs = document.getElementById('chatMsgs');
+    if (!msgs) return null;
+    const wrap = document.createElement('div');
+    wrap.className = 'chat-bubble-wrap bot';
+    wrap.id = 'typingIndicator';
+    wrap.innerHTML = `<div class="chat-bot-icon">🤖</div><div class="chat-bubble"><div class="chat-typing"><span></span><span></span><span></span></div></div>`;
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+    return wrap;
+  }
+
+  function sendChat() {
+    const inp = document.getElementById('chatInp');
+    if (!inp || !inp.value.trim()) return;
+    const text = inp.value.trim();
+    inp.value = '';
+    appendMsg(text, 'user');
+    const typing = showTyping();
+    setTimeout(() => {
+      if (typing) typing.remove();
+      appendMsg(getChatReply(text), 'bot');
+    }, 900 + Math.random() * 600);
+  }
+
+  function sendSug(el) {
+    const text = el.textContent;
+    appendMsg(text, 'user');
+    const typing = showTyping();
+    setTimeout(() => {
+      if (typing) typing.remove();
+      appendMsg(getChatReply(text), 'bot');
+    }, 900 + Math.random() * 600);
+  }
+
+  function searchNews(q) {
+    const feed = document.getElementById('newsFeed');
+    const cards = feed ? feed.querySelectorAll('.ncard') : [];
+    const noRes = document.getElementById('noResults');
+    let found = 0;
+    cards.forEach(card => {
+      const ttl = card.querySelector('.nttl') ? card.querySelector('.nttl').textContent : '';
+      const desc = card.querySelector('.ndesc') ? card.querySelector('.ndesc').textContent : '';
+      const cat = card.querySelector('.ncat-badge') ? card.querySelector('.ncat-badge').textContent : '';
+      const match = !q.trim() || (ttl + desc + cat).toLowerCase().includes(q.toLowerCase().trim());
+      card.style.display = match ? 'block' : 'none';
+      if (match) found++;
+    });
+    if (noRes) noRes.style.display = (found === 0 && q.trim()) ? 'flex' : 'none';
+    if (noRes) noRes.style.flexDirection = 'column';
+    if (noRes) noRes.style.alignItems = 'center';
+  }
+
+  function toggleCat(el) {
+    el.closest('.adm-cat-row').querySelectorAll('.adm-cat-opt').forEach(o => o.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+
+  function setStress(el, level) {
+    document.querySelectorAll('.strs-em').forEach(e => e.classList.remove('active'));
+    el.classList.add('active');
+    const pct = [17, 34, 52, 72, 90][level - 1];
+    const labels = ['ผ่อนคลายมาก — 17/100', 'ต่ำ — 34/100', 'ปานกลาง — 52/100', 'สูง — 72/100', 'เครียดมาก — 90/100'];
+    const bar = document.getElementById('strsBarFill');
+    if (bar) bar.style.width = pct + '%';
+    const val = document.querySelector('.strs-val');
+    if (val) val.textContent = labels[level - 1];
+  }
+
+  function completeMission(el, coins) {
+    if (el.classList.contains('done')) return;
+    el.classList.add('done');
+    const bar = document.createElement('div'); bar.className = 'mibar'; el.insertBefore(bar, el.firstChild);
+    const ico = el.querySelector('.miico'); if (ico) ico.className = 'miico d';
+    const pnd = el.querySelector('.pnd');
+    if (pnd) { const chk = document.createElement('div'); chk.className = 'chk'; chk.textContent = '✓'; chk.style.animation = 'checkBounce 0.4s ease'; pnd.replaceWith(chk); }
+    const sub = el.querySelector('.misb'); if (sub) { sub.textContent = 'เสร็จแล้ว! 🎉'; sub.style.color = '#1D9E75'; }
+    const prog = el.querySelector('.mifill'); if (prog) prog.style.width = '100%';
+    totalCoins += coins; todayCoins += coins;
+    const rct = document.getElementById('r-coinTotal'); if (rct) animCount(rct, totalCoins - coins, totalCoins, true);
+    const rt = document.getElementById('r-today'); if (rt) rt.textContent = '+' + todayCoins;
+    burstCoins(el, coins);
+  }
+
+  function burstCoins(el, coins) {
+    const phone = document.querySelector('#screen-reward .phone'); if (!phone) return;
+    const pR = phone.getBoundingClientRect(), eR = el.getBoundingClientRect();
+    const relX = eR.left - pR.left + eR.width / 2, relY = eR.top - pR.top;
+    const burst = document.createElement('div'); burst.className = 'burst-cont';
+    for (let i = 0; i < 6; i++) { const c = document.createElement('div'); c.className = 'burst-coin'; const angle = (i / 6) * 360, rad = angle * Math.PI / 180, dist = 24 + Math.random() * 18; c.style.left = (relX + Math.cos(rad) * dist) + 'px'; c.style.top = relY + 'px'; c.style.animationDelay = (i * 0.06) + 's'; c.textContent = '🪙'; burst.appendChild(c); }
+    const plus = document.createElement('div'); plus.style.cssText = `position:absolute;left:${relX - 18}px;top:${relY - 6}px;font-family:'Kanit',sans-serif;font-size:13px;font-weight:800;color:#FFD166;animation:coinPop 0.9s ease forwards;pointer-events:none;z-index:99;`; plus.textContent = '+' + coins + ' 🪙'; burst.appendChild(plus);
+    phone.appendChild(burst); setTimeout(() => burst.remove(), 1200);
+  }
+
+  renderGrid('all');
+
+  document.querySelectorAll('.apb').forEach(btn => {
+    btn.addEventListener('click', function () {
+      this.closest('.aperiod').querySelectorAll('.apb').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.ncpill').forEach(pill => {
+    pill.addEventListener('click', function () {
+      this.closest('.ncats').querySelectorAll('.ncpill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  /* ---- Admin page navigation ---- */
+  function adwNav(page) {
+    ['dashboard','employees'].forEach(p => {
+      document.getElementById('adw-pg-' + p).classList.toggle('adw-pg-active', p === page);
+      var nav = document.getElementById('adw-nav-' + p);
+      if (nav) nav.classList.toggle('active', p === page);
+    });
+    if (page === 'employees') empRender();
+  }
+
+  /* ---- Employee management ---- */
+  var EMP_PAGE_SIZE = 8;
+  var empPage = 1;
+  var empEditIdx = null;
+
+  var empData = [
+    { id:'SS-001', name:'สมชาย ใจดี',      email:'somchai@co.th',   coins:1240 },
+    { id:'SS-002', name:'วิภา สุขสันต์',    email:'wipa@co.th',      coins:980  },
+    { id:'SS-003', name:'ธนา พงษ์ศรี',      email:'tana@co.th',      coins:760  },
+    { id:'SS-004', name:'มณี ลิ้มทอง',      email:'manee@co.th',     coins:1580 },
+    { id:'SS-005', name:'ปิยะ ชัยมงคล',     email:'piya@co.th',      coins:430  },
+    { id:'SS-006', name:'รัตนา วงศ์ไทย',    email:'rattana@co.th',   coins:2100 },
+    { id:'SS-007', name:'กิตติ อ่อนน้อม',   email:'kitti@co.th',     coins:870  },
+    { id:'SS-008', name:'สุดา เพชรรัตน์',   email:'suda@co.th',      coins:540  },
+    { id:'SS-009', name:'อภิชาติ ทรัพย์ดี', email:'apichat@co.th',   coins:1320 },
+    { id:'SS-010', name:'ชลธิชา มีสุข',     email:'chonticha@co.th', coins:670  },
+    { id:'SS-011', name:'ธีรวัฒน์ พรชัย',   email:'teerawat@co.th',  coins:1050 },
+    { id:'SS-012', name:'นภา จิตรสะอาด',    email:'napa@co.th',      coins:790  },
+  ];
+
+  function empFiltered() {
+    var q = (document.getElementById('empSearch').value || '').toLowerCase();
+    return empData.filter(function(e) {
+      return !q || e.id.toLowerCase().includes(q) || e.name.toLowerCase().includes(q);
+    });
+  }
+
+  function empRender() {
+    var list = empFiltered();
+    var totalPages = Math.max(1, Math.ceil(list.length / EMP_PAGE_SIZE));
+    if (empPage > totalPages) empPage = totalPages;
+    var slice = list.slice((empPage - 1) * EMP_PAGE_SIZE, empPage * EMP_PAGE_SIZE);
+
+    document.getElementById('empCountLbl').textContent = list.length + ' คน';
+    document.getElementById('empSubLbl').textContent = 'ทั้งหมด ' + empData.length + ' คน · กรองแล้ว ' + list.length + ' คน';
+
+    var tbody = document.getElementById('empTbody');
+    tbody.innerHTML = slice.map(function(e, i) {
+      var realIdx = empData.indexOf(e);
+      return '<tr>' +
+        '<td style="font-size:11px;color:#90A4AE;font-weight:700;">' + e.id + '</td>' +
+        '<td style="font-weight:600;">' + e.name + '<div style="font-size:11px;color:#90A4AE;font-weight:400;margin-top:1px;">' + e.email + '</div></td>' +
+        '<td style="text-align:center;font-weight:700;color:#1D9E75;">' + e.coins.toLocaleString() + ' <span style="font-size:10px;font-weight:400;color:#90A4AE;">cdg coins</span></td>' +
+        '<td style="display:flex;gap:4px;">' +
+          '<button class="adw-tbl-btn" onclick="empOpenModal(' + realIdx + ')" title="แก้ไขข้อมูล">✏️</button>' +
+          '<button class="adw-tbl-btn" onclick="empOpenPwd(' + realIdx + ')" title="เปลี่ยนรหัสผ่าน">🔑</button>' +
+          '<button class="adw-tbl-btn" onclick="empDelete(' + realIdx + ')" title="ลบ">🗑</button>' +
+        '</td>' +
+      '</tr>';
+    }).join('');
+
+    var pg = document.getElementById('empPagination');
+    if (totalPages <= 1) { pg.innerHTML = ''; return; }
+    var html = '<button class="emp-pg-btn" onclick="empGoPage(' + (empPage-1) + ')" ' + (empPage===1?'disabled':'') + '>‹</button>';
+    for (var p = 1; p <= totalPages; p++) {
+      html += '<button class="emp-pg-btn' + (p===empPage?' cur':'') + '" onclick="empGoPage(' + p + ')">' + p + '</button>';
+    }
+    html += '<button class="emp-pg-btn" onclick="empGoPage(' + (empPage+1) + ')" ' + (empPage===totalPages?'disabled':'') + '>›</button>';
+    pg.innerHTML = html;
+  }
+
+  function empGoPage(p) { empPage = p; empRender(); }
+
+  function empOpenModal(idx) {
+    empEditIdx = (idx !== undefined) ? idx : null;
+    var e = empEditIdx !== null ? empData[empEditIdx] : null;
+    document.getElementById('empModalTtl').textContent = e ? 'แก้ไขข้อมูลพนักงาน' : 'เพิ่มพนักงานใหม่';
+    document.getElementById('empFldId').value    = e ? e.id    : '';
+    document.getElementById('empFldName').value  = e ? e.name  : '';
+    document.getElementById('empFldEmail').value = e ? e.email : '';
+    document.getElementById('empFldPwd').value   = '';
+    document.getElementById('empFldPwdConfirm').value = '';
+    document.getElementById('empFldId').disabled = !!e;
+    document.getElementById('empPwdLbl').textContent = e ? 'รหัสผ่านใหม่ (เว้นว่างถ้าไม่เปลี่ยน)' : 'รหัสผ่าน';
+    document.getElementById('empFldPwd').required = !e;
+    document.getElementById('empModalOverlay').classList.add('open');
+  }
+
+  function empOpenPwd(idx) {
+    empEditIdx = idx;
+    var e = empData[idx];
+    document.getElementById('empModalTtl').textContent = 'เปลี่ยนรหัสผ่าน — ' + e.name;
+    document.getElementById('empFldId').value    = e.id;
+    document.getElementById('empFldName').value  = e.name;
+    document.getElementById('empFldEmail').value = e.email;
+    document.getElementById('empFldPwd').value   = '';
+    document.getElementById('empFldPwdConfirm').value = '';
+    document.getElementById('empFldId').disabled   = true;
+    document.getElementById('empFldName').disabled = true;
+    document.getElementById('empFldEmail').disabled= true;
+    document.getElementById('empPwdLbl').textContent = 'รหัสผ่านใหม่';
+    document.getElementById('empFldPwd').required = true;
+    document.getElementById('empModalOverlay').classList.add('open');
+  }
+
+  function empCloseModal() {
+    document.getElementById('empModalOverlay').classList.remove('open');
+    document.getElementById('empFldId').disabled    = false;
+    document.getElementById('empFldName').disabled  = false;
+    document.getElementById('empFldEmail').disabled = false;
+    empEditIdx = null;
+  }
+
+  function empCloseModalOutside(ev) {
+    if (ev.target === document.getElementById('empModalOverlay')) empCloseModal();
+  }
+
+  function empSave() {
+    var id    = document.getElementById('empFldId').value.trim();
+    var name  = document.getElementById('empFldName').value.trim();
+    var email = document.getElementById('empFldEmail').value.trim();
+    var pwd   = document.getElementById('empFldPwd').value;
+    var pwd2  = document.getElementById('empFldPwdConfirm').value;
+    if (!name) { alert('กรุณากรอกชื่อ-สกุล'); return; }
+    if (pwd || (empEditIdx === null)) {
+      if (!pwd) { alert('กรุณากรอกรหัสผ่าน'); return; }
+      if (pwd !== pwd2) { alert('รหัสผ่านไม่ตรงกัน'); return; }
+      if (pwd.length < 6) { alert('รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร'); return; }
+    }
+    if (empEditIdx !== null) {
+      Object.assign(empData[empEditIdx], { name:name, email:email });
+      // TODO: PATCH /api/employees/:id  (+ password if pwd)
+    } else {
+      if (!id) { alert('กรุณากรอกรหัสพนักงาน'); return; }
+      empData.push({ id:id, name:name, email:email, coins:0 });
+      // TODO: POST /api/employees
+    }
+    empCloseModal();
+    empRender();
+  }
+
+  function empDelete(idx) {
+    if (!confirm('ลบพนักงาน "' + empData[idx].name + '" ออกจากระบบ?')) return;
+    empData.splice(idx, 1);
+    // TODO: DELETE /api/employees/:id
+    empRender();
+  }
+
+  /* ---- Activity type config ---- */
+  function saveAtypeCoins(btn) {
+    const row = btn.closest('.adw-atype-row');
+    const id = row.dataset.id;
+    const coins = row.querySelector('.adw-atype-inp').value;
+    // TODO: PATCH /api/activity-types/:id with { coins }
+    btn.textContent = '✓ บันทึก';
+    btn.classList.add('saved');
+    setTimeout(() => { btn.textContent = 'บันทึก'; btn.classList.remove('saved'); }, 1800);
+  }
+
+  function deleteAtype(btn) {
+    const row = btn.closest('.adw-atype-row');
+    const name = row.querySelector('.adw-atype-nm').textContent;
+    if (!confirm('ลบประเภท "' + name + '" ออกจากรายการ?')) return;
+    // TODO: DELETE /api/activity-types/:row.dataset.id
+    row.style.transition = 'opacity 0.2s';
+    row.style.opacity = '0';
+    setTimeout(() => row.remove(), 200);
+  }
+
+  /* ---- Emoji picker ---- */
+  var ADW_EMOJIS = [
+    '🏃','🚶','🏋️','🏊','🚴','🧘','💪','⚽','🏀','🎾','🏐','🏸',
+    '🥊','🤸','🏇','🧗','🤼','🏌️','🎿','🛹','🛶','🤽','🏂','🤺',
+    '🥋','🥅','🎯','🏹','🎽','🩰','🧜','🤾','🏄','🚵','🤼','🏆',
+    '⛷️','🤿','🏋','🩱','🤙','🦵','🦶','🫀','🧠','💨','🔥','⚡'
+  ];
+  var adwSelectedEmoji = '🏅';
+
+  function adwInitEmojiPicker() {
+    var grid = document.getElementById('adwEmojiGrid');
+    if (!grid || grid.childElementCount > 0) return;
+    ADW_EMOJIS.forEach(function(em) {
+      var btn = document.createElement('button');
+      btn.textContent = em;
+      btn.title = em;
+      btn.style.cssText = 'font-size:18px;border:none;background:transparent;cursor:pointer;padding:4px;border-radius:6px;line-height:1;';
+      btn.onmouseenter = function() { this.style.background = '#E1F5EE'; };
+      btn.onmouseleave = function() { this.style.background = 'transparent'; };
+      btn.onclick = function() { adwSelectEmoji(em); };
+      grid.appendChild(btn);
+    });
+  }
+
+  function adwToggleEmojiPicker() {
+    adwInitEmojiPicker();
+    var picker = document.getElementById('adwEmojiPicker');
+    picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function adwSelectEmoji(em) {
+    adwSelectedEmoji = em;
+    document.getElementById('adwEmojiPreview').textContent = em;
+    document.getElementById('adwEmojiPicker').style.display = 'none';
+  }
+
+  document.addEventListener('click', function(e) {
+    var preview = document.getElementById('adwEmojiPreview');
+    var picker  = document.getElementById('adwEmojiPicker');
+    if (picker && preview && !preview.contains(e.target) && !picker.contains(e.target)) {
+      picker.style.display = 'none';
+    }
+  });
+
+  function openAddAtypeForm() {
+    adwSelectedEmoji = '🏅';
+    document.getElementById('adwEmojiPreview').textContent = '🏅';
+    document.getElementById('adwEmojiPicker').style.display = 'none';
+    document.getElementById('adwAtypeAddForm').classList.add('open');
+    document.getElementById('adwAtypeAddBtn').style.display = 'none';
+    document.getElementById('adwNewNm').focus();
+  }
+
+  function cancelAddAtype() {
+    document.getElementById('adwAtypeAddForm').classList.remove('open');
+    document.getElementById('adwAtypeAddBtn').style.display = '';
+    document.getElementById('adwEmojiPicker').style.display = 'none';
+    document.getElementById('adwNewNm').value = '';
+    document.getElementById('adwNewCoins').value = '';
+    adwSelectedEmoji = '🏅';
+  }
+
+  function confirmAddAtype() {
+    const ico   = adwSelectedEmoji || '🏅';
+    const nm    = document.getElementById('adwNewNm').value.trim();
+    const coins = parseInt(document.getElementById('adwNewCoins').value, 10);
+    if (!nm) { document.getElementById('adwNewNm').focus(); return; }
+    if (isNaN(coins) || coins < 0) { document.getElementById('adwNewCoins').focus(); return; }
+
+    const id = 'type_' + Date.now();
+    // TODO: POST /api/activity-types with { id, name: nm, icon: ico, coins }
+
+    const row = document.createElement('div');
+    row.className = 'adw-atype-row';
+    row.dataset.id = id;
+    row.innerHTML =
+      '<div class="adw-atype-left">' +
+        '<div class="adw-act-ico">' + ico + '</div>' +
+        '<div class="adw-atype-nm">' + nm + '</div>' +
+      '</div>' +
+      '<div class="adw-atype-right">' +
+        '<div class="adw-atype-coins-wrap">' +
+          '<span style="font-size:14px;">🪙</span>' +
+          '<input class="adw-atype-inp" type="number" value="' + coins + '" min="0" />' +
+          '<span class="adw-atype-coin-unit">cdg coins</span>' +
+        '</div>' +
+        '<button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>' +
+        '<button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>' +
+      '</div>';
+    document.getElementById('adwAtypeList').appendChild(row);
+    cancelAddAtype();
+  }
+</script>
