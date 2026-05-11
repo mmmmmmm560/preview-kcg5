@@ -342,6 +342,66 @@
     cursor: pointer;
   }
 
+  /* REGISTER & FORGOT */
+  .reg-back {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    margin-bottom: 4px;
+    display: inline-block;
+    transition: color 0.15s;
+  }
+
+  .reg-back:hover {
+    color: #5DCAA5;
+  }
+
+  .reg-pw-wrap {
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .reg-pw-wrap .linput {
+    margin-bottom: 0;
+  }
+
+  .reg-pw-eye {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+  }
+
+  .reg-pw-eye:hover {
+    opacity: 1;
+  }
+
+  .reg-terms {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 14px 0 16px;
+    line-height: 1.5;
+  }
+
+  .forgot-ico {
+    font-size: 40px;
+    margin-bottom: 4px;
+  }
+
+  .forgot-sent-box {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(93, 202, 165, 0.25);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    margin-top: 8px;
+  }
+
   /* REWARD HEADER */
   .rh {
     background: linear-gradient(160deg, #0D2040 0%, #0B2E4A 60%, #0A3D32 100%);
@@ -2224,7 +2284,7 @@
     align-items: center;
     gap: 10px;
     padding: 22px 20px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .adw-logo-ico {
@@ -2248,7 +2308,7 @@
 
   .adw-logo-sub {
     font-size: 9px;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     font-family: 'Sarabun', sans-serif;
     font-weight: 400;
   }
@@ -2264,7 +2324,7 @@
   .adw-nav-lbl {
     font-size: 9px;
     font-weight: 700;
-    color: rgba(255,255,255,0.28);
+    color: rgba(255, 255, 255, 0.28);
     letter-spacing: 0.08em;
     padding: 10px 8px 4px;
     text-transform: uppercase;
@@ -2277,16 +2337,28 @@
     padding: 9px 12px;
     border-radius: 10px;
     cursor: pointer;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.55);
     font-size: 13px;
     font-weight: 500;
     transition: all 0.15s;
   }
 
-  .adw-nav-item:hover { background: rgba(255,255,255,0.07); color: #fff; }
-  .adw-nav-item.active { background: rgba(93,202,165,0.18); color: #5DCAA5; font-weight: 600; }
+  .adw-nav-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+  }
 
-  .adw-nav-ico { font-size: 15px; width: 20px; text-align: center; }
+  .adw-nav-item.active {
+    background: rgba(93, 202, 165, 0.18);
+    color: #5DCAA5;
+    font-weight: 600;
+  }
+
+  .adw-nav-ico {
+    font-size: 15px;
+    width: 20px;
+    text-align: center;
+  }
 
   .adw-nav-badge {
     margin-left: auto;
@@ -2300,7 +2372,7 @@
 
   .adw-user {
     padding: 14px 16px;
-    border-top: 1px solid rgba(255,255,255,0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -2310,7 +2382,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg,#FFD166,#f4a261);
+    background: linear-gradient(135deg, #FFD166, #f4a261);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2327,7 +2399,7 @@
 
   .adw-urole {
     font-size: 10px;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
   }
 
   /* Main area */
@@ -2377,7 +2449,7 @@
   }
 
   .adw-export-btn {
-    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -2400,7 +2472,7 @@
   /* KPI row */
   .adw-kpi-row {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 
@@ -2408,17 +2480,28 @@
     background: #fff;
     border-radius: 14px;
     padding: 18px 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     display: flex;
     align-items: flex-start;
     gap: 14px;
     border-left: 4px solid transparent;
   }
 
-  .adw-kpi.green { border-color: #1D9E75; }
-  .adw-kpi.blue  { border-color: #2196F3; }
-  .adw-kpi.amber { border-color: #FFB300; }
-  .adw-kpi.purple{ border-color: #9C27B0; }
+  .adw-kpi.green {
+    border-color: #1D9E75;
+  }
+
+  .adw-kpi.blue {
+    border-color: #2196F3;
+  }
+
+  .adw-kpi.amber {
+    border-color: #FFB300;
+  }
+
+  .adw-kpi.purple {
+    border-color: #9C27B0;
+  }
 
   .adw-kpi-ico {
     width: 42px;
@@ -2431,10 +2514,21 @@
     flex-shrink: 0;
   }
 
-  .adw-kpi.green .adw-kpi-ico { background: #E8F8F2; }
-  .adw-kpi.blue  .adw-kpi-ico { background: #E3F2FD; }
-  .adw-kpi.amber .adw-kpi-ico { background: #FFF8E1; }
-  .adw-kpi.purple .adw-kpi-ico { background: #F3E5F5; }
+  .adw-kpi.green .adw-kpi-ico {
+    background: #E8F8F2;
+  }
+
+  .adw-kpi.blue .adw-kpi-ico {
+    background: #E3F2FD;
+  }
+
+  .adw-kpi.amber .adw-kpi-ico {
+    background: #FFF8E1;
+  }
+
+  .adw-kpi.purple .adw-kpi-ico {
+    background: #F3E5F5;
+  }
 
   .adw-kpi-val {
     font-family: 'Kanit', sans-serif;
@@ -2468,7 +2562,7 @@
     background: #fff;
     border-radius: 14px;
     padding: 20px 22px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   }
 
   .adw-card-ttl {
@@ -2498,7 +2592,9 @@
     margin-bottom: 12px;
   }
 
-  .adw-brow:last-child { margin-bottom: 0; }
+  .adw-brow:last-child {
+    margin-bottom: 0;
+  }
 
   .adw-brow-lbl {
     font-size: 12px;
@@ -2517,7 +2613,7 @@
   .adw-brow-fill {
     height: 8px;
     border-radius: 6px;
-    background: linear-gradient(90deg,#1D9E75,#4DC9A6);
+    background: linear-gradient(90deg, #1D9E75, #4DC9A6);
   }
 
   .adw-brow-pct {
@@ -2550,17 +2646,28 @@
     border-radius: 20px;
   }
 
-  .adw-pill.on   { background: #E1F5EE; color: #1D9E75; }
-  .adw-pill.soon { background: #FFF5D6; color: #B8760A; }
-  .adw-pill.done { background: #F0F4F2; color: #90A4AE; }
+  .adw-pill.on {
+    background: #E1F5EE;
+    color: #1D9E75;
+  }
+
+  .adw-pill.soon {
+    background: #FFF5D6;
+    color: #B8760A;
+  }
+
+  .adw-pill.done {
+    background: #F0F4F2;
+    color: #90A4AE;
+  }
 
   .adw-plus-btn {
     width: 100%;
     margin-top: 14px;
     padding: 10px;
-    border: 2px dashed rgba(29,158,117,0.3);
+    border: 2px dashed rgba(29, 158, 117, 0.3);
     border-radius: 10px;
-    background: rgba(29,158,117,0.04);
+    background: rgba(29, 158, 117, 0.04);
     color: #1D9E75;
     font-family: 'Kanit', sans-serif;
     font-size: 13px;
@@ -2569,7 +2676,9 @@
     transition: background 0.15s;
   }
 
-  .adw-plus-btn:hover { background: rgba(29,158,117,0.09); }
+  .adw-plus-btn:hover {
+    background: rgba(29, 158, 117, 0.09);
+  }
 
   /* Activity type config */
   .adw-atype-desc {
@@ -2588,7 +2697,9 @@
     gap: 8px;
   }
 
-  .adw-atype-row:last-child { border-bottom: none; }
+  .adw-atype-row:last-child {
+    border-bottom: none;
+  }
 
   .adw-atype-left {
     display: flex;
@@ -2651,7 +2762,10 @@
   }
 
   .adw-atype-inp::-webkit-outer-spin-button,
-  .adw-atype-inp::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; }
+  .adw-atype-inp::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
 
   .adw-atype-coin-unit {
     font-size: 10px;
@@ -2673,8 +2787,13 @@
     white-space: nowrap;
   }
 
-  .adw-atype-save:hover { background: #178860; }
-  .adw-atype-save.saved { background: #4CAF50; }
+  .adw-atype-save:hover {
+    background: #178860;
+  }
+
+  .adw-atype-save.saved {
+    background: #4CAF50;
+  }
 
   .adw-atype-del {
     padding: 5px 7px;
@@ -2688,7 +2807,10 @@
     line-height: 1;
   }
 
-  .adw-atype-del:hover { border-color: #f44336; color: #f44336; }
+  .adw-atype-del:hover {
+    border-color: #f44336;
+    color: #f44336;
+  }
 
   /* Add new type inline form */
   .adw-atype-add-form {
@@ -2702,7 +2824,9 @@
     border-radius: 10px;
   }
 
-  .adw-atype-add-form.open { display: flex; }
+  .adw-atype-add-form.open {
+    display: flex;
+  }
 
   .adw-atype-add-row {
     display: flex;
@@ -2737,7 +2861,9 @@
   }
 
   .adw-atype-add-nm-inp:focus,
-  .adw-atype-add-ico-inp:focus { border-color: #1D9E75; }
+  .adw-atype-add-ico-inp:focus {
+    border-color: #1D9E75;
+  }
 
   .adw-atype-add-coins-inp {
     width: 70px;
@@ -2756,9 +2882,14 @@
   }
 
   .adw-atype-add-coins-inp::-webkit-outer-spin-button,
-  .adw-atype-add-coins-inp::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; }
+  .adw-atype-add-coins-inp::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
 
-  .adw-atype-add-coins-inp:focus { border-color: #1D9E75; }
+  .adw-atype-add-coins-inp:focus {
+    border-color: #1D9E75;
+  }
 
   .adw-atype-add-btns {
     display: flex;
@@ -2777,7 +2908,9 @@
     cursor: pointer;
   }
 
-  .adw-atype-confirm-btn:hover { background: #178860; }
+  .adw-atype-confirm-btn:hover {
+    background: #178860;
+  }
 
   .adw-atype-cancel-btn {
     padding: 6px 12px;
@@ -2790,7 +2923,9 @@
     cursor: pointer;
   }
 
-  .adw-atype-cancel-btn:hover { border-color: #90A4AE; }
+  .adw-atype-cancel-btn:hover {
+    border-color: #90A4AE;
+  }
 
   /* News table */
   .adw-table-wrap {
@@ -2822,9 +2957,13 @@
     vertical-align: middle;
   }
 
-  .adw-table tr:last-child td { border-bottom: none; }
+  .adw-table tr:last-child td {
+    border-bottom: none;
+  }
 
-  .adw-table tr:hover td { background: #FAFCFC; }
+  .adw-table tr:hover td {
+    background: #FAFCFC;
+  }
 
   .adw-tbl-btn {
     width: 28px;
@@ -2836,7 +2975,9 @@
     font-size: 13px;
   }
 
-  .adw-tbl-btn:hover { background: #F0F4F8; }
+  .adw-tbl-btn:hover {
+    background: #F0F4F8;
+  }
 
   /* Form inside card */
   .adw-form-grid {
@@ -2870,7 +3011,10 @@
     transition: border-color 0.2s;
   }
 
-  .adw-inp:focus { border-color: #1D9E75; background: #fff; }
+  .adw-inp:focus {
+    border-color: #1D9E75;
+    background: #fff;
+  }
 
   .adw-cat-row {
     display: flex;
@@ -2890,13 +3034,17 @@
     transition: all 0.15s;
   }
 
-  .adw-cat-opt.sel { background: #1D9E75; color: #fff; border-color: #1D9E75; }
+  .adw-cat-opt.sel {
+    background: #1D9E75;
+    color: #fff;
+    border-color: #1D9E75;
+  }
 
   .adw-submit-btn {
     padding: 10px 24px;
     border: none;
     border-radius: 9px;
-    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
     color: #fff;
     font-family: 'Kanit', sans-serif;
     font-size: 13px;
@@ -2905,8 +3053,13 @@
   }
 
   /* ══ EMPLOYEE PAGE ══ */
-  .adw-pg { display: none; }
-  .adw-pg.adw-pg-active { display: contents; }
+  .adw-pg {
+    display: none;
+  }
+
+  .adw-pg.adw-pg-active {
+    display: contents;
+  }
 
   .emp-toolbar {
     display: flex;
@@ -2929,9 +3082,14 @@
     transition: border-color 0.2s;
   }
 
-  .emp-search-wrap:focus-within { border-color: #1D9E75; }
+  .emp-search-wrap:focus-within {
+    border-color: #1D9E75;
+  }
 
-  .emp-search-ico { font-size: 14px; color: #90A4AE; }
+  .emp-search-ico {
+    font-size: 14px;
+    color: #90A4AE;
+  }
 
   .emp-search-inp {
     border: none;
@@ -2956,13 +3114,15 @@
     cursor: pointer;
   }
 
-  .emp-filter-sel:focus { border-color: #1D9E75; }
+  .emp-filter-sel:focus {
+    border-color: #1D9E75;
+  }
 
   .emp-add-btn {
     padding: 9px 18px;
     border: none;
     border-radius: 9px;
-    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
     color: #fff;
     font-family: 'Kanit', sans-serif;
     font-size: 13px;
@@ -2973,7 +3133,9 @@
     transition: opacity 0.15s;
   }
 
-  .emp-add-btn:hover { opacity: 0.88; }
+  .emp-add-btn:hover {
+    opacity: 0.88;
+  }
 
   .emp-count-lbl {
     font-size: 11px;
@@ -2987,13 +3149,15 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(13,31,64,0.45);
+    background: rgba(13, 31, 64, 0.45);
     z-index: 9000;
     align-items: center;
     justify-content: center;
   }
 
-  .emp-modal-overlay.open { display: flex; }
+  .emp-modal-overlay.open {
+    display: flex;
+  }
 
   .emp-modal {
     background: #fff;
@@ -3001,7 +3165,7 @@
     padding: 28px 28px 24px;
     width: 520px;
     max-width: calc(100vw - 40px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
     position: relative;
   }
 
@@ -3024,7 +3188,9 @@
     line-height: 1;
   }
 
-  .emp-modal-close:hover { color: #0D1F40; }
+  .emp-modal-close:hover {
+    color: #0D1F40;
+  }
 
   .emp-form-grid {
     display: grid;
@@ -3059,7 +3225,10 @@
   }
 
   .emp-fld input:focus,
-  .emp-fld select:focus { border-color: #1D9E75; background: #fff; }
+  .emp-fld select:focus {
+    border-color: #1D9E75;
+    background: #fff;
+  }
 
   .emp-modal-footer {
     display: flex;
@@ -3078,13 +3247,15 @@
     cursor: pointer;
   }
 
-  .emp-modal-cancel:hover { border-color: #90A4AE; }
+  .emp-modal-cancel:hover {
+    border-color: #90A4AE;
+  }
 
   .emp-modal-save {
     padding: 9px 22px;
     border: none;
     border-radius: 9px;
-    background: linear-gradient(135deg,#1D9E75,#4DC9A6);
+    background: linear-gradient(135deg, #1D9E75, #4DC9A6);
     color: #fff;
     font-family: 'Kanit', sans-serif;
     font-size: 13px;
@@ -3093,7 +3264,9 @@
     transition: opacity 0.15s;
   }
 
-  .emp-modal-save:hover { opacity: 0.88; }
+  .emp-modal-save:hover {
+    opacity: 0.88;
+  }
 
   /* Pagination */
   .emp-pagination {
@@ -3118,9 +3291,21 @@
     transition: all 0.12s;
   }
 
-  .emp-pg-btn:hover { border-color: #1D9E75; color: #1D9E75; }
-  .emp-pg-btn.cur   { background: #1D9E75; color: #fff; border-color: #1D9E75; }
-  .emp-pg-btn:disabled { opacity: 0.35; cursor: default; }
+  .emp-pg-btn:hover {
+    border-color: #1D9E75;
+    color: #1D9E75;
+  }
+
+  .emp-pg-btn.cur {
+    background: #1D9E75;
+    color: #fff;
+    border-color: #1D9E75;
+  }
+
+  .emp-pg-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
 
   /* ══ ADMIN SCREEN (legacy mobile — kept for reference) ══ */
   .adm-hdr {
@@ -3806,8 +3991,8 @@
           <div class="ltitle">เชื่อมสุข<br><span>SookSync</span></div>
           <div class="lsub">เชื่อมทุกข้อมูลร่างกาย สู่สุขภาพที่เข้าใจคุณ</div>
           <!-- <div class="wbox"> -->
-            <!-- <span style="font-size:17px;">❤️</span> -->
-            <!-- <span style="font-size:10px;color:#5DCAA5;font-weight:600;margin-top:2px;">
+          <!-- <span style="font-size:17px;">❤️</span> -->
+          <!-- <span style="font-size:10px;color:#5DCAA5;font-weight:600;margin-top:2px;">
               Good Heart
             </span> -->
           <!-- </div> -->
@@ -3816,11 +4001,12 @@
             <input class="linput" type="email" placeholder="your@email.com" value="sorrawit@sooksync.th" />
             <label class="llbl">รหัสผ่าน / Password</label>
             <input class="linput" type="password" value="••••••••" />
-            <div class="lfgt">ลืมรหัสผ่าน?</div>
+            <div class="lfgt" onclick="go('forgot')" style="cursor:pointer;">ลืมรหัสผ่าน?</div>
             <button class="lbtn" onclick="go('reward')">เข้าสู่ระบบ →</button>
             <div class="ldiv">
             </div>
-            <div class="signup">ยังไม่มีบัญชี? <span class="slink">สมัครสมาชิก</span></div>
+            <div class="signup">ยังไม่มีบัญชี? <span class="slink" onclick="go('register')"
+                style="cursor:pointer;">สมัครสมาชิก</span></div>
             <button class="thaid-btn" onclick="go('reward')">🪪 เข้าสู่ระบบด้วย ThaiID</button>
             <div class="admin-lnk" onclick="go('admin')">ผู้ดูแลระบบ? <span>เข้าสู่ระบบ Admin →</span></div>
           </div>
@@ -3829,6 +4015,123 @@
       <div class="bnav">
         <div class="bn active">
           <div class="bn-iw">🔐</div><span class="bn-lb">Login</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REGISTER ══ -->
+  <div class="screen" id="screen-register">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="lbg" style="min-height:700px;">
+        <svg class="lmesh" viewBox="0 0 360 530">
+          <g opacity=".32">
+            <circle cx="40" cy="80" r="3" fill="#5DCAA5" />
+            <circle cx="288" cy="70" r="3" fill="#4DC9A6" />
+            <circle cx="323" cy="126" r="3" fill="#5DCAA5" />
+            <circle cx="308" cy="206" r="3" fill="#5DCAA5" />
+          </g>
+          <g stroke="#5DCAA5" stroke-width=".5" opacity=".11">
+            <line x1="40" y1="80" x2="288" y2="70" />
+            <line x1="288" y1="70" x2="323" y2="126" />
+            <line x1="323" y1="126" x2="308" y2="206" />
+          </g>
+          <circle cx="306" cy="432" r="70" fill="rgba(29,158,117,0.06)" />
+          <circle cx="44" cy="468" r="44" fill="rgba(93,202,165,0.04)" />
+        </svg>
+        <div class="lcon">
+          <div class="reg-back" onclick="go('login')">← กลับ</div>
+          <div class="ltitle" style="margin-top:8px;">สมัครสมาชิก<br><span>SookSync</span></div>
+          <div class="lsub">สร้างบัญชีใหม่เพื่อเริ่มต้นดูแลสุขภาพ</div>
+          <div class="lform">
+            <label class="llbl">ชื่อ-นามสกุล</label>
+            <input class="linput" id="regName" type="text" placeholder="ชื่อ นามสกุล" />
+            <label class="llbl">อีเมล</label>
+            <input class="linput" id="regEmail" type="email" placeholder="your@email.com" />
+            <label class="llbl">เบอร์โทรศัพท์</label>
+            <input class="linput" id="regPhone" type="tel" placeholder="08X-XXX-XXXX" />
+            <label class="llbl">รหัสผ่าน</label>
+            <div class="reg-pw-wrap">
+              <input class="linput" id="regPwd" type="password" placeholder="อย่างน้อย 8 ตัวอักษร"
+                style="margin-bottom:0;padding-right:44px;" />
+              <span class="reg-pw-eye" onclick="regTogglePwd('regPwd',this)">👁</span>
+            </div>
+            <label class="llbl" style="margin-top:12px;">ยืนยันรหัสผ่าน</label>
+            <div class="reg-pw-wrap">
+              <input class="linput" id="regPwd2" type="password" placeholder="กรอกรหัสผ่านอีกครั้ง"
+                style="margin-bottom:0;padding-right:44px;" />
+              <span class="reg-pw-eye" onclick="regTogglePwd('regPwd2',this)">👁</span>
+            </div>
+            <div class="reg-terms">
+              <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;">
+                <input type="checkbox" id="regTerms" style="margin-top:2px;accent-color:#1D9E75;" />
+                <span>ฉันยอมรับ <span style="color:#5DCAA5;font-weight:600;">เงื่อนไขการใช้งาน</span> และ <span
+                    style="color:#5DCAA5;font-weight:600;">นโยบายความเป็นส่วนตัว</span></span>
+              </label>
+            </div>
+            <button class="lbtn" onclick="regSubmit()">สมัครสมาชิก →</button>
+            <div class="signup" style="margin-top:12px;">มีบัญชีอยู่แล้ว? <span class="slink" onclick="go('login')"
+                style="cursor:pointer;">เข้าสู่ระบบ</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bnav">
+        <div class="bn active">
+          <div class="bn-iw">📝</div><span class="bn-lb">สมัคร</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FORGOT PASSWORD ══ -->
+  <div class="screen" id="screen-forgot">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="lbg">
+        <svg class="lmesh" viewBox="0 0 360 530">
+          <g opacity=".32">
+            <circle cx="110" cy="44" r="3" fill="#5DCAA5" />
+            <circle cx="288" cy="70" r="3" fill="#4DC9A6" />
+            <circle cx="26" cy="186" r="3" fill="#4DC9A6" />
+          </g>
+          <g stroke="#5DCAA5" stroke-width=".5" opacity=".11">
+            <line x1="110" y1="44" x2="288" y2="70" />
+            <line x1="26" y1="186" x2="110" y2="44" />
+          </g>
+          <circle cx="306" cy="432" r="70" fill="rgba(29,158,117,0.06)" />
+          <circle cx="44" cy="468" r="44" fill="rgba(93,202,165,0.04)" />
+        </svg>
+        <div class="lcon">
+          <div class="reg-back" onclick="go('login')">← กลับ</div>
+          <div class="forgot-ico">🔑</div>
+          <div class="ltitle" style="margin-top:8px;">ลืมรหัสผ่าน<br><span>SookSync</span></div>
+          <div class="lsub">กรอกอีเมลที่ลงทะเบียนไว้<br>ระบบจะส่งลิงก์รีเซ็ตรหัสผ่านให้</div>
+          <div class="lform" id="forgotFormStep1">
+            <label class="llbl">อีเมล</label>
+            <input class="linput" id="forgotEmail" type="email" placeholder="your@email.com" />
+            <button class="lbtn" style="margin-top:8px;" onclick="forgotSubmit()">ส่งลิงก์รีเซ็ต →</button>
+            <div class="signup" style="margin-top:12px;">จำรหัสผ่านได้แล้ว? <span class="slink" onclick="go('login')"
+                style="cursor:pointer;">เข้าสู่ระบบ</span></div>
+          </div>
+          <div class="lform" id="forgotFormStep2" style="display:none;">
+            <div class="forgot-sent-box">
+              <div style="font-size:36px;margin-bottom:8px;">📧</div>
+              <div style="font-weight:700;color:#fff;font-size:15px;margin-bottom:6px;">ส่งอีเมลแล้ว!</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.6;">ตรวจสอบกล่องจดหมาย<br><span
+                  id="forgotEmailShow" style="color:#5DCAA5;font-weight:600;"></span><br>และกดลิงก์เพื่อรีเซ็ตรหัสผ่าน
+              </div>
+            </div>
+            <button class="lbtn" style="margin-top:20px;background:rgba(255,255,255,0.1);" onclick="go('login')">←
+              กลับหน้าเข้าสู่ระบบ</button>
+            <div class="signup" style="margin-top:10px;"><span class="slink" onclick="forgotResend()"
+                style="cursor:pointer;">ส่งอีกครั้ง</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bnav">
+        <div class="bn active">
+          <div class="bn-iw">🔑</div><span class="bn-lb">ลืมรหัส</span>
         </div>
       </div>
     </div>
@@ -3895,7 +4198,7 @@
         <div style="height:10px;"></div>
       </div>
       <div class="rb">
-        <div class="srow"><span class="stitle">ภารกิจวันนี้</span><span class="slink2">ดูทั้งหมด →</span></div>
+        <div class="srow"><span class="stitle">ภารกิจวันนี้</span></div>
         <div class="mlist">
           <div class="mi done" onclick="completeMission(this,50)">
             <div class="mibar"></div>
@@ -4202,10 +4505,17 @@
           <div>
             <div class="aittl">AI Insight ของวันนี้</div>
             <div class="aibdy">
-              <p style="margin:0 0 8px;">อัตราการเต้นหัวใจขณะพักของคุณลดลงเหลือ <strong>62 bpm</strong> ดีขึ้น 5% จากสัปดาห์ที่แล้ว ซึ่งบ่งชี้ว่าสุขภาพหัวใจและหลอดเลือดของคุณกำลังพัฒนาขึ้นอย่างต่อเนื่อง</p>
-              <p style="margin:0 0 8px;">📈 <strong>แนวโน้มการออกกำลังกาย:</strong> คุณออกกำลังกาย 5 วันจาก 7 วันในสัปดาห์นี้ เฉลี่ย 38 นาทีต่อวัน ช่วงเวลาที่คุณออกกำลังกายได้ดีที่สุดคือ <strong>07:00–08:30 น.</strong> ซึ่งตรงกับจังหวะร่างกายของคุณ ลองกำหนดตารางในช่วงนี้สม่ำเสมอเพื่อผลลัพธ์ที่ดียิ่งขึ้น</p>
-              <p style="margin:0 0 8px;">🔥 <strong>การเผาผลาญ:</strong> แคลลอรี่ที่เผาผลาญวันนี้ (320 kcal) ยังต่ำกว่าเป้าหมาย 500 kcal อยู่ 36% แนะนำให้เพิ่มกิจกรรมเบาๆ เช่น เดินหลังอาหารกลางวัน 15 นาที หรือขึ้นบันไดแทนลิฟต์ เพื่อช่วยเพิ่มค่านี้โดยไม่ต้องออกกำลังกายหนักเพิ่ม</p>
-              <p style="margin:0;">😴 <strong>การนอนหลับ:</strong> การนอนคืนที่แล้ว 7h 32m ใกล้เคียงกับช่วงอุดมคติ 7–8 ชั่วโมง อย่างไรก็ตาม สัดส่วน Deep Sleep ของคุณอยู่ที่ประมาณ 18% ซึ่งค่อนข้างน้อย ลองหลีกเลี่ยงหน้าจอก่อนนอน 30 นาที และปรับอุณหภูมิห้องให้อยู่ที่ 22–24°C เพื่อเพิ่มคุณภาพการนอน</p>
+              <p style="margin:0 0 8px;">อัตราการเต้นหัวใจขณะพักของคุณลดลงเหลือ <strong>62 bpm</strong> ดีขึ้น 5%
+                จากสัปดาห์ที่แล้ว ซึ่งบ่งชี้ว่าสุขภาพหัวใจและหลอดเลือดของคุณกำลังพัฒนาขึ้นอย่างต่อเนื่อง</p>
+              <p style="margin:0 0 8px;">📈 <strong>แนวโน้มการออกกำลังกาย:</strong> คุณออกกำลังกาย 5 วันจาก 7
+                วันในสัปดาห์นี้ เฉลี่ย 38 นาทีต่อวัน ช่วงเวลาที่คุณออกกำลังกายได้ดีที่สุดคือ <strong>07:00–08:30
+                  น.</strong> ซึ่งตรงกับจังหวะร่างกายของคุณ ลองกำหนดตารางในช่วงนี้สม่ำเสมอเพื่อผลลัพธ์ที่ดียิ่งขึ้น</p>
+              <p style="margin:0 0 8px;">🔥 <strong>การเผาผลาญ:</strong> แคลลอรี่ที่เผาผลาญวันนี้ (320 kcal)
+                ยังต่ำกว่าเป้าหมาย 500 kcal อยู่ 36% แนะนำให้เพิ่มกิจกรรมเบาๆ เช่น เดินหลังอาหารกลางวัน 15 นาที
+                หรือขึ้นบันไดแทนลิฟต์ เพื่อช่วยเพิ่มค่านี้โดยไม่ต้องออกกำลังกายหนักเพิ่ม</p>
+              <p style="margin:0;">😴 <strong>การนอนหลับ:</strong> การนอนคืนที่แล้ว 7h 32m ใกล้เคียงกับช่วงอุดมคติ 7–8
+                ชั่วโมง อย่างไรก็ตาม สัดส่วน Deep Sleep ของคุณอยู่ที่ประมาณ 18% ซึ่งค่อนข้างน้อย
+                ลองหลีกเลี่ยงหน้าจอก่อนนอน 30 นาที และปรับอุณหภูมิห้องให้อยู่ที่ 22–24°C เพื่อเพิ่มคุณภาพการนอน</p>
             </div>
           </div>
         </div>
@@ -4272,357 +4582,386 @@
         <!-- ─── DASHBOARD PAGE ─── -->
         <div class="adw-pg adw-pg-active" id="adw-pg-dashboard">
 
-        <!-- Top bar -->
-        <div class="adw-topbar">
-          <div>
-            <div class="adw-page-ttl">Dashboard ภาพรวม</div>
-            <div class="adw-page-sub">SookSync · ข้อมูลสุขภาพองค์กร อัปเดตล่าสุด 11 พ.ค. 2568</div>
-          </div>
-          <div class="adw-topbar-right">
-            <div class="adw-date-chip">📅 มิถุนายน 2568</div>
-            <button class="adw-export-btn">⬇ Export รายงาน</button>
-          </div>
-        </div>
-
-        <!-- Content -->
-        <div class="adw-content">
-
-          <!-- KPI Cards -->
-          <div class="adw-kpi-row">
-            <div class="adw-kpi green">
-              <div class="adw-kpi-ico">👥</div>
-              <div>
-                <div class="adw-kpi-val">247</div>
-                <div class="adw-kpi-lbl">พนักงานทั้งหมด</div>
-                <div class="adw-kpi-trend">↑ +3 เดือนนี้</div>
-              </div>
+          <!-- Top bar -->
+          <div class="adw-topbar">
+            <div>
+              <div class="adw-page-ttl">Dashboard ภาพรวม</div>
+              <div class="adw-page-sub">SookSync · ข้อมูลสุขภาพองค์กร อัปเดตล่าสุด 11 พ.ค. 2568</div>
             </div>
-            <div class="adw-kpi blue">
-              <div class="adw-kpi-ico">⚡</div>
-              <div>
-                <div class="adw-kpi-val">189</div>
-                <div class="adw-kpi-lbl">Active วันนี้</div>
-                <div class="adw-kpi-trend">↑ 76.5% engagement</div>
-              </div>
-            </div>
-            <div class="adw-kpi amber">
-              <div class="adw-kpi-ico">🚶</div>
-              <div>
-                <div class="adw-kpi-val">7,842</div>
-                <div class="adw-kpi-lbl">ก้าวเฉลี่ย / วัน</div>
-                <div class="adw-kpi-trend">↑ +12% vs เดือนก่อน</div>
-              </div>
-            </div>
-            <div class="adw-kpi purple">
-              <div class="adw-kpi-ico">❤️</div>
-              <div>
-                <div class="adw-kpi-val">82</div>
-                <div class="adw-kpi-lbl">Health Score เฉลี่ย</div>
-                <div class="adw-kpi-trend">เป้าหมาย 85 · +3 ต้องการ</div>
-              </div>
+            <div class="adw-topbar-right">
+              <div class="adw-date-chip">📅 มิถุนายน 2568</div>
+              <button class="adw-export-btn">⬇ Export รายงาน</button>
             </div>
           </div>
 
-          <!-- Row 2: Activity Chart + Activity Management -->
-          <div class="adw-grid2">
+          <!-- Content -->
+          <div class="adw-content">
 
-            <!-- Activity completion -->
-            <div class="adw-card">
-              <div class="adw-card-ttl">
-                📊 สรุปการทำกิจกรรม (วันนี้)
-                <span class="adw-card-lnk">ดูรายงานเต็ม →</span>
+            <!-- KPI Cards -->
+            <div class="adw-kpi-row">
+              <div class="adw-kpi green">
+                <div class="adw-kpi-ico">👥</div>
+                <div>
+                  <div class="adw-kpi-val">247</div>
+                  <div class="adw-kpi-lbl">พนักงานทั้งหมด</div>
+                  <div class="adw-kpi-trend">↑ +3 เดือนนี้</div>
+                </div>
               </div>
-              <div class="adw-brow">
-                <div class="adw-brow-lbl">การเดิน</div>
-                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:74%;"></div></div>
-                <div class="adw-brow-pct">74%</div>
-                <div class="adw-brow-cnt">183 คน</div>
+              <div class="adw-kpi blue">
+                <div class="adw-kpi-ico">⚡</div>
+                <div>
+                  <div class="adw-kpi-val">189</div>
+                  <div class="adw-kpi-lbl">Active วันนี้</div>
+                  <div class="adw-kpi-trend">↑ 76.5% engagement</div>
+                </div>
               </div>
-              <div class="adw-brow">
-                <div class="adw-brow-lbl">ออกกำลังกาย</div>
-                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:61%;background:linear-gradient(90deg,#2196F3,#64B5F6);"></div></div>
-                <div class="adw-brow-pct">61%</div>
-                <div class="adw-brow-cnt">151 คน</div>
+              <div class="adw-kpi amber">
+                <div class="adw-kpi-ico">🚶</div>
+                <div>
+                  <div class="adw-kpi-val">7,842</div>
+                  <div class="adw-kpi-lbl">ก้าวเฉลี่ย / วัน</div>
+                  <div class="adw-kpi-trend">↑ +12% vs เดือนก่อน</div>
+                </div>
               </div>
-              <div class="adw-brow">
-                <div class="adw-brow-lbl">ดื่มน้ำ 2L</div>
-                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:57%;background:linear-gradient(90deg,#00BCD4,#80DEEA);"></div></div>
-                <div class="adw-brow-pct">57%</div>
-                <div class="adw-brow-cnt">141 คน</div>
-              </div>
-              <div class="adw-brow">
-                <div class="adw-brow-lbl">นอนหลับ 7h+</div>
-                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:39%;background:linear-gradient(90deg,#9C27B0,#CE93D8);"></div></div>
-                <div class="adw-brow-pct">39%</div>
-                <div class="adw-brow-cnt">96 คน</div>
-              </div>
-              <div class="adw-brow">
-                <div class="adw-brow-lbl">สมาธิ</div>
-                <div class="adw-brow-trk"><div class="adw-brow-fill" style="width:28%;background:linear-gradient(90deg,#FF9800,#FFCC02);"></div></div>
-                <div class="adw-brow-pct">28%</div>
-                <div class="adw-brow-cnt">69 คน</div>
+              <div class="adw-kpi purple">
+                <div class="adw-kpi-ico">❤️</div>
+                <div>
+                  <div class="adw-kpi-val">82</div>
+                  <div class="adw-kpi-lbl">Health Score เฉลี่ย</div>
+                  <div class="adw-kpi-trend">เป้าหมาย 85 · +3 ต้องการ</div>
+                </div>
               </div>
             </div>
 
-            <!-- Activity type config -->
-            <div class="adw-card">
-              <div class="adw-card-ttl">
-                🎯 ประเภทของกิจกรรม
-                <span class="adw-card-lnk" style="font-size:11px;color:#90A4AE;font-weight:400;">coins ต่อประเภท</span>
-              </div>
-              <div class="adw-atype-desc">กำหนด coins ที่ผู้ใช้จะได้รับต่อกิจกรรมแต่ละประเภท — รายการกิจกรรมจริงดึงจาก API ภายนอก</div>
-              <div id="adwAtypeList">
-                <div class="adw-atype-row" data-id="run">
-                  <div class="adw-atype-left">
-                    <div class="adw-act-ico">🏃</div>
-                    <div class="adw-atype-nm">วิ่ง</div>
-                  </div>
-                  <div class="adw-atype-right">
-                    <div class="adw-atype-coins-wrap">
-                      <span style="font-size:14px;">🪙</span>
-                      <input class="adw-atype-inp" type="number" value="100" min="0" />
-                      <span class="adw-atype-coin-unit">cdg coins</span>
-                    </div>
-                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
-                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
-                  </div>
+            <!-- Row 2: Activity Chart + Activity Management -->
+            <div class="adw-grid2">
+
+              <!-- Activity completion -->
+              <div class="adw-card">
+                <div class="adw-card-ttl">
+                  📊 สรุปการทำกิจกรรม (วันนี้)
+                  <span class="adw-card-lnk">ดูรายงานเต็ม →</span>
                 </div>
-                <div class="adw-atype-row" data-id="walk">
-                  <div class="adw-atype-left">
-                    <div class="adw-act-ico">🚶</div>
-                    <div class="adw-atype-nm">เดิน</div>
+                <div class="adw-brow">
+                  <div class="adw-brow-lbl">การเดิน</div>
+                  <div class="adw-brow-trk">
+                    <div class="adw-brow-fill" style="width:74%;"></div>
                   </div>
-                  <div class="adw-atype-right">
-                    <div class="adw-atype-coins-wrap">
-                      <span style="font-size:14px;">🪙</span>
-                      <input class="adw-atype-inp" type="number" value="50" min="0" />
-                      <span class="adw-atype-coin-unit">cdg coins</span>
-                    </div>
-                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
-                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
-                  </div>
+                  <div class="adw-brow-pct">74%</div>
+                  <div class="adw-brow-cnt">183 คน</div>
                 </div>
-                <div class="adw-atype-row" data-id="squat">
-                  <div class="adw-atype-left">
-                    <div class="adw-act-ico">🏋️</div>
-                    <div class="adw-atype-nm">สควอต</div>
-                  </div>
-                  <div class="adw-atype-right">
-                    <div class="adw-atype-coins-wrap">
-                      <span style="font-size:14px;">🪙</span>
-                      <input class="adw-atype-inp" type="number" value="80" min="0" />
-                      <span class="adw-atype-coin-unit">cdg coins</span>
+                <div class="adw-brow">
+                  <div class="adw-brow-lbl">ออกกำลังกาย</div>
+                  <div class="adw-brow-trk">
+                    <div class="adw-brow-fill" style="width:61%;background:linear-gradient(90deg,#2196F3,#64B5F6);">
                     </div>
-                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
-                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
                   </div>
+                  <div class="adw-brow-pct">61%</div>
+                  <div class="adw-brow-cnt">151 คน</div>
                 </div>
-                <div class="adw-atype-row" data-id="swim">
-                  <div class="adw-atype-left">
-                    <div class="adw-act-ico">🏊</div>
-                    <div class="adw-atype-nm">ว่ายน้ำ</div>
-                  </div>
-                  <div class="adw-atype-right">
-                    <div class="adw-atype-coins-wrap">
-                      <span style="font-size:14px;">🪙</span>
-                      <input class="adw-atype-inp" type="number" value="120" min="0" />
-                      <span class="adw-atype-coin-unit">cdg coins</span>
+                <div class="adw-brow">
+                  <div class="adw-brow-lbl">ดื่มน้ำ 2L</div>
+                  <div class="adw-brow-trk">
+                    <div class="adw-brow-fill" style="width:57%;background:linear-gradient(90deg,#00BCD4,#80DEEA);">
                     </div>
-                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
-                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
                   </div>
+                  <div class="adw-brow-pct">57%</div>
+                  <div class="adw-brow-cnt">141 คน</div>
                 </div>
-                <div class="adw-atype-row" data-id="cycle">
-                  <div class="adw-atype-left">
-                    <div class="adw-act-ico">🚴</div>
-                    <div class="adw-atype-nm">ปั่นจักรยาน</div>
-                  </div>
-                  <div class="adw-atype-right">
-                    <div class="adw-atype-coins-wrap">
-                      <span style="font-size:14px;">🪙</span>
-                      <input class="adw-atype-inp" type="number" value="90" min="0" />
-                      <span class="adw-atype-coin-unit">cdg coins</span>
+                <div class="adw-brow">
+                  <div class="adw-brow-lbl">นอนหลับ 7h+</div>
+                  <div class="adw-brow-trk">
+                    <div class="adw-brow-fill" style="width:39%;background:linear-gradient(90deg,#9C27B0,#CE93D8);">
                     </div>
-                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
-                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
                   </div>
+                  <div class="adw-brow-pct">39%</div>
+                  <div class="adw-brow-cnt">96 คน</div>
                 </div>
-                <div class="adw-atype-row" data-id="yoga">
-                  <div class="adw-atype-left">
-                    <div class="adw-act-ico">🧘</div>
-                    <div class="adw-atype-nm">โยคะ</div>
-                  </div>
-                  <div class="adw-atype-right">
-                    <div class="adw-atype-coins-wrap">
-                      <span style="font-size:14px;">🪙</span>
-                      <input class="adw-atype-inp" type="number" value="70" min="0" />
-                      <span class="adw-atype-coin-unit">cdg coins</span>
+                <div class="adw-brow">
+                  <div class="adw-brow-lbl">สมาธิ</div>
+                  <div class="adw-brow-trk">
+                    <div class="adw-brow-fill" style="width:28%;background:linear-gradient(90deg,#FF9800,#FFCC02);">
                     </div>
-                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
-                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
                   </div>
-                </div>
-                <div class="adw-atype-row" data-id="pushup">
-                  <div class="adw-atype-left">
-                    <div class="adw-act-ico">💪</div>
-                    <div class="adw-atype-nm">วิดพื้น</div>
-                  </div>
-                  <div class="adw-atype-right">
-                    <div class="adw-atype-coins-wrap">
-                      <span style="font-size:14px;">🪙</span>
-                      <input class="adw-atype-inp" type="number" value="60" min="0" />
-                      <span class="adw-atype-coin-unit">cdg coins</span>
-                    </div>
-                    <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
-                    <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
-                  </div>
+                  <div class="adw-brow-pct">28%</div>
+                  <div class="adw-brow-cnt">69 คน</div>
                 </div>
               </div>
 
-              <!-- Inline add form -->
-              <div class="adw-atype-add-form" id="adwAtypeAddForm">
-                <div class="adw-atype-add-row" style="align-items:flex-start;gap:12px;">
-                  <!-- Emoji picker -->
-                  <div style="display:flex;flex-direction:column;gap:6px;position:relative;">
-                    <div style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;">ไอคอน</div>
-                    <div id="adwEmojiPreview" style="width:44px;height:44px;border:1.5px solid #1D9E75;border-radius:10px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;user-select:none;" onclick="adwToggleEmojiPicker()" title="เลือก emoji">🏅</div>
-                    <div id="adwEmojiPicker" style="display:none;position:absolute;top:100%;left:0;margin-top:6px;z-index:200;background:#fff;border:1.5px solid #E2EAF0;border-radius:12px;padding:10px;box-shadow:0 6px 24px rgba(0,0,0,0.15);width:224px;max-height:220px;overflow-y:auto;">
-                      <div style="font-size:10px;font-weight:700;color:#90A4AE;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">เลือก emoji</div>
-                      <div id="adwEmojiGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;"></div>
+              <!-- Activity type config -->
+              <div class="adw-card">
+                <div class="adw-card-ttl">
+                  🎯 ประเภทของกิจกรรม
+                  <span class="adw-card-lnk" style="font-size:11px;color:#90A4AE;font-weight:400;">coins
+                    ต่อประเภท</span>
+                </div>
+                <div class="adw-atype-desc">กำหนด coins ที่ผู้ใช้จะได้รับต่อกิจกรรมแต่ละประเภท — รายการกิจกรรมจริงดึงจาก
+                  API ภายนอก</div>
+                <div id="adwAtypeList">
+                  <div class="adw-atype-row" data-id="run">
+                    <div class="adw-atype-left">
+                      <div class="adw-act-ico">🏃</div>
+                      <div class="adw-atype-nm">วิ่ง</div>
+                    </div>
+                    <div class="adw-atype-right">
+                      <div class="adw-atype-coins-wrap">
+                        <span style="font-size:14px;">🪙</span>
+                        <input class="adw-atype-inp" type="number" value="100" min="0" />
+                        <span class="adw-atype-coin-unit">cdg coins</span>
+                      </div>
+                      <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                      <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
                     </div>
                   </div>
-                  <!-- Name + Coins -->
-                  <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
-                    <div style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;">ชื่อประเภท</div>
-                    <input class="adw-atype-add-nm-inp" id="adwNewNm" type="text" placeholder="เช่น เต้น, บอดี้เวท..." />
-                    <div style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;margin-top:2px;">cdg coins ที่ได้รับ</div>
-                    <input class="adw-atype-add-coins-inp" id="adwNewCoins" type="number" min="0" placeholder="0" style="width:100%;box-sizing:border-box;" />
+                  <div class="adw-atype-row" data-id="walk">
+                    <div class="adw-atype-left">
+                      <div class="adw-act-ico">🚶</div>
+                      <div class="adw-atype-nm">เดิน</div>
+                    </div>
+                    <div class="adw-atype-right">
+                      <div class="adw-atype-coins-wrap">
+                        <span style="font-size:14px;">🪙</span>
+                        <input class="adw-atype-inp" type="number" value="50" min="0" />
+                        <span class="adw-atype-coin-unit">cdg coins</span>
+                      </div>
+                      <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                      <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                    </div>
+                  </div>
+                  <div class="adw-atype-row" data-id="squat">
+                    <div class="adw-atype-left">
+                      <div class="adw-act-ico">🏋️</div>
+                      <div class="adw-atype-nm">สควอต</div>
+                    </div>
+                    <div class="adw-atype-right">
+                      <div class="adw-atype-coins-wrap">
+                        <span style="font-size:14px;">🪙</span>
+                        <input class="adw-atype-inp" type="number" value="80" min="0" />
+                        <span class="adw-atype-coin-unit">cdg coins</span>
+                      </div>
+                      <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                      <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                    </div>
+                  </div>
+                  <div class="adw-atype-row" data-id="swim">
+                    <div class="adw-atype-left">
+                      <div class="adw-act-ico">🏊</div>
+                      <div class="adw-atype-nm">ว่ายน้ำ</div>
+                    </div>
+                    <div class="adw-atype-right">
+                      <div class="adw-atype-coins-wrap">
+                        <span style="font-size:14px;">🪙</span>
+                        <input class="adw-atype-inp" type="number" value="120" min="0" />
+                        <span class="adw-atype-coin-unit">cdg coins</span>
+                      </div>
+                      <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                      <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                    </div>
+                  </div>
+                  <div class="adw-atype-row" data-id="cycle">
+                    <div class="adw-atype-left">
+                      <div class="adw-act-ico">🚴</div>
+                      <div class="adw-atype-nm">ปั่นจักรยาน</div>
+                    </div>
+                    <div class="adw-atype-right">
+                      <div class="adw-atype-coins-wrap">
+                        <span style="font-size:14px;">🪙</span>
+                        <input class="adw-atype-inp" type="number" value="90" min="0" />
+                        <span class="adw-atype-coin-unit">cdg coins</span>
+                      </div>
+                      <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                      <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                    </div>
+                  </div>
+                  <div class="adw-atype-row" data-id="yoga">
+                    <div class="adw-atype-left">
+                      <div class="adw-act-ico">🧘</div>
+                      <div class="adw-atype-nm">โยคะ</div>
+                    </div>
+                    <div class="adw-atype-right">
+                      <div class="adw-atype-coins-wrap">
+                        <span style="font-size:14px;">🪙</span>
+                        <input class="adw-atype-inp" type="number" value="70" min="0" />
+                        <span class="adw-atype-coin-unit">cdg coins</span>
+                      </div>
+                      <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                      <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                    </div>
+                  </div>
+                  <div class="adw-atype-row" data-id="pushup">
+                    <div class="adw-atype-left">
+                      <div class="adw-act-ico">💪</div>
+                      <div class="adw-atype-nm">วิดพื้น</div>
+                    </div>
+                    <div class="adw-atype-right">
+                      <div class="adw-atype-coins-wrap">
+                        <span style="font-size:14px;">🪙</span>
+                        <input class="adw-atype-inp" type="number" value="60" min="0" />
+                        <span class="adw-atype-coin-unit">cdg coins</span>
+                      </div>
+                      <button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>
+                      <button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>
+                    </div>
                   </div>
                 </div>
-                <div class="adw-atype-add-btns" style="margin-top:4px;">
-                  <button class="adw-atype-confirm-btn" onclick="confirmAddAtype()">+ เพิ่ม</button>
-                  <button class="adw-atype-cancel-btn" onclick="cancelAddAtype()">ยกเลิก</button>
-                </div>
-              </div>
 
-              <button class="adw-plus-btn" id="adwAtypeAddBtn" onclick="openAddAtypeForm()">+ เพิ่มประเภทใหม่</button>
-
-            </div>
-          </div>
-
-          <!-- Row 3: Add article form + News table -->
-          <div class="adw-grid2">
-
-            <!-- Add article form -->
-            <div class="adw-card">
-              <div class="adw-card-ttl">✏️ เพิ่มบทความใหม่</div>
-              <div class="adw-form-grid">
-                <div class="adw-fld" style="grid-column:1/-1;">
-                  <label>ชื่อบทความ</label>
-                  <input class="adw-inp" type="text" placeholder="ระบุชื่อบทความ..." />
+                <!-- Inline add form -->
+                <div class="adw-atype-add-form" id="adwAtypeAddForm">
+                  <div class="adw-atype-add-row" style="align-items:flex-start;gap:12px;">
+                    <!-- Emoji picker -->
+                    <div style="display:flex;flex-direction:column;gap:6px;position:relative;">
+                      <div
+                        style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;">
+                        ไอคอน</div>
+                      <div id="adwEmojiPreview"
+                        style="width:44px;height:44px;border:1.5px solid #1D9E75;border-radius:10px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;user-select:none;"
+                        onclick="adwToggleEmojiPicker()" title="เลือก emoji">🏅</div>
+                      <div id="adwEmojiPicker"
+                        style="display:none;position:absolute;top:100%;left:0;margin-top:6px;z-index:200;background:#fff;border:1.5px solid #E2EAF0;border-radius:12px;padding:10px;box-shadow:0 6px 24px rgba(0,0,0,0.15);width:224px;max-height:220px;overflow-y:auto;">
+                        <div
+                          style="font-size:10px;font-weight:700;color:#90A4AE;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">
+                          เลือก emoji</div>
+                        <div id="adwEmojiGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;"></div>
+                      </div>
+                    </div>
+                    <!-- Name + Coins -->
+                    <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+                      <div
+                        style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;">
+                        ชื่อประเภท</div>
+                      <input class="adw-atype-add-nm-inp" id="adwNewNm" type="text"
+                        placeholder="เช่น เต้น, บอดี้เวท..." />
+                      <div
+                        style="font-size:10px;font-weight:700;color:#546E7A;text-transform:uppercase;letter-spacing:0.04em;margin-top:2px;">
+                        cdg coins ที่ได้รับ</div>
+                      <input class="adw-atype-add-coins-inp" id="adwNewCoins" type="number" min="0" placeholder="0"
+                        style="width:100%;box-sizing:border-box;" />
+                    </div>
+                  </div>
+                  <div class="adw-atype-add-btns" style="margin-top:4px;">
+                    <button class="adw-atype-confirm-btn" onclick="confirmAddAtype()">+ เพิ่ม</button>
+                    <button class="adw-atype-cancel-btn" onclick="cancelAddAtype()">ยกเลิก</button>
+                  </div>
                 </div>
-                <div class="adw-fld">
-                  <label>URL บทความ</label>
-                  <input class="adw-inp" type="url" placeholder="https://..." />
-                </div>
-                <div class="adw-fld">
-                  <label>วันที่เผยแพร่</label>
-                  <input class="adw-inp" type="date" />
-                </div>
-              </div>
-              <div class="adw-fld" style="margin-bottom:16px;">
-                <label>ประเภท</label>
-                <div class="adw-cat-row" style="margin-top:6px;">
-                  <div class="adw-cat-opt sel" onclick="this.classList.toggle('sel')">สุขภาพ</div>
-                  <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">อากาศ</div>
-                  <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">ไลฟ์สไตล์</div>
-                  <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">โภชนาการ</div>
-                </div>
-              </div>
-              <button class="adw-submit-btn"
-                onclick="this.textContent='✓ เพิ่มแล้ว!';setTimeout(()=>this.textContent='+ เพิ่มบทความ',1500)">
-                + เพิ่มบทความ
-              </button>
-            </div>
 
-            <!-- News table -->
-            <div class="adw-card">
-              <div class="adw-card-ttl">
-                📋 บทความทั้งหมด
-                <span class="adw-card-lnk">6 รายการ</span>
-              </div>
-              <div class="adw-table-wrap">
-                <table class="adw-table">
-                  <thead>
-                    <tr>
-                      <th>ประเภท</th>
-                      <th>ชื่อบทความ</th>
-                      <th>วันที่</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><span class="adw-pill on">สุขภาพ</span></td>
-                      <td>Heat Stroke ภัยเงียบในหน้าร้อน</td>
-                      <td style="color:#90A4AE;font-size:12px;">1 มิ.ย. 68</td>
-                      <td style="display:flex;gap:4px;">
-                        <button class="adw-tbl-btn">✏️</button>
-                        <button class="adw-tbl-btn">🗑</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="adw-pill on">สุขภาพ</span></td>
-                      <td>PM2.5 ทำให้ค่า SpO2 ตก</td>
-                      <td style="color:#90A4AE;font-size:12px;">28 พ.ค. 68</td>
-                      <td style="display:flex;gap:4px;">
-                        <button class="adw-tbl-btn">✏️</button>
-                        <button class="adw-tbl-btn">🗑</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="adw-pill on">สุขภาพ</span></td>
-                      <td>Smart Life EP.1: นอนหลับกับภูมิแพ้</td>
-                      <td style="color:#90A4AE;font-size:12px;">20 พ.ค. 68</td>
-                      <td style="display:flex;gap:4px;">
-                        <button class="adw-tbl-btn">✏️</button>
-                        <button class="adw-tbl-btn">🗑</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="adw-pill soon">อากาศ</span></td>
-                      <td>Qais Air vs E.coli: ทดสอบในแล็บ</td>
-                      <td style="color:#90A4AE;font-size:12px;">15 พ.ค. 68</td>
-                      <td style="display:flex;gap:4px;">
-                        <button class="adw-tbl-btn">✏️</button>
-                        <button class="adw-tbl-btn">🗑</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="adw-pill soon">อากาศ</span></td>
-                      <td>Qais Air ต้านไวรัสในอากาศได้จริง?</td>
-                      <td style="color:#90A4AE;font-size:12px;">10 พ.ค. 68</td>
-                      <td style="display:flex;gap:4px;">
-                        <button class="adw-tbl-btn">✏️</button>
-                        <button class="adw-tbl-btn">🗑</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="adw-pill done">ไลฟ์สไตล์</span></td>
-                      <td>Alive Service Center: Ultrahuman</td>
-                      <td style="color:#90A4AE;font-size:12px;">2 พ.ค. 68</td>
-                      <td style="display:flex;gap:4px;">
-                        <button class="adw-tbl-btn">✏️</button>
-                        <button class="adw-tbl-btn">🗑</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <button class="adw-plus-btn" id="adwAtypeAddBtn" onclick="openAddAtypeForm()">+ เพิ่มประเภทใหม่</button>
+
               </div>
             </div>
-          </div>
 
-        </div><!-- /adw-content -->
+            <!-- Row 3: Add article form + News table -->
+            <div class="adw-grid2">
+
+              <!-- Add article form -->
+              <div class="adw-card">
+                <div class="adw-card-ttl">✏️ เพิ่มบทความใหม่</div>
+                <div class="adw-form-grid">
+                  <div class="adw-fld" style="grid-column:1/-1;">
+                    <label>ชื่อบทความ</label>
+                    <input class="adw-inp" type="text" placeholder="ระบุชื่อบทความ..." />
+                  </div>
+                  <div class="adw-fld">
+                    <label>URL บทความ</label>
+                    <input class="adw-inp" type="url" placeholder="https://..." />
+                  </div>
+                  <div class="adw-fld">
+                    <label>วันที่เผยแพร่</label>
+                    <input class="adw-inp" type="date" />
+                  </div>
+                </div>
+                <div class="adw-fld" style="margin-bottom:16px;">
+                  <label>ประเภท</label>
+                  <div class="adw-cat-row" style="margin-top:6px;">
+                    <div class="adw-cat-opt sel" onclick="this.classList.toggle('sel')">สุขภาพ</div>
+                    <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">อากาศ</div>
+                    <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">ไลฟ์สไตล์</div>
+                    <div class="adw-cat-opt" onclick="this.classList.toggle('sel')">โภชนาการ</div>
+                  </div>
+                </div>
+                <button class="adw-submit-btn"
+                  onclick="this.textContent='✓ เพิ่มแล้ว!';setTimeout(()=>this.textContent='+ เพิ่มบทความ',1500)">
+                  + เพิ่มบทความ
+                </button>
+              </div>
+
+              <!-- News table -->
+              <div class="adw-card">
+                <div class="adw-card-ttl">
+                  📋 บทความทั้งหมด
+                  <span class="adw-card-lnk">6 รายการ</span>
+                </div>
+                <div class="adw-table-wrap">
+                  <table class="adw-table">
+                    <thead>
+                      <tr>
+                        <th>ประเภท</th>
+                        <th>ชื่อบทความ</th>
+                        <th>วันที่</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="adw-pill on">สุขภาพ</span></td>
+                        <td>Heat Stroke ภัยเงียบในหน้าร้อน</td>
+                        <td style="color:#90A4AE;font-size:12px;">1 มิ.ย. 68</td>
+                        <td style="display:flex;gap:4px;">
+                          <button class="adw-tbl-btn">✏️</button>
+                          <button class="adw-tbl-btn">🗑</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="adw-pill on">สุขภาพ</span></td>
+                        <td>PM2.5 ทำให้ค่า SpO2 ตก</td>
+                        <td style="color:#90A4AE;font-size:12px;">28 พ.ค. 68</td>
+                        <td style="display:flex;gap:4px;">
+                          <button class="adw-tbl-btn">✏️</button>
+                          <button class="adw-tbl-btn">🗑</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="adw-pill on">สุขภาพ</span></td>
+                        <td>Smart Life EP.1: นอนหลับกับภูมิแพ้</td>
+                        <td style="color:#90A4AE;font-size:12px;">20 พ.ค. 68</td>
+                        <td style="display:flex;gap:4px;">
+                          <button class="adw-tbl-btn">✏️</button>
+                          <button class="adw-tbl-btn">🗑</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="adw-pill soon">อากาศ</span></td>
+                        <td>Qais Air vs E.coli: ทดสอบในแล็บ</td>
+                        <td style="color:#90A4AE;font-size:12px;">15 พ.ค. 68</td>
+                        <td style="display:flex;gap:4px;">
+                          <button class="adw-tbl-btn">✏️</button>
+                          <button class="adw-tbl-btn">🗑</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="adw-pill soon">อากาศ</span></td>
+                        <td>Qais Air ต้านไวรัสในอากาศได้จริง?</td>
+                        <td style="color:#90A4AE;font-size:12px;">10 พ.ค. 68</td>
+                        <td style="display:flex;gap:4px;">
+                          <button class="adw-tbl-btn">✏️</button>
+                          <button class="adw-tbl-btn">🗑</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="adw-pill done">ไลฟ์สไตล์</span></td>
+                        <td>Alive Service Center: Ultrahuman</td>
+                        <td style="color:#90A4AE;font-size:12px;">2 พ.ค. 68</td>
+                        <td style="display:flex;gap:4px;">
+                          <button class="adw-tbl-btn">✏️</button>
+                          <button class="adw-tbl-btn">🗑</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /adw-content -->
         </div><!-- /adw-pg-dashboard -->
 
         <!-- ─── EMPLOYEE PAGE ─── -->
@@ -4644,7 +4983,8 @@
               <div class="emp-toolbar" style="margin-bottom:16px;">
                 <div class="emp-search-wrap">
                   <span class="emp-search-ico">🔍</span>
-                  <input class="emp-search-inp" id="empSearch" type="text" placeholder="ค้นหาชื่อ หรือ รหัสพนักงาน..." oninput="empRender()" />
+                  <input class="emp-search-inp" id="empSearch" type="text" placeholder="ค้นหาชื่อ หรือ รหัสพนักงาน..."
+                    oninput="empRender()" />
                 </div>
                 <span class="emp-count-lbl" id="empCountLbl"></span>
                 <button class="emp-add-btn" onclick="empOpenModal()">+ เพิ่มพนักงาน</button>
@@ -5062,7 +5402,53 @@
     ov.appendChild(burst); setTimeout(() => burst.remove(), 2500);
   }
 
+  /* ---- Register ---- */
+  function regTogglePwd(fieldId, eyeEl) {
+    var inp = document.getElementById(fieldId);
+    var show = inp.type === 'password';
+    inp.type = show ? 'text' : 'password';
+    eyeEl.style.opacity = show ? '1' : '0.5';
+  }
+
+  function regSubmit() {
+    var name = document.getElementById('regName').value.trim();
+    var email = document.getElementById('regEmail').value.trim();
+    var phone = document.getElementById('regPhone').value.trim();
+    var pwd = document.getElementById('regPwd').value;
+    var pwd2 = document.getElementById('regPwd2').value;
+    var terms = document.getElementById('regTerms').checked;
+    if (!name) { alert('กรุณากรอกชื่อ-นามสกุล'); return; }
+    if (!email) { alert('กรุณากรอกอีเมล'); return; }
+    if (!phone) { alert('กรุณากรอกเบอร์โทรศัพท์'); return; }
+    if (pwd.length < 8) { alert('รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร'); return; }
+    if (pwd !== pwd2) { alert('รหัสผ่านไม่ตรงกัน'); return; }
+    if (!terms) { alert('กรุณายอมรับเงื่อนไขการใช้งาน'); return; }
+    // TODO: POST /api/register
+    go('reward');
+  }
+
+  /* ---- Forgot password ---- */
+  function forgotSubmit() {
+    var email = document.getElementById('forgotEmail').value.trim();
+    if (!email) { alert('กรุณากรอกอีเมล'); return; }
+    // TODO: POST /api/forgot-password
+    document.getElementById('forgotEmailShow').textContent = email;
+    document.getElementById('forgotFormStep1').style.display = 'none';
+    document.getElementById('forgotFormStep2').style.display = '';
+  }
+
+  function forgotResend() {
+    document.getElementById('forgotFormStep1').style.display = '';
+    document.getElementById('forgotFormStep2').style.display = 'none';
+    document.getElementById('forgotEmail').value = '';
+  }
+
   function go(name) {
+    if (name === 'forgot') {
+      document.getElementById('forgotFormStep1').style.display = '';
+      document.getElementById('forgotFormStep2').style.display = 'none';
+      document.getElementById('forgotEmail').value = '';
+    }
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.tb').forEach(b => b.classList.remove('active'));
     document.getElementById('screen-' + name).classList.add('active');
@@ -5231,7 +5617,7 @@
 
   /* ---- Admin page navigation ---- */
   function adwNav(page) {
-    ['dashboard','employees'].forEach(p => {
+    ['dashboard', 'employees'].forEach(p => {
       document.getElementById('adw-pg-' + p).classList.toggle('adw-pg-active', p === page);
       var nav = document.getElementById('adw-nav-' + p);
       if (nav) nav.classList.toggle('active', p === page);
@@ -5245,23 +5631,23 @@
   var empEditIdx = null;
 
   var empData = [
-    { id:'SS-001', name:'สมชาย ใจดี',      email:'somchai@co.th',   coins:1240 },
-    { id:'SS-002', name:'วิภา สุขสันต์',    email:'wipa@co.th',      coins:980  },
-    { id:'SS-003', name:'ธนา พงษ์ศรี',      email:'tana@co.th',      coins:760  },
-    { id:'SS-004', name:'มณี ลิ้มทอง',      email:'manee@co.th',     coins:1580 },
-    { id:'SS-005', name:'ปิยะ ชัยมงคล',     email:'piya@co.th',      coins:430  },
-    { id:'SS-006', name:'รัตนา วงศ์ไทย',    email:'rattana@co.th',   coins:2100 },
-    { id:'SS-007', name:'กิตติ อ่อนน้อม',   email:'kitti@co.th',     coins:870  },
-    { id:'SS-008', name:'สุดา เพชรรัตน์',   email:'suda@co.th',      coins:540  },
-    { id:'SS-009', name:'อภิชาติ ทรัพย์ดี', email:'apichat@co.th',   coins:1320 },
-    { id:'SS-010', name:'ชลธิชา มีสุข',     email:'chonticha@co.th', coins:670  },
-    { id:'SS-011', name:'ธีรวัฒน์ พรชัย',   email:'teerawat@co.th',  coins:1050 },
-    { id:'SS-012', name:'นภา จิตรสะอาด',    email:'napa@co.th',      coins:790  },
+    { id: 'SS-001', name: 'สมชาย ใจดี', email: 'somchai@co.th', coins: 1240 },
+    { id: 'SS-002', name: 'วิภา สุขสันต์', email: 'wipa@co.th', coins: 980 },
+    { id: 'SS-003', name: 'ธนา พงษ์ศรี', email: 'tana@co.th', coins: 760 },
+    { id: 'SS-004', name: 'มณี ลิ้มทอง', email: 'manee@co.th', coins: 1580 },
+    { id: 'SS-005', name: 'ปิยะ ชัยมงคล', email: 'piya@co.th', coins: 430 },
+    { id: 'SS-006', name: 'รัตนา วงศ์ไทย', email: 'rattana@co.th', coins: 2100 },
+    { id: 'SS-007', name: 'กิตติ อ่อนน้อม', email: 'kitti@co.th', coins: 870 },
+    { id: 'SS-008', name: 'สุดา เพชรรัตน์', email: 'suda@co.th', coins: 540 },
+    { id: 'SS-009', name: 'อภิชาติ ทรัพย์ดี', email: 'apichat@co.th', coins: 1320 },
+    { id: 'SS-010', name: 'ชลธิชา มีสุข', email: 'chonticha@co.th', coins: 670 },
+    { id: 'SS-011', name: 'ธีรวัฒน์ พรชัย', email: 'teerawat@co.th', coins: 1050 },
+    { id: 'SS-012', name: 'นภา จิตรสะอาด', email: 'napa@co.th', coins: 790 },
   ];
 
   function empFiltered() {
     var q = (document.getElementById('empSearch').value || '').toLowerCase();
-    return empData.filter(function(e) {
+    return empData.filter(function (e) {
       return !q || e.id.toLowerCase().includes(q) || e.name.toLowerCase().includes(q);
     });
   }
@@ -5276,27 +5662,27 @@
     document.getElementById('empSubLbl').textContent = 'ทั้งหมด ' + empData.length + ' คน · กรองแล้ว ' + list.length + ' คน';
 
     var tbody = document.getElementById('empTbody');
-    tbody.innerHTML = slice.map(function(e, i) {
+    tbody.innerHTML = slice.map(function (e, i) {
       var realIdx = empData.indexOf(e);
       return '<tr>' +
         '<td style="font-size:11px;color:#90A4AE;font-weight:700;">' + e.id + '</td>' +
         '<td style="font-weight:600;">' + e.name + '<div style="font-size:11px;color:#90A4AE;font-weight:400;margin-top:1px;">' + e.email + '</div></td>' +
         '<td style="text-align:center;font-weight:700;color:#1D9E75;">' + e.coins.toLocaleString() + ' <span style="font-size:10px;font-weight:400;color:#90A4AE;">cdg coins</span></td>' +
         '<td style="display:flex;gap:4px;">' +
-          '<button class="adw-tbl-btn" onclick="empOpenModal(' + realIdx + ')" title="แก้ไขข้อมูล">✏️</button>' +
-          '<button class="adw-tbl-btn" onclick="empOpenPwd(' + realIdx + ')" title="เปลี่ยนรหัสผ่าน">🔑</button>' +
-          '<button class="adw-tbl-btn" onclick="empDelete(' + realIdx + ')" title="ลบ">🗑</button>' +
+        '<button class="adw-tbl-btn" onclick="empOpenModal(' + realIdx + ')" title="แก้ไขข้อมูล">✏️</button>' +
+        '<button class="adw-tbl-btn" onclick="empOpenPwd(' + realIdx + ')" title="เปลี่ยนรหัสผ่าน">🔑</button>' +
+        '<button class="adw-tbl-btn" onclick="empDelete(' + realIdx + ')" title="ลบ">🗑</button>' +
         '</td>' +
-      '</tr>';
+        '</tr>';
     }).join('');
 
     var pg = document.getElementById('empPagination');
     if (totalPages <= 1) { pg.innerHTML = ''; return; }
-    var html = '<button class="emp-pg-btn" onclick="empGoPage(' + (empPage-1) + ')" ' + (empPage===1?'disabled':'') + '>‹</button>';
+    var html = '<button class="emp-pg-btn" onclick="empGoPage(' + (empPage - 1) + ')" ' + (empPage === 1 ? 'disabled' : '') + '>‹</button>';
     for (var p = 1; p <= totalPages; p++) {
-      html += '<button class="emp-pg-btn' + (p===empPage?' cur':'') + '" onclick="empGoPage(' + p + ')">' + p + '</button>';
+      html += '<button class="emp-pg-btn' + (p === empPage ? ' cur' : '') + '" onclick="empGoPage(' + p + ')">' + p + '</button>';
     }
-    html += '<button class="emp-pg-btn" onclick="empGoPage(' + (empPage+1) + ')" ' + (empPage===totalPages?'disabled':'') + '>›</button>';
+    html += '<button class="emp-pg-btn" onclick="empGoPage(' + (empPage + 1) + ')" ' + (empPage === totalPages ? 'disabled' : '') + '>›</button>';
     pg.innerHTML = html;
   }
 
@@ -5306,10 +5692,10 @@
     empEditIdx = (idx !== undefined) ? idx : null;
     var e = empEditIdx !== null ? empData[empEditIdx] : null;
     document.getElementById('empModalTtl').textContent = e ? 'แก้ไขข้อมูลพนักงาน' : 'เพิ่มพนักงานใหม่';
-    document.getElementById('empFldId').value    = e ? e.id    : '';
-    document.getElementById('empFldName').value  = e ? e.name  : '';
+    document.getElementById('empFldId').value = e ? e.id : '';
+    document.getElementById('empFldName').value = e ? e.name : '';
     document.getElementById('empFldEmail').value = e ? e.email : '';
-    document.getElementById('empFldPwd').value   = '';
+    document.getElementById('empFldPwd').value = '';
     document.getElementById('empFldPwdConfirm').value = '';
     document.getElementById('empFldId').disabled = !!e;
     document.getElementById('empPwdLbl').textContent = e ? 'รหัสผ่านใหม่ (เว้นว่างถ้าไม่เปลี่ยน)' : 'รหัสผ่าน';
@@ -5321,14 +5707,14 @@
     empEditIdx = idx;
     var e = empData[idx];
     document.getElementById('empModalTtl').textContent = 'เปลี่ยนรหัสผ่าน — ' + e.name;
-    document.getElementById('empFldId').value    = e.id;
-    document.getElementById('empFldName').value  = e.name;
+    document.getElementById('empFldId').value = e.id;
+    document.getElementById('empFldName').value = e.name;
     document.getElementById('empFldEmail').value = e.email;
-    document.getElementById('empFldPwd').value   = '';
+    document.getElementById('empFldPwd').value = '';
     document.getElementById('empFldPwdConfirm').value = '';
-    document.getElementById('empFldId').disabled   = true;
+    document.getElementById('empFldId').disabled = true;
     document.getElementById('empFldName').disabled = true;
-    document.getElementById('empFldEmail').disabled= true;
+    document.getElementById('empFldEmail').disabled = true;
     document.getElementById('empPwdLbl').textContent = 'รหัสผ่านใหม่';
     document.getElementById('empFldPwd').required = true;
     document.getElementById('empModalOverlay').classList.add('open');
@@ -5336,8 +5722,8 @@
 
   function empCloseModal() {
     document.getElementById('empModalOverlay').classList.remove('open');
-    document.getElementById('empFldId').disabled    = false;
-    document.getElementById('empFldName').disabled  = false;
+    document.getElementById('empFldId').disabled = false;
+    document.getElementById('empFldName').disabled = false;
     document.getElementById('empFldEmail').disabled = false;
     empEditIdx = null;
   }
@@ -5347,11 +5733,11 @@
   }
 
   function empSave() {
-    var id    = document.getElementById('empFldId').value.trim();
-    var name  = document.getElementById('empFldName').value.trim();
+    var id = document.getElementById('empFldId').value.trim();
+    var name = document.getElementById('empFldName').value.trim();
     var email = document.getElementById('empFldEmail').value.trim();
-    var pwd   = document.getElementById('empFldPwd').value;
-    var pwd2  = document.getElementById('empFldPwdConfirm').value;
+    var pwd = document.getElementById('empFldPwd').value;
+    var pwd2 = document.getElementById('empFldPwdConfirm').value;
     if (!name) { alert('กรุณากรอกชื่อ-สกุล'); return; }
     if (pwd || (empEditIdx === null)) {
       if (!pwd) { alert('กรุณากรอกรหัสผ่าน'); return; }
@@ -5359,11 +5745,11 @@
       if (pwd.length < 6) { alert('รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร'); return; }
     }
     if (empEditIdx !== null) {
-      Object.assign(empData[empEditIdx], { name:name, email:email });
+      Object.assign(empData[empEditIdx], { name: name, email: email });
       // TODO: PATCH /api/employees/:id  (+ password if pwd)
     } else {
       if (!id) { alert('กรุณากรอกรหัสพนักงาน'); return; }
-      empData.push({ id:id, name:name, email:email, coins:0 });
+      empData.push({ id: id, name: name, email: email, coins: 0 });
       // TODO: POST /api/employees
     }
     empCloseModal();
@@ -5400,24 +5786,24 @@
 
   /* ---- Emoji picker ---- */
   var ADW_EMOJIS = [
-    '🏃','🚶','🏋️','🏊','🚴','🧘','💪','⚽','🏀','🎾','🏐','🏸',
-    '🥊','🤸','🏇','🧗','🤼','🏌️','🎿','🛹','🛶','🤽','🏂','🤺',
-    '🥋','🥅','🎯','🏹','🎽','🩰','🧜','🤾','🏄','🚵','🤼','🏆',
-    '⛷️','🤿','🏋','🩱','🤙','🦵','🦶','🫀','🧠','💨','🔥','⚡'
+    '🏃', '🚶', '🏋️', '🏊', '🚴', '🧘', '💪', '⚽', '🏀', '🎾', '🏐', '🏸',
+    '🥊', '🤸', '🏇', '🧗', '🤼', '🏌️', '🎿', '🛹', '🛶', '🤽', '🏂', '🤺',
+    '🥋', '🥅', '🎯', '🏹', '🎽', '🩰', '🧜', '🤾', '🏄', '🚵', '🤼', '🏆',
+    '⛷️', '🤿', '🏋', '🩱', '🤙', '🦵', '🦶', '🫀', '🧠', '💨', '🔥', '⚡'
   ];
   var adwSelectedEmoji = '🏅';
 
   function adwInitEmojiPicker() {
     var grid = document.getElementById('adwEmojiGrid');
     if (!grid || grid.childElementCount > 0) return;
-    ADW_EMOJIS.forEach(function(em) {
+    ADW_EMOJIS.forEach(function (em) {
       var btn = document.createElement('button');
       btn.textContent = em;
       btn.title = em;
       btn.style.cssText = 'font-size:18px;border:none;background:transparent;cursor:pointer;padding:4px;border-radius:6px;line-height:1;';
-      btn.onmouseenter = function() { this.style.background = '#E1F5EE'; };
-      btn.onmouseleave = function() { this.style.background = 'transparent'; };
-      btn.onclick = function() { adwSelectEmoji(em); };
+      btn.onmouseenter = function () { this.style.background = '#E1F5EE'; };
+      btn.onmouseleave = function () { this.style.background = 'transparent'; };
+      btn.onclick = function () { adwSelectEmoji(em); };
       grid.appendChild(btn);
     });
   }
@@ -5434,9 +5820,9 @@
     document.getElementById('adwEmojiPicker').style.display = 'none';
   }
 
-  document.addEventListener('click', function(e) {
+  document.addEventListener('click', function (e) {
     var preview = document.getElementById('adwEmojiPreview');
-    var picker  = document.getElementById('adwEmojiPicker');
+    var picker = document.getElementById('adwEmojiPicker');
     if (picker && preview && !preview.contains(e.target) && !picker.contains(e.target)) {
       picker.style.display = 'none';
     }
@@ -5461,8 +5847,8 @@
   }
 
   function confirmAddAtype() {
-    const ico   = adwSelectedEmoji || '🏅';
-    const nm    = document.getElementById('adwNewNm').value.trim();
+    const ico = adwSelectedEmoji || '🏅';
+    const nm = document.getElementById('adwNewNm').value.trim();
     const coins = parseInt(document.getElementById('adwNewCoins').value, 10);
     if (!nm) { document.getElementById('adwNewNm').focus(); return; }
     if (isNaN(coins) || coins < 0) { document.getElementById('adwNewCoins').focus(); return; }
@@ -5475,17 +5861,17 @@
     row.dataset.id = id;
     row.innerHTML =
       '<div class="adw-atype-left">' +
-        '<div class="adw-act-ico">' + ico + '</div>' +
-        '<div class="adw-atype-nm">' + nm + '</div>' +
+      '<div class="adw-act-ico">' + ico + '</div>' +
+      '<div class="adw-atype-nm">' + nm + '</div>' +
       '</div>' +
       '<div class="adw-atype-right">' +
-        '<div class="adw-atype-coins-wrap">' +
-          '<span style="font-size:14px;">🪙</span>' +
-          '<input class="adw-atype-inp" type="number" value="' + coins + '" min="0" />' +
-          '<span class="adw-atype-coin-unit">cdg coins</span>' +
-        '</div>' +
-        '<button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>' +
-        '<button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>' +
+      '<div class="adw-atype-coins-wrap">' +
+      '<span style="font-size:14px;">🪙</span>' +
+      '<input class="adw-atype-inp" type="number" value="' + coins + '" min="0" />' +
+      '<span class="adw-atype-coin-unit">cdg coins</span>' +
+      '</div>' +
+      '<button class="adw-atype-save" onclick="saveAtypeCoins(this)">บันทึก</button>' +
+      '<button class="adw-atype-del" onclick="deleteAtype(this)" title="ลบประเภท">✕</button>' +
       '</div>';
     document.getElementById('adwAtypeList').appendChild(row);
     cancelAddAtype();
